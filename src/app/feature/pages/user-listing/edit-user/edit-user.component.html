@@ -1,0 +1,80 @@
+<div class="p-4 md:p-8 mt-6 lg:mt-0 rounded shadow bg-white w-3/4 mx-auto">
+  <div class="header flex items-baseline justify-start">
+    <img class="w-4 h-4 mr-4 cursor-pointer" src="assets/back.png" routerLink="../../../pages/user">
+    <h3 class="text-lg font-bold mb-4">Edit Info</h3>
+  </div>
+    <form action="" class="w-full max-w-full text-base">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide mb-2" for="first-name">
+            First Name
+          </label>
+          <input class="appearance-none block w-full bg-gray-100 border border-red-500 rounded-full py-3 px-6 mb-3 leading-tight focus:outline-none focus:bg-white" id="first-name" type="text" placeholder="Jane">
+          <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide mb-2" for="last-name">
+            Last Name
+          </label>
+          <input class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-full py-3 px-6 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-200" id="last-name" type="text" placeholder="Doe">
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide mb-2" for="email">
+            Email Address
+          </label>
+          <input class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-full py-3 px-6 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-200" id="email" type="email" placeholder="jhon.doe@gmail.com">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide mb-2" for="mob">
+            Contact Number
+          </label>
+          <input class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-full py-3 px-6 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-200" id="mob" type="text" placeholder="+91 + 9876543210">
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide mb-2" for="gender">
+            Gender
+          </label>
+          <div class="relative">
+            <select class="block appearance-none w-full bg-gray-100 border border-gray-100 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-200" id="gender">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <svg viewBox="0 0 20 20" fill="currentColor" class="text-gray-200 chevron-down w-6 h-6"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide mb-2" for="height">
+            Height
+          </label>
+          <input class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-full py-3 px-6 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-200" id="height" type="text" placeholder="185 Cm">
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide mb-2" for="weight">
+            Weight
+          </label>
+          <input class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-full py-3 px-6 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-200" id="weight" type="text" placeholder="65 Kg">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block tracking-wide mb-2" for="dob">
+            D.O.B.
+          </label>
+          <input class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-full py-3 px-6 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-200" id="dob" type="date" placeholder="">
+        </div>
+      </div>
+      <div class="md:flex md:justify-center">
+        <div class="md:w-2/6 text-center">
+          <button class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none rounded-full text-white font-bold py-4 px-8 uppercase" type="button">
+            Update
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>

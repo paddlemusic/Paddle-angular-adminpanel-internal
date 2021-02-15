@@ -1,0 +1,26 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+.nav-link{
+    @apply inline-block w-full;
+  }
+  
+  .nav-text{
+    @apply flex flex-col items-center py-1 align-middle text-white no-underline px-2;
+  }
+  
+  .nav-text.active{
+    @apply border-white bg-white bg-opacity-25;
+  }
+  
+  .nav-text:hover{
+    @apply text-white bg-white bg-opacity-25;
+  }
+
+*:focus {
+  outline: 0 !important;
+}
+  
+  
