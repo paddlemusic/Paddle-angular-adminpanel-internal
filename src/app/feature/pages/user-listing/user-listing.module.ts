@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { UserListingComponent } from './user-listing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutModule } from './../../../shared/layout/layout.module';
+import { LayoutModule } from '../../../shared/components/layout/layout.module';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 

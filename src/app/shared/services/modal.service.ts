@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import Swal from 'sweetalert2'
 declare let $: any;
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
-
   constructor() { }
 
 
@@ -18,4 +18,15 @@ closePopup(id: string) {
   // $('#' + id).modal({ keyboard: false }) 
   $('#' + id).modal('hide');
 }
+
+/**
+ * Shows alert
+ * @param title 
+ * @param text 
+ * @returns  
+ */
+showAlert(obj:any){
+  Swal.fire(obj)
+}
+
 }

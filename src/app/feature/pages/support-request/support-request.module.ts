@@ -4,7 +4,7 @@ import { SupportRequestDetailsComponent } from './support-request-details/suppor
 import { Routes, RouterModule } from '@angular/router';
 import { SupportRequestComponent } from './support-request.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutModule } from './../../../shared/layout/layout.module';
+import { LayoutModule } from '../../../shared/components/layout/layout.module';
 
 const routes: Routes = [
   {

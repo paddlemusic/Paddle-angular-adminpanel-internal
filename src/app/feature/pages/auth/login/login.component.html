@@ -6,10 +6,11 @@
           <img src="assets/logo.png" alt="">
         </a>
         <!-- Login module -->
+
         <div class="login-module">
           <h1 class="font-bold text-center text-3xl lg:text-4xl xl:text-5xl">Welcome Back</h1>
           <p class=" text-center text-base">Login to your account</p>
-          <form class="flex flex-col pt-3 md:pt-8">
+          <form class="flex flex-col pt-3 md:pt-8" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="flex flex-col pt-4">
               <label for="email" class="text-base ">Email Address</label>
               <div class=" relative w-full mt-1">
@@ -19,7 +20,7 @@
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                   </svg>
                 </div>
-                <input type="email" id="email" placeholder="your@email.com"
+                <input type="email" id="email" placeholder="your@email.com" formControlName="email"
                   class="bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3 text-base pl-12  leading-tight focus:outline-none focus:shadow-outline h-12">
               </div>
             </div>
@@ -34,19 +35,20 @@
                       clip-rule="evenodd"></path>
                   </svg>
                 </div>
-                <input type="password" id="password" placeholder="******"
+                <input type="password" id="password" placeholder="******" formControlName="password"
                   class="bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3  text-base pl-12 mt-1 leading-tight focus:outline-none focus:shadow-outline h-12">
               </div>
             </div>
 
             <input type="submit" value="Login"
               class="bg-red-700 text-white font-semibold text-lg hover:bg-red-600 p-2 mt-8 h-12 rounded-full"
-              id="login-btn" (click)="onLogin()">
+              id="login-btn" >
           </form>
           <div class="text-center pt-8 pb-12">
             <a href="#" id="forgotPassword" class="underline " routerLink="/auth/forgot-password">Forgot password</a>
           </div>
         </div>
+      
       </div>
     </div>
     <div class="w-1/2 min-h-screen bg-gray-100 justify-center items-center hidden md:flex">

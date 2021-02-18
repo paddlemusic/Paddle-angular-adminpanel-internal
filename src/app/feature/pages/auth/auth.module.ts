@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SharedModule } from '@app/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
       component: LoginComponent,
   },
   {
-      path: 'reset-password',
+      path: 'change-password',
       component: ResetPasswordComponent,
   },
 
@@ -34,6 +35,7 @@ const routes: Routes = [
     CommonModule,
         ReactiveFormsModule,
         FormsModule,
+        SharedModule,
         RouterModule.forChild(routes)
   ]
 })
