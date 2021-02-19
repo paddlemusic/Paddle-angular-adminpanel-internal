@@ -2,8 +2,10 @@ const url = '/paddle/api/v1/admin'
 export const apiUrls = {
     login: url+'/login',
     logout: url+'/logout',
-    userProfile:url+'/viewProfile',
+    adminProfile:url+'/viewAdminProfile',
     changePassword : url + '/changePassword',
+    userSearch : url + '/userSearch',
+    userProfile : url+'/getUsers',
     forgotPassword : ''
 
 

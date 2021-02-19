@@ -15,6 +15,7 @@ export class UserDetailsComponent implements OnInit {
     private modalService : ModalService) { }
 
   ngOnInit(): void {
+    this.getUserProfile();
   }
 
     /**
