@@ -6,6 +6,8 @@ export const apiUrls = {
     changePassword : url + '/changePassword',
     userSearch : url + '/userSearch',
     userProfile : url+'/getUsers',
+    viewUserProfile : url + '/viewUserProfile',
+    blockUnblock : url + '/blockUnblock',
     forgotPassword : ''
 
 

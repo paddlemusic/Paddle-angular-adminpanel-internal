@@ -8,6 +8,8 @@ import { RequestService } from '@app/shared/services/request.service';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { environment } from '@env/environment';
 import { UserModel } from './models/user.model';
+import { ModalService } from '@app/shared/services/modal.service';
+import { CommonService } from '@app/shared/services/common.service';
 
 @Component({
   selector: 'app-user-listing',
@@ -29,7 +31,9 @@ export class UserListingComponent implements OnInit {
  
 
   constructor(private requestService : RequestService,
-    public _cdr: ChangeDetectorRef) { }
+    public _cdr: ChangeDetectorRef,
+    private commonService : CommonService,
+    private modalService : ModalService) { }
 
   ngOnInit(): void {
    
@@ -55,7 +59,6 @@ this.requestService.get(url , params).subscribe((res:any)=>{
     this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
     this.setDataSource(this.userListData, resiterpagination);
     
-    // this.dataSource.paginator = this.paginator;
 
     // console.log("Data source:", this.dataSource);
   }
@@ -107,9 +110,44 @@ console.log("ERror is:", err)
 
  
   changeUserStatus(is_active:any) {
-    console.log("shdgsh", this.selection.selected.length)
+    const ids = this.selection.selected.map((s) => s.id);
+    console.log("shdgsh", ids)
+     
+
+    let url:string = environment.baseUrl + apiUrls.blockUnblock + '/'+is_active;
+    let params:any = {
+      ids : ids
+    }
+    this.requestService.post(url, params ).subscribe((res:any)=>{
+      if (res.status_code == 200) {
+        // this._layoutService.showActionNotification(
+        //   resp.message, MessageType.Create, 3000, true, false, 3000, "bottom"
+        // );
+        this.modalService.showAlert({
+          title: 'Success!',
+          text: res.message,
+          icon: 'success',
+          allowOutsideClick: false
+        })
+        this.searchKey = '';
+        this.searchInput.nativeElement.value = ''
+        this.selection.clear();
+        this.pageIndex = 0;
+        this.getUserList(true);
+      }
+    })
+
   }
 
+  navigate(userId:any){
+    const extras = {
+        queryParams: { 
+          id: userId 
+        } 
+    }
+    this.commonService.navigate('/pages/user/user-details', extras)
+    // routerLink="user-details"
+  }
 
   isAllSelected() {
     // console.log("isAllSelected", this.selection.selected.length)
