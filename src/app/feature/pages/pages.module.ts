@@ -4,6 +4,7 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './routing/pages-routing/pages-routing.module';
 import { LayoutModule } from '@app/shared/components/layout/layout.module';
 import { SharedModule } from '@app/shared/shared.module';
+// import { UniversityListingComponent } from './manage-universities/university-listing/university-listing.component';
 
 @NgModule({
   declarations: [ PagesComponent],

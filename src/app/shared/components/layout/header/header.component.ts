@@ -16,7 +16,7 @@ import { environment } from '@env/environment';
 export class HeaderComponent implements OnInit {
 
   status: boolean = true;
-  userProfileData: any;
+  adminProfileData: any;
 
   constructor(
     private commonService:CommonService, 
@@ -27,8 +27,33 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  
+  this.getAdminProfile();
   }
+
+     /**
+   * Gets user profile
+   */
+  getAdminProfile(){
+    let url = environment.baseUrl + apiUrls.viewAdminProfile;
+    this.requestService.get(url)
+      .subscribe((res: any) => {
+        if (res.status_code == 200) {
+          console.log('REposne is:', res);
+         this.adminProfileData = res.data;
+        } 
+  
+      }, (err) => {
+        console.log("Error is:", err);
+        this.modalService.showAlert({
+          title: 'Error!',
+          text: err,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+          allowOutsideClick: false
+        })
+      });
+  }
+  
 
 
   toggleDropdownMenu() {

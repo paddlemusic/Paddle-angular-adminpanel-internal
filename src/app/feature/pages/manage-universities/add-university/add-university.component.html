@@ -1,0 +1,19 @@
+<div class="p-4 md:p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+    <h3 class="font-bold text-2xl">Add University</h3>
+    <form class="mt-6" [formGroup]="addUniversityForm" (ngSubmit)= "onSubmit()">
+      <div class="flex flex-col mb-6">
+        <label for="addUNiversity" class=" block tracking-wide mb-2">Enter your university name:</label>
+        <input class="rounded-lg resize-none bg-gray-100 border text-lg text-gray-300 border-gray-100 focus:border-gray-300 focus:outline-none p-4"
+        formControlName="name" placeholder="university name" />
+        <app-show-error [control]="f.name"></app-show-error>
+      </div>
+      <!-- <div class="flex flex-col mb-6">
+        <label for="addCity" class="block tracking-wide mb-2">Enter your City name:</label>
+        <input class="rounded-lg resize-none bg-gray-100 border text-lg text-gray-300 border-gray-100 focus:border-gray-300 focus:outline-none p-4"
+        formControlName="city" placeholder="City name" />
+      </div> -->
+      <div class="flex justify-end">
+          <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-full uppercase">Save</button>
+      </div>
+    </form>
+  </div>

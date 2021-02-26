@@ -22,6 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('../../../pages/user-listing/user-listing.module').then(m => m.UserListingModule),
       },
       {
+        path: 'university',
+        loadChildren: () => import('../../../pages/manage-universities/manage-universities.module').then(m => m.ManageUniversitiesModule),
+      },
+      {
         path: 'notifications',
         loadChildren: () => import('../../../pages/notifications/notifications.module').then(m => m.NotificationsModule),
       },

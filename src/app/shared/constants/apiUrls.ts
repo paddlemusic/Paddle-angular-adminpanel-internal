@@ -7,7 +7,12 @@ export const apiUrls = {
     userSearch : url + '/userSearch',
     userProfile : url+'/getUsers',
     viewUserProfile : url + '/viewUserProfile',
+    viewAdminProfile : url + '/viewAdminProfile',
     blockUnblock : url + '/blockUnblock',
+    addUniversity : url+'/university/addUniversity',
+    deleteUniversity : url+'/university/deleteUniversity',
+    getUniversity : url+'/university/getUniversities',
+
     forgotPassword : ''
 
 

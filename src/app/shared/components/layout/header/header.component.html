@@ -7,7 +7,7 @@
       <div>
         <div class="relative inline-block">
           <button (click)="toggleDropdownMenu()" class="flex items-center drop-button focus:outline-none"  id="options-menu" aria-haspopup="true" aria-expanded="true">
-            <p class="px-2 py-1 block">Admin</p>
+            <p class="px-2 py-1 block">{{adminProfileData?.name || 'Admin'}}</p>
             <!-- <img class="w-10 h-10 rounded-full ml-2" src="assets/photo.png" alt="Avatar of Jonathan Reinink"> -->
           </button>            
           <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg" [ngClass]="status ? 'hidden' : ''">

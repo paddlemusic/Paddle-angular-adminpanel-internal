@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './core/interceptors/core.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptors';
 import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from './shared/components/layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    LayoutModule,
     CoreModule,
     RouterModule,
     FormsModule,

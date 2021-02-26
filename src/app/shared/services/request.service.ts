@@ -56,6 +56,22 @@ export class RequestService {
     )
   }
 
+  delete(url: string, body: any, params?:any, headers?: any) {
+    return this._http.delete(url, body)
+      .pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError((err)=>{
+          if(err instanceof HttpErrorResponse){
+            err = err.error ? err.error.errors: err.error;
+          }
+          return throwError(err);
+        })
+      )
+    }
+  
+
 
 //Parallel API hit
   // hitParalletGetApis(dataSet : any):Observable<any> {
