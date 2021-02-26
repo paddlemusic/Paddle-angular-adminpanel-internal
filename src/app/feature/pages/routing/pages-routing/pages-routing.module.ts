@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './../../pages.component';
 import { LayoutModule } from '@app/shared/components/layout/layout.module';
+import { EditProfileComponent } from '../../admin-profile/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
         loadChildren: () => import('../../../pages/manage-universities/manage-universities.module').then(m => m.ManageUniversitiesModule),
       },
       {
+        path : 'edit-admin-profile',
+        component : EditProfileComponent
+      },
+      {
         path: 'notifications',
         loadChildren: () => import('../../../pages/notifications/notifications.module').then(m => m.NotificationsModule),
       },
@@ -46,7 +51,8 @@ const routes: Routes = [
         loadChildren: () => import('./../../faq/faq.module').then(m => m.FAQModule)
       }
     ]
-  }
+  },
+ 
 ]
 
 @NgModule({
