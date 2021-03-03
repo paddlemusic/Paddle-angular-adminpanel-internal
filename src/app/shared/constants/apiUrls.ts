@@ -1,17 +1,20 @@
-const url = '/paddle/api/v1/admin'
+const adminUrl = '/paddle/api/v1/admin'
+const userUrl = '/paddle/api/v1'
 export const apiUrls = {
-    login: url+'/login',
-    logout: url+'/logout',
-    adminProfile:url+'/viewAdminProfile',
-    changePassword : url + '/changePassword',
-    userSearch : url + '/userSearch',
-    userProfile : url+'/getUsers',
-    viewUserProfile : url + '/viewUserProfile',
-    viewAdminProfile : url + '/viewAdminProfile',
-    blockUnblock : url + '/blockUnblock',
-    addUniversity : url+'/university/addUniversity',
-    deleteUniversity : url+'/university/deleteUniversity',
-    getUniversity : url+'/university/getUniversities',
+    login: adminUrl+'/login',
+    logout: adminUrl+'/logout',
+    adminProfile:adminUrl+'/viewAdminProfile',
+    changePassword : adminUrl + '/changePassword',
+    userSearch : adminUrl + '/userSearch',
+    userProfile : adminUrl+'/getUsers',
+    viewUserProfile : adminUrl + '/viewUserProfile',
+    viewAdminProfile : adminUrl + '/viewAdminProfile',
+    blockUnblock : adminUrl + '/blockUnblock',
+    addUniversity : adminUrl+'/university/addUniversity',
+    deleteUniversity : adminUrl+'/university/deleteUniversity',
+    getUniversity : adminUrl+'/university/getUniversities',
+    uploadFile : adminUrl + '/upload',
+    editAdminDetails : adminUrl + '/editDetails', 
 
     forgotPassword : ''
 

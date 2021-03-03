@@ -56,6 +56,20 @@ export class RequestService {
     )
   }
 
+  put(url: string, body: any, params?:any, headers?: any) {
+    return this._http.put(url, body, { headers, params })
+      .pipe(
+        map((res: any) => {
+          return res;
+        }),
+        catchError((err)=>{
+          if(err instanceof HttpErrorResponse){
+            err = err.error ? err.error.errors: err.error;
+          }
+          return throwError(err);
+        })
+      )
+    }
   delete(url: string, body: any, params?:any, headers?: any) {
     return this._http.delete(url, body)
       .pipe(
