@@ -208,7 +208,7 @@
               
             </div>
             <div>
-                <!--  (page)='pageChange($event)' [length]="totalCount"-->
+                
                 <mat-paginator #paginator [hidden]="dataSource?.filteredData?.length === 0"  
                 (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[10]"  showFirstLastButtons >
                 </mat-paginator>

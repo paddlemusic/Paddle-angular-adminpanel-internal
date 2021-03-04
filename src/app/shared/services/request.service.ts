@@ -1,7 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, throwError } from 'rxjs';
+import { environment } from '@env/environment';
+import { forkJoin, Observable, pipe, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { apiUrls } from '../constants/apiUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -83,6 +85,22 @@ export class RequestService {
           return throwError(err);
         })
       )
+    }
+
+
+    sendMail(body:any, mailToken:string){
+    const httpOptions = {
+       headers :  new HttpHeaders({
+        'mailtoken': mailToken
+      })
+    };
+    let url:string = environment.baseUrl + apiUrls.resetPassword;
+    return this._http.post(url, body , httpOptions).pipe(
+      map((res:any)=>{
+      console.log("http option:", res)
+      return res;
+    })
+        )
     }
   
 

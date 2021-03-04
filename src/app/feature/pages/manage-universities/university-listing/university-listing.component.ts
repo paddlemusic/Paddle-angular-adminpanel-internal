@@ -126,14 +126,33 @@ console.log("ERror is:", err)
     })
   }
  
+  /**
+   * Activates university listing component
+   * @param uniId 
+   */
+  activate(uniId:number | undefined ){
 
-  navigate(userId:any){
+  }
+
+  /**
+   * Deactivates university listing component
+   * @param uniId 
+   */
+  deactivate(uniId : number | undefined){
+
+  }
+
+  /**
+   * Navigates university listing component
+   * @param uniId 
+   */
+  navigate(uniId:any){
     const extras = {
         queryParams: { 
-          id: userId 
+          id: uniId 
         } 
     }
-    this.commonService.navigate('/pages/user/user-details', extras)
+    this.commonService.navigate('/pages/university/edit-university', extras)
     // routerLink="user-details"
   }
 

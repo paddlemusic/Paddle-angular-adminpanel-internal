@@ -8,8 +8,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table'
+import { LoaderComponent } from './loader/loader.component';
 @NgModule({
-  declarations: [HeaderComponent, SideMenuComponent],
+  declarations: [HeaderComponent, SideMenuComponent,
+    // LoaderComponent
+  ],
   
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { MatTableModule } from '@angular/material/table'
     MatTableModule
   ],
   exports: [SideMenuComponent, HeaderComponent,
+    // LoaderComponent,
     MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule],

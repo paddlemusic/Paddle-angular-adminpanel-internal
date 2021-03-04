@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { apiUrls } from '@app/shared/constants/apiUrls';
 import { CommonService } from '@app/shared/services/common.service';
 import { ModalService } from '@app/shared/services/modal.service';
+import { RequestService } from '@app/shared/services/request.service';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -14,6 +17,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(private fb : FormBuilder,
     private modalService : ModalService, 
+    private requestService : RequestService,
     private commonService : CommonService) { }
 
   ngOnInit(): void {
@@ -36,6 +40,12 @@ export class ForgotPasswordComponent implements OnInit {
     this.status = !this.status;
   }
 
+   // convenience getter for easy access to form fields
+   get f() {
+    return this.fpForm.controls;
+  }
+
+
 
   /**
    * Determines submitting the form
@@ -45,13 +55,25 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.fpForm.invalid) {
      return;
    }
-   this.modalService.showAlert({
-    title: 'Success!',
-    text: 'Saved SuccessFully',
-    icon: 'success',
-    confirmButtonText: 'Ok',
-    allowOutsideClick: false
-  })
+   let url:string = environment.baseUrl + apiUrls.forgotPassword
+    
+   this.requestService.post(url , this.fpForm.value ).subscribe((res:any)=>{
+    if(res.status_code == 200){
+      console.log("Link sent successfully", res);
+      let mailToken = res.mail_token;
+      this.commonService.setLocalStorage('mail_token', mailToken, false)
+
+      this.modalService.showAlert({
+        title: 'Success!',
+        text: 'Please check your email',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        allowOutsideClick: false
+       })
+    }
+   })
+
+   
     let bodyData = this.fpForm.valid;
     // this.sendLink();
       // this.commonService.navigate('../pages/dashboard')

@@ -30,7 +30,7 @@ export class AddUniversityComponent implements OnInit {
   buildForm(){
     this.addUniversityForm = this.fb.group({
       name : ['', [Validators.required]],
-      // city : ['']
+      city : ['']
     })
   }
 

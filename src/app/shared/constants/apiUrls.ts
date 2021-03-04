@@ -13,10 +13,15 @@ export const apiUrls = {
     addUniversity : adminUrl+'/university/addUniversity',
     deleteUniversity : adminUrl+'/university/deleteUniversity',
     getUniversity : adminUrl+'/university/getUniversities',
-    uploadFile : adminUrl + '/upload',
-    editAdminDetails : adminUrl + '/editDetails', 
+    editUniversity : adminUrl+'/university/editUniversity',
 
-    forgotPassword : ''
+    uploadFile : adminUrl + '/upload',
+    editAdminDetails : adminUrl + '/editDetails',
+    forgotPassword : adminUrl + '/forgotPassword',
+    resetPassword : adminUrl + '/resetPassword',
+    getSongList : adminUrl + '/getSongList',
+
+
 
 
 //     fileUPload: '/upload_data_on_s3',

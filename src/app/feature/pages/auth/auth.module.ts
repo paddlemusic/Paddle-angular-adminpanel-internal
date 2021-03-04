@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SharedModule } from '@app/shared/shared.module';
+import { ChangePasswordComponent } from './change-password/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -19,9 +20,12 @@ const routes: Routes = [
   },
   {
       path: 'change-password',
-      component: ResetPasswordComponent,
+      component: ChangePasswordComponent,
   },
-
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+},
   {
       path: 'forgot-password',
       component: ForgotPasswordComponent,
@@ -30,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent, ForgotPasswordComponent,ResetPasswordComponent],
+  declarations: [LoginComponent, ForgotPasswordComponent,ResetPasswordComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
         ReactiveFormsModule,
