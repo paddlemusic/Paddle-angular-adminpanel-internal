@@ -130,7 +130,10 @@ export class EditProfileComponent implements OnInit {
     let url :string = environment.baseUrl + apiUrls.editAdminDetails;
     console.log("value is:", body)
     this.requestService.put(url , body).subscribe((res:any)=>{
-      console.log("updated is:", res);
+      if(res.status_code == 200){
+        console.log("updated is:", res);
+        this.commonService.navigate('../pages/dashboard')
+      }
     },(err)=>{
       console.log("Error is:", err);
       this.modalService.showAlert({
