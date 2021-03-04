@@ -4,8 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "prod-build": "rimraf ./dist",
-    "build": "npm run prod-build && ng build --prod",
+    "dist-remove": "rimraf ./dist",
+    "build-prod": "npm run dist-remove && ng build --prod",
+    "build-stage": "npm run dist-remove && ng build -c stage",
+    "build-uat": "npm run dist-remove && ng build -c uat",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
