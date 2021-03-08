@@ -47,7 +47,7 @@ export class UniversityListingComponent implements OnInit {
 
   getUniverityList(resiterpagination:boolean): void {
     
-    let url : string = environment.baseUrl + apiUrls.getUniversity;
+    let url : string = environment.baseUrl + apiUrls.getUniversities;
     let params : any = {
       page : this.pageIndex,
       pageSize : this.pageSize,
@@ -130,17 +130,18 @@ console.log("ERror is:", err)
    * Activates university listing component
    * @param uniId 
    */
-  activate(uniId:number | undefined ){
+  activateDeactivateUniversity(uniId:number | undefined ){
+    let url:string = environment.baseUrl + apiUrls.activateDeactivateUniversity +'/' + uniId + '/status/toggle';
 
+    this.requestService.put(url,{}).subscribe((res:any)=>{
+    if(res.status_code == 200){
+    this.getUniverityList(true)
+    }
+    })
+    
   }
 
-  /**
-   * Deactivates university listing component
-   * @param uniId 
-   */
-  deactivate(uniId : number | undefined){
 
-  }
 
   /**
    * Navigates university listing component

@@ -25,6 +25,7 @@
       "@env/*": ["environments/*"],
   },
     "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

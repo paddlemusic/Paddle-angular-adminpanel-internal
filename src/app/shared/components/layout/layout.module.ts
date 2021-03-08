@@ -8,7 +8,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table'
-import { LoaderComponent } from './loader/loader.component';
+
+import {  MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [HeaderComponent, SideMenuComponent,
     // LoaderComponent
@@ -21,12 +25,23 @@ import { LoaderComponent } from './loader/loader.component';
     FlexLayoutModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   exports: [SideMenuComponent, HeaderComponent,
     // LoaderComponent,
     MatCheckboxModule,
     MatTableModule,
-    MatPaginatorModule],
+    MatPaginatorModule,
+  
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule
+  ],
 })
 export class LayoutModule { }

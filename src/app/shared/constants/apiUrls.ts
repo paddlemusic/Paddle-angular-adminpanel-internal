@@ -10,16 +10,22 @@ export const apiUrls = {
     viewUserProfile : adminUrl + '/viewUserProfile',
     viewAdminProfile : adminUrl + '/viewAdminProfile',
     blockUnblock : adminUrl + '/blockUnblock',
+
     addUniversity : adminUrl+'/university/addUniversity',
     deleteUniversity : adminUrl+'/university/deleteUniversity',
-    getUniversity : adminUrl+'/university/getUniversities',
+    getUniversities : adminUrl+'/university/getUniversities',
     editUniversity : adminUrl+'/university/editUniversity',
+    getUniversity : adminUrl+'/university/viewUniversity',
+    activateDeactivateUniversity : adminUrl+'/university',
 
     uploadFile : adminUrl + '/upload',
     editAdminDetails : adminUrl + '/editDetails',
     forgotPassword : adminUrl + '/forgotPassword',
     resetPassword : adminUrl + '/resetPassword',
     getSongList : adminUrl + '/getSongList',
+
+    getMonthlyStreamData : adminUrl + '/analytics/getMonthlyStreams',
+    getTotalStreamData : adminUrl + '/analytics/getTotalStreams'
 
 
 
