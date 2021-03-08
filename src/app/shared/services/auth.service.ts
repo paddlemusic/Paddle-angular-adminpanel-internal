@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    const token = this.commonService.getSessionStorage('token', false);
+    const token = this.commonService.getLocalStorage('token', false);
     // Check whether the token is expired and return
     console.log("Token is:", token);
     // true or false

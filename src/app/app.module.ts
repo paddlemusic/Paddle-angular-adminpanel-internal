@@ -10,9 +10,11 @@ import { CoreModule } from './core/interceptors/core.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptors';
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './shared/components/layout/layout.module';
+import { LoaderComponent } from './shared/components/layout/loader/loader.component';
 
 @NgModule({
   declarations: [
+    LoaderComponent,
     AppComponent
   ],
   imports: [

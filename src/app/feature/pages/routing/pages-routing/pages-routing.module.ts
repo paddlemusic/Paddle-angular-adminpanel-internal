@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './../../pages.component';
 import { LayoutModule } from '@app/shared/components/layout/layout.module';
 import { EditProfileComponent } from '../../admin-profile/edit-profile/edit-profile.component';
+import { SongListingComponent } from '../../manage-songs/song-listing/song-listing.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path : 'edit-admin-profile',
         component : EditProfileComponent
+      },
+      {
+        path : 'songs',
+        component : SongListingComponent
       },
       {
         path: 'notifications',

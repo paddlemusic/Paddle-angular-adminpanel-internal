@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
       if (res.data) {
         let token = res.data.token;
-        this.commonService.setSessionStorage('token', token, false)
+        this.commonService.setLocalStorage('token', token, false)
         this.authService.loggedIn.next(true);
         this.commonService.navigate('../pages/dashboard')
       } 
@@ -59,6 +59,15 @@ export class LoginComponent implements OnInit {
       })
     });
 
+  }
+
+  navigate(){
+    const extras = {
+      queryParams: { 
+        token: 'kjfsdjgbfsdhbghbhdsbghdhs' 
+      } 
+  }
+  this.commonService.navigate('../auth/reset-password', extras)
   }
 
 }

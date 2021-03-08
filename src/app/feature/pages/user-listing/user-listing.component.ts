@@ -23,12 +23,14 @@ export class UserListingComponent implements OnInit {
 	pageIndex = 0;
 	pageSize = 10;
   searchKey:string = '';
+  searchUniKey :string = '';
   userList : any;
   userListData : any;
 
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 	@ViewChild('searchInput', { static: true }) searchInput: ElementRef;
- 
+	@ViewChild('searchInputUni', { static: true }) searchInputUni: ElementRef;
+
 
   constructor(private requestService : RequestService,
     public _cdr: ChangeDetectorRef,
@@ -38,7 +40,8 @@ export class UserListingComponent implements OnInit {
   ngOnInit(): void {
    
     this.getUserList(true)
-    this.searchFilter();
+    this.searchFilterByName();
+    this.searchFilterByUniversityName();
   }
 
  
@@ -49,7 +52,8 @@ export class UserListingComponent implements OnInit {
     let params : any = {
       page : this.pageIndex,
       pageSize : this.pageSize,
-      name : this.searchKey
+      name : this.searchKey,
+      universityName : this.searchUniKey
     }
     console.log("params are:", params)
 this.requestService.get(url , params).subscribe((res:any)=>{
@@ -84,7 +88,7 @@ console.log("ERror is:", err)
     })
   }
 
-  searchFilter(){
+  searchFilterByName(){
     fromEvent(this.searchInput.nativeElement, 'keyup').pipe(
 			map((event: any) => {
 				if (this.searchInput.nativeElement.value.trim() === '') {
@@ -103,6 +107,28 @@ console.log("ERror is:", err)
 			, distinctUntilChanged()
 		).subscribe((text: string) => {
 			this.searchKey = text.trim();
+			this.getUserList(true)
+		});
+  }
+  searchFilterByUniversityName(){
+    fromEvent(this.searchInputUni.nativeElement, 'keyup').pipe(
+			map((event: any) => {
+				if (this.searchInputUni.nativeElement.value.trim() === '') {
+					this.searchUniKey = '';
+					this.selection.clear();
+					this.getUserList(true);
+				} else {
+					return event.target.value;
+				}
+			}),
+			filter(res => {
+       console.log("filter res is:", res);
+        return res?.length > 0 && res.trim() !== ''
+      }),
+			debounceTime(300)
+			, distinctUntilChanged()
+		).subscribe((text: string) => {
+			this.searchUniKey = text.trim();
 			this.getUserList(true)
 		});
   }

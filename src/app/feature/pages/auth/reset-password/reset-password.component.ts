@@ -1,5 +1,7 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { CommonService } from '@app/shared/services/common.service';
 import { ModalService } from '@app/shared/services/modal.service';
@@ -12,61 +14,70 @@ import { environment } from '@env/environment';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-   changePwdForm : FormGroup;
+   resetPwdForm : FormGroup;
+   mailToken : string ;
   status: boolean = true;
 
 
   constructor(private fb : FormBuilder,
+    private route : ActivatedRoute,
     private requestService : RequestService,
     private modalService : ModalService,
     private commonService : CommonService) { }
 
   ngOnInit(): void {
+      this.route.queryParams
+    .subscribe(params => {
+      this.mailToken = params.token;
+      console.log("mailToken", this.mailToken);
+
+    
+  })
     this.buildForm();
   }
 
   buildForm(){
-    this.changePwdForm = this.fb.group({
-      old_password :['', [Validators.required]],
-      new_password :['', [Validators.required]],
-      confirm_password :['', [Validators.required]],
-    }, { validators: this.checkPasswords('new_password','confirm_password' ) })
+    this.resetPwdForm = this.fb.group({
+      email : ['', Validators.required],
+      new_password :['', [Validators.required]], 
+    })
   }
   reset() {
     this.status = !this.status;
   }
 
 
-  checkPasswords(controlName: string, matchingControlName: string){
-    return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-        if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
-            return;
-        }
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ confirmedValidator: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
-    }
-}
+
     // convenience getter for easy access to form fields
     get f() {
-      return this.changePwdForm.controls;
+      return this.resetPwdForm.controls;
     }
 
   onSubmit(){
-    if(this.changePwdForm.invalid){
+    if(this.resetPwdForm.invalid){
       return;
     }
-    let url: string = environment.baseUrl + apiUrls.changePassword;
+    let url: string = environment.baseUrl + apiUrls.resetPassword;
+    // mailToken : this.mailToken
+   
+    // const httpOptions = {
+      // let headers =  new HttpHeaders({
+      //   'MailToken': this.mailToken
+      // })
+    // };
      let body = {
-       old_password : this.changePwdForm.get('old_password')?.value,
-       new_password : this.changePwdForm.get('new_password')?.value,
+       email : this.resetPwdForm.get('email')?.value,
+       password : this.resetPwdForm.get('new_password')?.value,
      }
-    this.requestService.post(url,body ).subscribe((res:any)=>{
-      console.log("Response is:", res);
+    // this.requestService.post(url,body, {},headers).subscribe((res:any)=>{
+    //   console.log("Response is:", res);
+    //   if(res.status_code == 200){
+    //    this.status = true;
+    //    this.commonService.navigate('../auth')
+    //   }
+    console.log("body is:", body)
+    this.requestService.sendMail(body, this.mailToken).subscribe((res:any)=>{
+        console.log("Response is:", res);
       if(res.status_code == 200){
        this.status = true;
        this.commonService.navigate('../auth')

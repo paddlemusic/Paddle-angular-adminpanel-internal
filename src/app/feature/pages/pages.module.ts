@@ -7,7 +7,6 @@ import { SharedModule } from '@app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileComponent } from './admin-profile/edit-profile/edit-profile.component';
 import { SongListingComponent } from './manage-songs/song-listing/song-listing.component';
-// import { UniversityListingComponent } from './manage-universities/university-listing/university-listing.component';
 
 @NgModule({
   declarations: [ PagesComponent, EditProfileComponent, SongListingComponent],
