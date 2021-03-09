@@ -25,7 +25,14 @@ export const apiUrls = {
     getSongList : adminUrl + '/getSongList',
 
     getMonthlyStreamData : adminUrl + '/analytics/getMonthlyStreams',
-    getTotalStreamData : adminUrl + '/analytics/getTotalStreams'
+    getTotalStreamData : adminUrl + '/analytics/getTotalStreams',
+
+    getMonthlyLikeShareData : adminUrl + '/analytics/getMonthlyShareslikes',
+    getTotalLikeShareData : adminUrl + '/analytics/getTotalSharesLikes'
+//     http://localhost:3000/paddle/api/v1/admin/analytics/getTotalSharesLikes?media_type=1&university_id=1
+// ek ye hai
+//     http://localhost:3000/paddle/api/v1/admin/analytics/getMonthlyShareslikes?university_id=1&month=2&media_type=1&year=2021
+// dusra ye
 
 
 

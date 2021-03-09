@@ -4,10 +4,10 @@ export interface MEDIATYPES {
 }
 
 export const MEDIA_TYPES : MEDIATYPES[] = [
-    {
-        id : 0,
-        type : 'All'
-    },
+    // {
+    //     id : 0,
+    //     type : 'All'
+    // },
     {
         id : 1,
         type : 'Song'

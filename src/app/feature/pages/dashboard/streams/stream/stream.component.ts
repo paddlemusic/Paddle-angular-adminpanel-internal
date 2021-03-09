@@ -35,13 +35,17 @@ export class StreamComponent implements OnInit {
   YEARS = YEARS;
 
   totalStreaData:any;
+  monthStreamData :any;
+  streamData : any;
   dataSource: MatTableDataSource<StreamModel>;
 
   constructor(private requestService: RequestService,
     public _cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    // this.getFilterData()
+    this.monthId = this.getDate().month + 1;
+    this.year = this.getDate().year;
+    this.getFilterData()
     this.getUniverityList()
     
   }
@@ -52,19 +56,21 @@ export class StreamComponent implements OnInit {
  */
  getMonthlyStreamData(resiterpagination:boolean){
   let params = {
+    page : this.pageIndex,
+    pageSize : this.pageSize,
     university_id : this.universityId,
-    month : this.getDate().month,
+    month : this.monthId,
     media_type : this.mediaTypeId,
-    year : this.getDate().year
+    year : this.year
   }
     let url:string = environment.baseUrl + apiUrls.getMonthlyStreamData
   this.requestService.get(url , params).subscribe((res:any)=>{
     if(res.status_code == 200 ){
       console.log("REspons is:", res)
       this.totalCount = res.data.count;
-      this.totalStreaData = res.data.rows;
+      this.monthStreamData = res.data.mediaData;
       this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
-      this.setDataSource(this.totalStreaData, resiterpagination);
+      this.setDataSource(this.monthStreamData, resiterpagination);
       
   
       // console.log("Data source:", this.dataSource);
@@ -80,6 +86,8 @@ export class StreamComponent implements OnInit {
    */
   getTotalStreamData(resiterpagination:boolean){
     let params = {
+      page : this.pageIndex,
+      pageSize : this.pageSize,
       university_id : this.universityId,
       media_type : this.mediaTypeId,
     }
@@ -88,7 +96,7 @@ export class StreamComponent implements OnInit {
         if(res.status_code == 200 ){
           console.log("REspons is:", res)
           this.totalCount = res.data.count;
-          this.totalStreaData = res.data.rows;
+          this.totalStreaData = res.data.mediaData;
           this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
           this.setDataSource(this.totalStreaData, resiterpagination);
           
@@ -103,8 +111,8 @@ export class StreamComponent implements OnInit {
 
 
   setDataSource(streamData:any, resiterpagination:boolean){
-    this.totalStreaData = this.fillUser(streamData);
-		this.dataSource = new MatTableDataSource<StreamModel>(this.totalStreaData);
+    this.streamData = this.fillUser(streamData);
+		this.dataSource = new MatTableDataSource<StreamModel>(this.streamData);
     // this._cdr.markForCheck();
     if (resiterpagination) {
 			this.dataSource.paginator = this.paginator;
