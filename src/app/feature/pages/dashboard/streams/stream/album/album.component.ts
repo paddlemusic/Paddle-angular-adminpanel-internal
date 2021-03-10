@@ -1,21 +1,21 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { yearsPerPage } from '@angular/material/datepicker';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { MEDIATYPES, MEDIA_TYPES, MONTH, MONTHS, YEARS } from '@app/shared/constants/common';
 import { RequestService } from '@app/shared/services/request.service';
 import { environment } from '@env/environment';
-import { StreamModel } from './models/stream.model';
+import { StreamModel } from '../models/stream.model';
 
 @Component({
-  selector: 'app-stream',
-  templateUrl: './stream.component.html',
-  styleUrls: ['./stream.component.scss'],
+  selector: 'app-album',
+  templateUrl: './album.component.html',
+  styleUrls: ['./album.component.scss']
 })
-export class StreamComponent implements OnInit {
- 
+export class AlbumComponent implements OnInit,  OnChanges {
+    @Input('universityListData') universityListData:any;
+  
   selection = new SelectionModel<any>(true, []);
   totalCount: number = 0;
 	pageIndex = 0;
@@ -29,7 +29,7 @@ export class StreamComponent implements OnInit {
   year:any;
   monthId :any;
 
-  universityListData: any = [];
+  // universityListData: any = [];
   MEDIA_TYPES:MEDIATYPES[] = MEDIA_TYPES;
   MONTHS : MONTH[] = MONTHS;
   YEARS = YEARS;
@@ -42,11 +42,15 @@ export class StreamComponent implements OnInit {
   constructor(private requestService: RequestService,
     public _cdr: ChangeDetectorRef) { }
 
+    ngOnChanges(){
+      this.universityListData = this.universityListData;
+      // console.log("chnages calls:", this.universityListData)
+     }
   ngOnInit(): void {
-    // this.monthId = this.getDate().month + 1;
-    // this.year = this.getDate().year;
-    // this.getFilterData()
-    this.getUniverityList()
+    this.monthId = this.getDate().month + 1;
+    this.year = this.getDate().year;
+    this.getFilterData()
+    // this.getUniverityList()
     
   }
 
@@ -60,7 +64,7 @@ export class StreamComponent implements OnInit {
     pageSize : this.pageSize,
     university_id : this.universityId,
     month : this.monthId,
-    media_type : this.mediaTypeId,
+    media_type : 3,//this.mediaTypeId,
     year : this.year,
     time_span : 2, 
   }
@@ -90,7 +94,7 @@ export class StreamComponent implements OnInit {
       page : this.pageIndex,
       pageSize : this.pageSize,
       university_id : this.universityId,
-      media_type : this.mediaTypeId,
+      media_type : 3,//this.mediaTypeId,
       time_span : 1, 
     }
       let url:string = environment.baseUrl + apiUrls.getTotalStreamData
@@ -254,7 +258,6 @@ pageChange(page:any) {
   this.getTotalStreamData(false);
   this.getMonthlyStreamData(false);
 }
-
 
 
 

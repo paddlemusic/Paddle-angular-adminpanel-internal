@@ -15,35 +15,35 @@ import { LikeShareModel } from '../models/likeshare.model';
 })
 export class LikeSharesComponent implements OnInit {
 
-  selection = new SelectionModel<any>(true, []);
-  totalCount: number = 0;
-	pageIndex = 0;
-	pageSize = 10;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  // selection = new SelectionModel<any>(true, []);
+  // totalCount: number = 0;
+	// pageIndex = 0;
+	// pageSize = 10;
+  // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   searchKey: string = '';
-  typeId:any = 2;
-  universityId :any = 0;
-  mediaTypeId : any = 1;
-  year:any;
-  monthId :any;
+  // typeId:any = 2;
+  // universityId :any = 0;
+  // mediaTypeId : any = 1;
+  // year:any;
+  // monthId :any;
 
   universityListData: any = [];
-  MEDIA_TYPES:MEDIATYPES[] = MEDIA_TYPES;
-  MONTHS : MONTH[] = MONTHS;
-  YEARS = YEARS;
+  // MEDIA_TYPES:MEDIATYPES[] = MEDIA_TYPES;
+  // MONTHS : MONTH[] = MONTHS;
+  // YEARS = YEARS;
 
-  totalLikeShareData:any;
-  monthLikeShareData :any;
-  dataSource: MatTableDataSource<LikeShareModel>;
+  // totalLikeShareData:any;
+  // monthLikeShareData :any;
+  // dataSource: MatTableDataSource<LikeShareModel>;
 
   constructor(private requestService: RequestService,
     public _cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.monthId = this.getDate().month + 1;
-    this.year = this.getDate().year;
-    this.getFilterData()
+    // this.monthId = this.getDate().month + 1;
+    // this.year = this.getDate().year;
+    // this.getFilterData()
     this.getUniverityList()
     
   }
@@ -52,42 +52,44 @@ export class LikeSharesComponent implements OnInit {
 /**
  * Gets monthly stream data
  */
- getMonthlyLikeData(resiterpagination:boolean){
-  let params = {
-    page : this.pageIndex,
-    pageSize : this.pageSize,
-    university_id : this.universityId,
-    month : this.monthId,
-    media_type : this.mediaTypeId,
-    year : this.year
-  }
-    let url:string = environment.baseUrl + apiUrls.getMonthlyLikeShareData
-  this.requestService.get(url , params).subscribe((res:any)=>{
-    if(res.status_code == 200 ){
-      console.log("REspons is:", res)
-      this.totalCount = res.data.count;
-      this.monthLikeShareData = res.data.mediaData;
-      this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
-      this.setDataSource(this.monthLikeShareData, resiterpagination);
+//  getMonthlyLikeData(resiterpagination:boolean){
+//   let params = {
+//     page : this.pageIndex,
+//     pageSize : this.pageSize,
+//     university_id : this.universityId,
+//     month : this.monthId,
+//     media_type : this.mediaTypeId,
+//     year : this.year
+//     time_span : 2    
+//   }
+  //   let url:string = environment.baseUrl + apiUrls.getMonthlyLikeShareData
+  // this.requestService.get(url , params).subscribe((res:any)=>{
+  //   if(res.status_code == 200 ){
+  //     console.log("REspons is:", res)
+  //     this.totalCount = res.data.count;
+  //     this.monthLikeShareData = res.data.mediaData;
+  //     this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
+  //     this.setDataSource(this.monthLikeShareData, resiterpagination);
       
   
-      // console.log("Data source:", this.dataSource);
-    }
-  },(err)=>{
-    console.log("Error is:", err);
-  })
+  //     // console.log("Data source:", this.dataSource);
+  //   }
+  // },(err)=>{
+  //   console.log("Error is:", err);
+  // })
   
-  }
+  // }
 
   /**
    * Gets total stream data
    */
-  getTotalLikeShareData(resiterpagination:boolean){
+  /*getTotalLikeShareData(resiterpagination:boolean){
     let params = {
       page : this.pageIndex,
       pageSize : this.pageSize,
       university_id : this.universityId,
       media_type : this.mediaTypeId,
+         time_span : 1 
     }
       let url:string = environment.baseUrl + apiUrls.getTotalLikeShareData
       this.requestService.get(url , params).subscribe((res:any)=>{
@@ -119,8 +121,8 @@ export class LikeSharesComponent implements OnInit {
 		}
     console.log("DAtasource is:",	this.dataSource);
   }
-
-
+*/
+/*
   fillUser(likeShareData:any) {
 		if (likeShareData.length > 0) {
 		  likeShareData.forEach((data:any, index:number) => {
@@ -130,9 +132,11 @@ export class LikeSharesComponent implements OnInit {
 		}
 		return likeShareData;
 	  }
+    */
   /**
    * Gets univerity list
    */
+  
   getUniverityList(): void {
 
     let url: string = environment.baseUrl + apiUrls.getUniversities;
@@ -156,6 +160,7 @@ export class LikeSharesComponent implements OnInit {
   /**
    * Selects university
    */
+  /*
   selectUniversity(event:any){
     this.universityId = undefined;
      console.log("Event is:", event.target.value)
@@ -163,6 +168,7 @@ export class LikeSharesComponent implements OnInit {
      this.universityId = event.target.value
      }
   }
+  */
 
 
 
@@ -171,7 +177,8 @@ export class LikeSharesComponent implements OnInit {
    * Selects type
    * @param event 
    */
-  selectType(event:any){
+
+  /* selectType(event:any){
     // this.typeId = undefined;
     if(event.target.value){
       // this.year = '';
@@ -180,48 +187,48 @@ export class LikeSharesComponent implements OnInit {
    
     }
     console.log("Event is:", event.target.value)
-  }
+  } */
 
-  getFilterData(){
+ /*  getFilterData(){
     if(this.typeId == 1){
       this.getMonthlyLikeData(true);
     }
     else if(this.typeId == 2){
       this.getTotalLikeShareData(true)
     }
-  }
+  } */
 
   /**
    * Selects media type
    * @param event 
    */
-  selectMediaType(event:any){
+/*   selectMediaType(event:any){
     // this.mediaTypeId = undefined;
     console.log("Event is:", event.target.value)
     if(event.target.value){
     this.mediaTypeId = event.target.value
     }
- }
+ } */
 
  /**
   * Selects year
   * @param event 
   */
- selectYear(event:any){
+/*  selectYear(event:any){
   //  this.year = undefined;
   console.log("Event is:", event.target.value)
   if(event.target.value){
   this.year = event.target.value
   }
-}
+} */
 
-selectMonth(event:any){
+/* selectMonth(event:any){
   // this.monthId = undefined;
  console.log("Event is:", event.target.value)
  if(event.target.value){
  this.monthId = event.target.value
  }
-}
+} */
 
 
 
@@ -231,7 +238,7 @@ selectMonth(event:any){
  * Gets date
  * @returns  
  */
-getDate(){
+/* getDate(){
  let today =  new Date();
  let month = today.getMonth();
  let year = today.getFullYear();
@@ -240,15 +247,15 @@ getDate(){
    year : year
  }
 }
-
+ */
 /**
  * Pages change
  * @param page 
  */
-pageChange(page:any) {
+/* pageChange(page:any) {
   this.pageIndex = page.pageIndex;
   this.getTotalLikeShareData(false);
   this.getMonthlyLikeData(false);
-}
+} */
 
 }
