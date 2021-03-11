@@ -22,13 +22,16 @@ export const apiUrls = {
     editAdminDetails : adminUrl + '/editDetails',
     forgotPassword : adminUrl + '/forgotPassword',
     resetPassword : adminUrl + '/resetPassword',
-    getSongList : adminUrl + '/getSongList',
+    getSongList : adminUrl + '/songs/getsongs',
 
     getMonthlyStreamData : adminUrl + '/analytics/getstreamStats',
     getTotalStreamData : adminUrl + '/analytics/getstreamStats',
 
     getMonthlyLikeShareData : adminUrl + '/analytics/getShareLike',
-    getTotalLikeShareData : adminUrl + '/analytics/getShareLike'
+    getTotalLikeShareData : adminUrl + '/analytics/getShareLike',
+
+    getSignupAnalytics : adminUrl + '/analytics/getSignups',
+    getAppUsageAnalytics : adminUrl + '/analytics/getAppUsageTime'
 //     http://localhost:3000/paddle/api/v1/admin/analytics/getTotalSharesLikes?media_type=1&university_id=1
 // ek ye hai
 //     http://localhost:3000/paddle/api/v1/admin/analytics/getMonthlyShareslikes?university_id=1&month=2&media_type=1&year=2021

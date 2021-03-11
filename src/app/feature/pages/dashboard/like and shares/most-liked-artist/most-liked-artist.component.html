@@ -17,7 +17,7 @@
                         (change)="selectType($event)">
                           <!-- <option selected disabled>Choose a type</option> -->
                           <option value="1">Monthly</option>
-                          <option value="2" selected>Total</option>
+                          <option value="2" selected>Last One Year</option>
         
                           <!-- <option *ngFor="let university of universityListData"  [value]="university?.id">{{university?.name}}</option> -->
                         </select>
@@ -111,7 +111,7 @@
                     
                 </tr>
             </thead>
-            <tbody class="bg-white">
+            <tbody class="bg-white" *ngIf="dataSource?.data.length > 0; else norecord">
               <!--  -->
                 <tr *ngFor="let row of dataSource?.data;let i = index">
                    
@@ -170,18 +170,26 @@
                 </tr>
                
             </tbody>
+            <ng-template #norecord>
+                <div>
+                    <span  class="errorMsg">
+                      <i class="fa fa-exclamation-triangle"></i> *No Record Found 
+                    </span>
+                  </div>
+              </ng-template>
         </table>
     </div>
     <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
         <div>
           
         </div>
-        <div>
+        <!-- *ngIf="dataSource?.filteredData?.length > 0" -->
+        <div >
             
-            <mat-paginator #paginator [hidden]="dataSource?.filteredData?.length === 0"  
-            (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[10]"  showFirstLastButtons >
+            <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"  
+            (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[5]"  showFirstLastButtons >
             </mat-paginator>
-           
+
         </div>
     </div>
 </div>

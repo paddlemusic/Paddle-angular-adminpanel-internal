@@ -20,7 +20,7 @@ export class MostLikedAlbumComponent implements OnInit,OnChanges {
   selection = new SelectionModel<any>(true, []);
     totalCount: number = 0;
       pageIndex = 0;
-      pageSize = 10;
+      pageSize = 5;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   
     searchKey: string = '';

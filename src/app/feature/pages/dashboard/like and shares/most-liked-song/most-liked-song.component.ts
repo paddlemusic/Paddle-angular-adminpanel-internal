@@ -19,7 +19,7 @@ export class MostLikedSongComponent implements OnInit, OnChanges {
   selection = new SelectionModel<any>(true, []);
   totalCount: number = 0;
   pageIndex = 0;
-  pageSize = 10;
+  pageSize = 5;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   searchKey: string = '';
@@ -56,8 +56,10 @@ export class MostLikedSongComponent implements OnInit, OnChanges {
   }
 
 
+ 
   /**
-   * Gets monthly stream data
+   * Gets monthly like data
+   * @param resiterpagination 
    */
   getMonthlyLikeData(resiterpagination: boolean) {
     let params = {
@@ -88,10 +90,12 @@ export class MostLikedSongComponent implements OnInit, OnChanges {
 
   }
 
-  /**
-   * Gets total stream data
-   */
-  getTotalLikeShareData(resiterpagination: boolean) {
+
+   /**
+    * Gets total like share data
+    * @param resiterpagination 
+    */
+   getTotalLikeShareData(resiterpagination: boolean) {
     let params = {
       page: this.pageIndex,
       pageSize: this.pageSize,
@@ -119,6 +123,11 @@ export class MostLikedSongComponent implements OnInit, OnChanges {
 
 
 
+  /**
+   * Sets data source
+   * @param streamData 
+   * @param resiterpagination 
+   */
   setDataSource(streamData: any, resiterpagination: boolean) {
     let likeShareData = this.fillUser(streamData);
     this.dataSource = new MatTableDataSource<LikeShareModel>(likeShareData);

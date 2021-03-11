@@ -1,7 +1,41 @@
 <div
     class="mt-6 lg:mt-0 rounded shadow overflow-hidden bg-white shadow-dashboard pt-3 rounded-bl-lg rounded-br-lg pb-5">
     <h3 class="font-bold text-gray-400 text-lg mb-6 px-4">Filter Data</h3>
-    <div class='flex flex-row p-4'>
+    <div class="flex flex-row justify-between ">
+      
+            <div class='flex flex-row p-4'>
+                <form class="w-full max-w-full">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                     
+        
+                        <div class="relative inline-flex" >
+                            <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+                            <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                            (change)="selectUniversity($event)">
+                              <option selected value="0" >All</option>
+                              <option *ngFor="let university of universityListData"   [value]="university?.id">{{university?.name}}</option>
+                            </select>
+                          </div>
+                        
+                      
+                        <!-- <div class="w-full md:w-1/2 px-4">
+                            <div class="w-full flex items-center justify-center">
+                                <button
+                                    class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                    type="button" (click)="getFilterData()">
+                                    Filter
+                                </button>
+                            </div>
+                        </div>  -->
+                       
+                    </div>        
+                </form>
+            </div>
+          
+       
+   
+  </div>
+    <!-- <div class='flex flex-row p-4'>
         <form class="w-full max-w-full">
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -16,10 +50,25 @@
             </div>
           
         </form>
-    </div>
+    </div> -->
     <!-- Table -->
     <div class="flex justify-between items-baseline px-5 ">
         <h3 class="text-2xl text-gray-400 font-bold mb-6">All Songs</h3>
+        <div class="">
+            <div class="pt-2 relative mx-auto text-gray-600">
+                <input class="border border-gray-200 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                    type="text" name="search" placeholder="Search Songs" autocomplete="off" #searchInput>
+                <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+                    <svg class="text-gray-600 h-4 w-4 fill-current" 
+                         version="1.1" id="Capa_1" x="0px" y="0px"
+                        viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                        xml:space="preserve" width="512px" height="512px">
+                        <path
+                            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
     <div class="align-middle inline-block min-w-full md:overflow-hidden bg-white px-5 pt-3">
         <div class="">
@@ -28,22 +77,14 @@
                     <tr>
                         <th
                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        UserId</th>
+                        </th>
                         <th
                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        Name</th>
+                        Track Name</th>
                         <th
                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                            Email</th>
-                        <th
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                            Phone</th>
-                        <th
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                            Status</th>
-                        <th
-                            class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-200 tracking-wider">
-                            Actions</th>
+                            Artist Name</th>
+                        
                     </tr>
                 </thead>
                 <tbody class="bg-white">
@@ -51,11 +92,11 @@
                        
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
-                                <!-- <img class="w-10 h-10 rounded-full mr-4" src="assets/photo.png"
-                                    alt="Avatar of Jonathan Reinink"> -->
-                                <div class="text-sm">
+                                <img class="w-10 h-10 rounded-full mr-4" [attr.src]="(row?.media_metadata?.image)? row?.media_metadata?.image : 'assets/photo.png'"
+                                    alt="Avatar">
+                                <!-- <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.id}}</p>
-                                </div>
+                                </div> -->
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
@@ -63,7 +104,7 @@
                                 <!-- <img class="w-10 h-10 rounded-full mr-4" src="assets/photo.png"
                                     alt="Avatar of Jonathan Reinink"> -->
                                 <div class="text-sm">
-                                    <p class="text-gray-300 leading-none">{{row?.name}}</p>
+                                    <p class="text-gray-300 leading-none">{{row?.media_metadata?.name}}</p>
                                 </div>
                             </div>
                         </td>
@@ -72,30 +113,11 @@
                                 <!-- <img class="w-10 h-10 rounded-full mr-4" src="assets/photo.png"
                                     alt="Avatar of Jonathan Reinink"> -->
                                 <div class="text-sm">
-                                    <p class="text-gray-300 leading-none">{{row?.email}}</p>
+                                    <p class="text-gray-300 leading-none">{{row?.media_metadata?.artist_name}}</p>
                                 </div>
                             </div>
                         </td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
-                            {{row?.phone_number}}</td>
-                            <!-- [ngClass]="{'text-green':(element.is_active),'text-danger':(!element.is_active)}" -->
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5"
-                            
-                            [ngClass]="{'text-green-400':(row.is_active),'text-red-400':(!row.is_active)}" 
-                            >
-                            {{row?.is_active == true? 'Active' : 'InActive'}}</td>
-
-                        <td class="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-500 text-sm leading-5">
-                            
-                                    <button 
-                                        class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
-                                        type="button" >
-                                        View Profile
-                                    </button>
-                               
-                        </td>
+                       
                     </tr>
                    
                 </tbody>
@@ -107,7 +129,7 @@
             </div>
             <div>
                 
-                <mat-paginator #paginator [hidden]="dataSource?.filteredData?.length === 0"  
+                <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"  
                 (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[10]"  showFirstLastButtons >
                 </mat-paginator>
                

@@ -22,6 +22,7 @@ export class SongListingComponent implements OnInit {
   searchKey:string = '';
   songList : any;
   songListData : any; 
+  universityListData :any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 	@ViewChild('searchInput', { static: true }) searchInput: ElementRef;
 
@@ -29,10 +30,36 @@ export class SongListingComponent implements OnInit {
     private _cdr : ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.songList()
+    this.getSongList(true)
+    this.searchFilter()
+    this.getUniverityList()
   }
 
+  /**
+   * Gets univerity list
+   */
+   getUniverityList(): void {
 
+    let url: string = environment.baseUrl + apiUrls.getUniversities;
+    let params: any = {
+      name: this.searchKey
+    }
+    console.log("params are:", params)
+    this.requestService.get(url, params).subscribe((res: any) => {
+      if (res.status_code == 200) {
+        console.log("REspons is:", res)
+        this.universityListData = res.data.rows;
+        console.log("Data source:", this.universityListData);
+      }
+    }, (err) => {
+      console.log("ERror is:", err)
+    })
+  }
+
+  /**
+   * Gets song list
+   * @param resiterpagination 
+   */
   getSongList(resiterpagination:boolean): void {
     
     let url : string = environment.baseUrl + apiUrls.getSongList;
@@ -57,12 +84,10 @@ console.log("ERror is:", err)
 })
   }
 
- 
-  
 
-
-  
-
+  /**
+   * Searchs filter
+   */
   searchFilter(){
     fromEvent(this.searchInput.nativeElement, 'keyup').pipe(
 			map((event: any) => {

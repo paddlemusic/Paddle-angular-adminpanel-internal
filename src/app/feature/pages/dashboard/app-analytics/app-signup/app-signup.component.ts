@@ -1,28 +1,27 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { MEDIATYPES, MEDIA_TYPES, MONTH, MONTHS, YEARS } from '@app/shared/constants/common';
 import { RequestService } from '@app/shared/services/request.service';
 import { environment } from '@env/environment';
-import { StreamModel } from '../../models/stream.model';
+import { StreamModel } from '../../streams/stream/models/stream.model';
 
 @Component({
-  selector: 'app-song',
-  templateUrl: './song.component.html',
-  styleUrls: ['./song.component.scss']
+  selector: 'app-app-signup',
+  templateUrl: './app-signup.component.html',
+  styleUrls: ['./app-signup.component.scss']
 })
-export class SongComponent implements OnInit, OnChanges {
+export class AppSignupComponent implements OnInit {
+
   @Input('universityListData') universityListData:any;
 
 
  
-  selection = new SelectionModel<any>(true, []);
-  totalCount: number = 0;
-	pageIndex = 0;
-	pageSize = 5;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  // selection = new SelectionModel<any>(true, []);
+  // totalCount: number = 0;
+	// pageIndex = 0;
+	// pageSize = 10;
+  // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   searchKey: string = '';
   typeId:any = 2;
@@ -36,17 +35,18 @@ export class SongComponent implements OnInit, OnChanges {
   MONTHS : MONTH[] = MONTHS;
   YEARS = YEARS;
 
-  totalStreaData:any;
-  monthStreamData :any;
-  streamData : any;
-  dataSource: MatTableDataSource<StreamModel>;
+  // totalAppData:any;
+  // monthAppData :any;
+  appData:any
+  // streamData : any;
+  // dataSource: MatTableDataSource<StreamModel>;
 
   constructor(private requestService: RequestService,
     public _cdr: ChangeDetectorRef) { }
 
     ngOnChanges(){
       this.universityListData = this.universityListData;
-      // console.log("chnages calls:", this.universityListData)
+      console.log("chnages calls:", this.universityListData)
      }
   ngOnInit(): void {
     this.monthId = this.getDate().month + 1;
@@ -57,28 +57,30 @@ export class SongComponent implements OnInit, OnChanges {
   }
 
 
-/**
- * Gets monthly stream data
- */
- getMonthlyStreamData(resiterpagination:boolean){
+
+ /**
+  * Gets monthly app data
+  * @param resiterpagination 
+  */
+ getMonthlyAppData(resiterpagination:boolean){
   let params = {
-    page : this.pageIndex,
-    pageSize : this.pageSize,
+    // page : this.pageIndex,
+    // pageSize : this.pageSize,
     university_id : this.universityId,
     month : this.monthId,
-    media_type : 1, // song
+    // media_type : 1, // song
     year : this.year,
     time_span : 2, 
 
   }
-    let url:string = environment.baseUrl + apiUrls.getMonthlyStreamData
+    let url:string = environment.baseUrl + apiUrls.getSignupAnalytics
   this.requestService.get(url , params).subscribe((res:any)=>{
     if(res.status_code == 200 ){
       console.log("REspons is:", res)
-      this.totalCount = res.data.count;
-      this.monthStreamData = res.data.mediaData;
-      this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
-      this.setDataSource(this.monthStreamData, resiterpagination);
+      // this.totalCount = res.data.count;
+      this.appData = res.data;
+      // this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
+      // this.setDataSource(this.monthAppData, resiterpagination);
       
   
       // console.log("Data source:", this.dataSource);
@@ -89,26 +91,28 @@ export class SongComponent implements OnInit, OnChanges {
   
   }
 
-  /**
-   * Gets total stream data
-   */
-  getTotalStreamData(resiterpagination:boolean){
+ 
+   /**
+    * Gets total app data
+    * @param resiterpagination 
+    */
+   getTotalAppData(resiterpagination:boolean){
     let params = {
-      page : this.pageIndex,
-      pageSize : this.pageSize,
+      // page : this.pageIndex,
+      // pageSize : this.pageSize,
       university_id : this.universityId,
-      media_type : 1,//this.mediaTypeId,
+      // media_type : 1,//this.mediaTypeId,
     time_span : 1, 
 
     }
-      let url:string = environment.baseUrl + apiUrls.getTotalStreamData
+      let url:string = environment.baseUrl + apiUrls.getSignupAnalytics
       this.requestService.get(url , params).subscribe((res:any)=>{
         if(res.status_code == 200 ){
           console.log("REspons is:", res)
-          this.totalCount = res.data.count;
-          this.totalStreaData = res.data.mediaData;
-          this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
-          this.setDataSource(this.totalStreaData, resiterpagination);
+          // this.totalCount = res.data.count;
+          this.appData = res.data;
+          // this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
+          // this.setDataSource(this.totalStreaData, resiterpagination);
           
       
           // console.log("Data source:", this.dataSource);
@@ -119,7 +123,12 @@ export class SongComponent implements OnInit, OnChanges {
   }
 
 
+  // getDatainSec(time:number){
+  //     time = Math.round(time / 1000)
+  //     return time;
+  // }
 
+/*
   setDataSource(streamData:any, resiterpagination:boolean){
     this.streamData = this.fillUser(streamData);
 		this.dataSource = new MatTableDataSource<StreamModel>(this.streamData);
@@ -142,7 +151,27 @@ export class SongComponent implements OnInit, OnChanges {
 		}
 		return streamData;
 	  }
+  */
+  /**
+   * Gets univerity list
+   */
+  // getUniverityList(): void {
 
+  //   let url: string = environment.baseUrl + apiUrls.getUniversities;
+  //   let params: any = {
+  //     name: this.searchKey
+  //   }
+  //   console.log("params are:", params)
+  //   this.requestService.get(url, params).subscribe((res: any) => {
+  //     if (res.status_code == 200) {
+  //       console.log("REspons is:", res)
+  //       this.universityListData = res.data.rows;
+  //       console.log("Data source:", this.universityListData);
+  //     }
+  //   }, (err) => {
+  //     console.log("ERror is:", err)
+  //   })
+  // }
 
 
 
@@ -177,10 +206,10 @@ export class SongComponent implements OnInit, OnChanges {
 
   getFilterData(){
     if(this.typeId == 1){
-      this.getMonthlyStreamData(true);
+      this.getMonthlyAppData(true);
     }
     else if(this.typeId == 2){
-      this.getTotalStreamData(true)
+      this.getTotalAppData(true)
     }
   }
 
@@ -238,12 +267,11 @@ getDate(){
  * Pages change
  * @param page 
  */
-pageChange(page:any) {
-  this.pageIndex = page.pageIndex;
-  this.getTotalStreamData(false);
-  this.getMonthlyStreamData(false);
-}
-
+// pageChange(page:any) {
+//   this.pageIndex = page.pageIndex;
+//   this.getTotalAppData(false);
+//   this.getMonthlyAppData(false);
+// }
 
 
 

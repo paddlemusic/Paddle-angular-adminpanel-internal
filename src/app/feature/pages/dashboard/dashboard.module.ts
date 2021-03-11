@@ -12,6 +12,9 @@ import { AlbumComponent } from './streams/stream/album/album.component';
 import { MostLikedSongComponent } from './like and shares/most-liked-song/most-liked-song.component';
 import { MostLikedArtistComponent } from './like and shares/most-liked-artist/most-liked-artist.component';
 import { MostLikedAlbumComponent } from './like and shares/most-liked-album/most-liked-album.component';
+import { AppAnalyticsComponent } from './app-analytics/app-analytics/app-analytics.component';
+import { AppUsageComponent } from './app-analytics/app-usage/app-usage.component';
+import { AppSignupComponent } from './app-analytics/app-signup/app-signup.component';
 
 const routes: Routes = [
     {
@@ -28,13 +31,17 @@ const routes: Routes = [
             {
               path: 'likeShares',
               component: LikeSharesComponent
+            },
+            {
+                path : 'application',
+                component: AppAnalyticsComponent
             }
         ]
     },
     
 ];
 @NgModule({
-    declarations: [DashboardComponent, StreamComponent, LikeSharesComponent, SongComponent, ArtistComponent, AlbumComponent, MostLikedSongComponent, MostLikedArtistComponent, MostLikedAlbumComponent],
+    declarations: [DashboardComponent, StreamComponent, LikeSharesComponent, SongComponent, ArtistComponent, AlbumComponent, MostLikedSongComponent, MostLikedArtistComponent, MostLikedAlbumComponent, AppAnalyticsComponent, AppUsageComponent, AppSignupComponent],
     imports: [
         LayoutModule,
         SharedModule,
