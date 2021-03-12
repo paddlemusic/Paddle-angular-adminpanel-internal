@@ -100,7 +100,7 @@
                     
                 </tr>
             </thead>
-            <tbody class="bg-white" *ngIf="dataSource?.data.length > 0; else norecord">
+            <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0; else norecord">
               <!--  -->
                 <tr *ngFor="let row of dataSource?.data;let i = index">
                    

@@ -25,7 +25,7 @@ export class SongListingComponent implements OnInit {
   universityListData :any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 	@ViewChild('searchInput', { static: true }) searchInput: ElementRef;
-
+  universityId :any = 0;
   constructor(private requestService:RequestService,
     private _cdr : ChangeDetectorRef) { }
 
@@ -56,6 +56,28 @@ export class SongListingComponent implements OnInit {
     })
   }
 
+  getDataViaUniversity(resiterpagination:boolean):void {
+    let url : string = environment.baseUrl + apiUrls.manageSongs +'/' + this.universityId;
+    let params : any = {
+      page : this.pageIndex,
+      pageSize : this.pageSize,
+      // name : this.searchKey
+    }
+    console.log("params are:", params)
+this.requestService.get(url , params).subscribe((res:any)=>{
+  if(res.status_code == 200 ){
+    this.totalCount = res.data.count;
+    this.songListData = res.data.rows;
+    this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
+    this.setDataSource(this.songListData, resiterpagination);
+    
+
+    // console.log("Data source:", this.dataSource);
+  }
+},(err)=>{
+    console.log("ERror is:", err)
+    })
+  }
   /**
    * Gets song list
    * @param resiterpagination 
@@ -111,8 +133,25 @@ console.log("ERror is:", err)
 		});
   }
 
-
+/**
+   * Selects university
+   */
+ selectUniversity(event:any){
+  // this.universityId = undefined;
+   console.log("Event is:", event.target.value)
+   if(event.target.value){
+   this.universityId = event.target.value;
+   if(this.universityId == 0){
+    this.getSongList(false)
+   }else{
+     this.getDataViaUniversity(false)
+   }
+   
+   }
+}
  
+
+
  
 
  
