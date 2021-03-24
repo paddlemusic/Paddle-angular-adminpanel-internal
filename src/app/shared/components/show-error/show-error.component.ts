@@ -22,6 +22,8 @@ export class ShowErrorComponent {
     'minlength': (params : any) => 'The min number of characters is ' + params.requiredLength,
     'maxlength': (params : any) => 'The max allowed number of characters is ' + params.requiredLength,
     'pattern': (params : any) => 'Invalid no.',
+    'email': (params : any) => 'Email is not valid',
+    'whitespace' : (params:any)=>'Please enter valid data',
     'confirmedValidator': (params : any) => 'New password and confirm password must be match.'
     
     // 'pattern': (params : any) => 'The required pattern is: ' + params.requiredPattern,

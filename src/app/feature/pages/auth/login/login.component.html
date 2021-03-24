@@ -22,6 +22,7 @@
                 </div>
                 <input type="email" id="email" placeholder="your@email.com" formControlName="email"
                   class="bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3 text-base pl-12  leading-tight focus:outline-none focus:shadow-outline h-12">
+                  <app-show-error [control]="f.email"></app-show-error>
               </div>
             </div>
 
@@ -37,12 +38,20 @@
                 </div>
                 <input type="password" id="password" placeholder="******" formControlName="password"
                   class="bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3  text-base pl-12 mt-1 leading-tight focus:outline-none focus:shadow-outline h-12">
+                  <app-show-error [control]="f.password"></app-show-error>
+
               </div>
             </div>
-
-            <input type="submit" value="Login"
+            <!--  (loginForm.dirty || loginForm.touched) -->
+            <button type="submit"  [disabled]="loginForm?.invalid" [class.bg-red-700]='loginForm?.valid'
+            [class.bg-red-400]='loginForm?.invalid '
+            
+            class="text-white font-semibold text-lg  p-2 mt-8 h-12 rounded-full"
+            id="login-btn" >Login</button>
+            <!-- hover:bg-red-600 -->
+            <!-- <input type="submit" value="Login" [disabled]="loginForm?.invalid"
               class="bg-red-700 text-white font-semibold text-lg hover:bg-red-600 p-2 mt-8 h-12 rounded-full"
-              id="login-btn" >
+              id="login-btn" > -->
           </form>
           <div class="text-center pt-8 pb-12">
             <a href="#" id="forgotPassword" class="underline " routerLink="/auth/forgot-password">Forgot password</a>

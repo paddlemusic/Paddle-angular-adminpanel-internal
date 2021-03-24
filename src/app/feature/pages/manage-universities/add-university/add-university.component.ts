@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { CommonService } from '@app/shared/services/common.service';
 import { ModalService } from '@app/shared/services/modal.service';
 import { RequestService } from '@app/shared/services/request.service';
 import { environment } from '@env/environment';
+import { map ,filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-university',
@@ -20,6 +21,20 @@ export class AddUniversityComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    // this.addUniversityForm.valueChanges.pipe(
+    // map((value:any) => {
+    //     // Here you can manipulate your value
+    //     value.name = value.name.trim();
+    //     value.city = value.city.trim();
+
+    //     return value;
+    // }),
+    // filter((value:any) => this.addUniversityForm.valid)
+    // )
+    // .subscribe((value:any) => {
+    //    console.log("Model Driven Form valid value: vm = ",JSON.stringify(value));
+    // });
+
   }
 
     // convenience getter for easy access to form fields
@@ -29,10 +44,16 @@ export class AddUniversityComponent implements OnInit {
 
   buildForm(){
     this.addUniversityForm = this.fb.group({
-      name : ['', [Validators.required]],
-      city : ['']
+      name : ['', [Validators.required, this.noWhitespaceValidator]],
+      city : ['',[this.noWhitespaceValidator]]
     })
   }
+
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+}
 
   onSubmit(){
     console.log("Form Values:", this.addUniversityForm.value)

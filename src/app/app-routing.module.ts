@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './core/interceptors/guards/auth.guard';
 import { LoginComponent } from './feature/pages/auth/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./feature/pages/auth/auth.module').then(mod => mod.AuthModule),
-    canActivate: [],
+    // canActivate: [],
+    canActivate: [AuthGuard],
   },
   {
     path: 'auth',
@@ -16,7 +18,8 @@ const routes: Routes = [
   {
     path: 'pages',
     loadChildren: () => import('./feature/pages/pages.module').then(mod => mod.PagesModule),
-    canActivate: [],
+    // canActivate: [],
+    canLoad : [AuthGuard] 
   },
   {
     path: '**',

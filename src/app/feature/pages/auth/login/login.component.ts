@@ -22,15 +22,33 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let token = this.commonService.getLocalStorage('token', false)
+    let isLogin:boolean;
+    console.log("Tokennnnn is:", token)
+   if (token) {
+     isLogin=true;
+     this.authService.loggedIn.next(isLogin);
+       this.commonService.navigate('../pages/dashboard');
+   } 
+   else {
+     isLogin=false;
+     this.authService.loggedIn.next(isLogin);
+   }
     this.buildForm()
   }
 
   buildForm() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     })
   }
+
+   // convenience getter for easy access to form fields
+   get f() {
+    return this.loginForm.controls;
+  }
+
 
   onSubmit() {
     console.log("Form Values:", this.loginForm.value)
