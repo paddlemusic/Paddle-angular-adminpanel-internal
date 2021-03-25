@@ -11,6 +11,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptors';
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './shared/components/layout/layout.module';
 import { LoaderComponent } from './shared/components/layout/loader/loader.component';
+// import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoaderComponent } from './shared/components/layout/loader/loader.compon
     AppComponent
   ],
   imports: [
+    // QuillModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

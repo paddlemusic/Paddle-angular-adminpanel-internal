@@ -134,12 +134,12 @@
                                 type="button" (click)="navigate(row?.id)">
                                 Edit University 
                             </button>
-                            <button *ngIf="row?.is_active"
+                            <button *ngIf="!row?.is_active"
                                 class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
                                 type="button" (click)="activateDeactivateUniversity(row?.id)">
                                 Activate
                             </button>
-                            <button *ngIf="!row?.is_active"
+                            <button *ngIf="row?.is_active"
                                 class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
                                 type="button" (click)="activateDeactivateUniversity(row?.id)">
                                 Deactivate

@@ -2,7 +2,7 @@
     <h3 class="font-bold text-2xl">Edit University</h3>
     <form class="mt-6" [formGroup]="editUniversityForm" (ngSubmit)= "onSubmit()">
       <div class="flex flex-col mb-6">
-        <label for="addUNiversity" class=" block tracking-wide mb-2">Enter your university name:</label>
+        <label for="addUNiversity" class=" block tracking-wide mb-2">Enter your University name:</label>
         <input class="rounded-lg resize-none bg-gray-100 border text-lg text-gray-300 border-gray-100 focus:border-gray-300 focus:outline-none p-4"
         formControlName="name" placeholder="University name" />
         <app-show-error [control]="f.name"></app-show-error>
