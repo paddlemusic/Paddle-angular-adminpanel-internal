@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { CommonService } from '@app/shared/services/common.service';
@@ -54,10 +54,15 @@ export class EditUniversityComponent implements OnInit {
 
   buildForm(){
     this.editUniversityForm = this.fb.group({
-      name : ['', [Validators.required]],
-      city : ['']
+      name : ['', [Validators.required, this.noWhitespaceValidator]],
+      city : ['',[Validators.required,this.noWhitespaceValidator]]
     })
   }
+  public noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+}
 
   onSubmit(){
     console.log("Form Values:", this.editUniversityForm.value)

@@ -45,7 +45,7 @@ export class AddUniversityComponent implements OnInit {
   buildForm(){
     this.addUniversityForm = this.fb.group({
       name : ['', [Validators.required, this.noWhitespaceValidator]],
-      city : ['',[this.noWhitespaceValidator]]
+      city : ['',[Validators.required,this.noWhitespaceValidator]]
     })
   }
 
