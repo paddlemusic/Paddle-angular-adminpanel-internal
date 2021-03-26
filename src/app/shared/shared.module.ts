@@ -7,7 +7,7 @@ import { ShowErrorComponent } from './components/show-error/show-error.component
 @NgModule({
   declarations: [ShowErrorComponent],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports : [
     ShowErrorComponent,

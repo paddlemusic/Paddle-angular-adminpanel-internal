@@ -33,6 +33,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule
   ],
   exports: [SideMenuComponent, HeaderComponent,
+   
     // LoaderComponent,
     MatCheckboxModule,
     MatTableModule,

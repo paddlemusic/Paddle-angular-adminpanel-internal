@@ -1,6 +1,6 @@
 <div
     class="mt-6 lg:mt-0 rounded shadow overflow-hidden bg-white shadow-dashboard pt-3 rounded-bl-lg rounded-br-lg pb-5">
-    <h3 class="font-bold text-gray-400 text-lg mb-6 px-4">Filter Data</h3>
+    <!-- <h3 class="font-bold text-gray-400 text-lg mb-6 px-4">Filter Data</h3> -->
     <div class='flex flex-row p-4'>
         <form class="w-full max-w-full">
             <div class="flex flex-wrap -mx-3 mb-6">
@@ -98,7 +98,7 @@
                     </th>
                         <th
                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        UserId</th>
+                        User Id</th>
                         <th
                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                         University Name</th>
@@ -120,7 +120,7 @@
                             Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white">
+                <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0; else norecord">
                     <tr *ngFor="let row of dataSource?.data;let i = index">
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                             <mat-checkbox 
@@ -213,6 +213,13 @@
                     </tr>
                    
                 </tbody>
+                <ng-template #norecord>
+                    <div>
+                        <span  class="errorMsg">
+                          <i class="fa fa-exclamation-triangle"></i> *No Record Found 
+                        </span>
+                      </div>
+                  </ng-template>
             </table>
         </div>
         <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
