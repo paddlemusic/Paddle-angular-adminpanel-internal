@@ -47,23 +47,33 @@
         <h3 class="text-2xl text-gray-400 font-bold mb-6">All User</h3>
         <div class="w-full md:w-1/4 px-3" >
             <div class="w-full flex items-center justify-center"> 
-                <button 
-                [ngClass]="{'bg-red-700':(selection.selected.length)}"
-                    class=" bg-blue-500 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
-                    type="button" [disabled]="(!selection.selected.length)" (click)="changeUserStatus('unblock')">
+                <!-- <button 
+                    [ngClass]="{'bg-blue-500':(selection.selected.length)}"
+                    class="shadow bg-blue-100 hover:bg-blue-100 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
+                    type="button"
+                    [disabled]="(!selection.selected.length)" 
+                    (click)="changeUserStatus('unblock')">
                     Activate Selected Users
-                </button>
+                </button> -->
+                <button  type="button"
+                [ngClass]="{'opacity-50' :(!selection.selected.length), 'cursor-not-allowed' :(!selection.selected.length)}"
+                class="bg-blue-500  text-white py-2 px-2 rounded  "
+                [disabled]="(!selection.selected.length)" 
+                    (click)="changeUserStatus('unblock')">
+                Activate Selected Users
+                  </button>
              </div>
         </div> 
+        <!-- hover:bg-red-400 -->
          <div class="w-full md:w-1/4 px-3">
                                 <div class="w-full flex items-center justify-center"> 
-                                    <button 
+                                <button 
                                     [ngClass]="{'bg-red-600':(selection.selected.length)}"
-                                        class="shadow bg-red-400 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white  py-2 px-1 rounded "
-                                        type="button"
-                                        [disabled]="(!selection.selected.length)" 
-                                        (click)="changeUserStatus('block')">
-                                        Deactivated Selected Users
+                                    class="shadow bg-red-400  focus:shadow-outline focus:outline-none text-white  py-2 px-1 rounded "
+                                    type="button"
+                                    [disabled]="(!selection.selected.length)" 
+                                    (click)="changeUserStatus('block')">
+                                        Deactivate Selected Users
                                     </button>
                                  </div>
                             </div> 
@@ -89,7 +99,7 @@
                 <thead>
                     <tr>
                         <th
-                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                         <mat-checkbox (change)="$event ? masterToggle() : null"
                         [checked]="selection.hasValue() && isAllSelected()" 
                         [indeterminate]="selection.hasValue() && !isAllSelected()" 

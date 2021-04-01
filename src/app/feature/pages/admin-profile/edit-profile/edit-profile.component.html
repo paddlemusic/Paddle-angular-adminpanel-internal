@@ -1,5 +1,9 @@
 <div class="mt-6 lg:mt-0 rounded shadow bg-white">
-    <h3 class="text-2xl font-bold p-4 md:p-6">My Profile</h3>
+    <!-- <h3 class="text-2xl font-bold p-4 md:p-6">My Profile</h3> -->
+    <div class="header flex items-baseline justify-start">
+      <img class="w-4 h-4 mr-4 cursor-pointer" src="assets/back.png" routerLink="../../../pages/user">
+      <h3 class="text-2xl font-bold mb-6">My Profile</h3>
+    </div>
     <div class="flex flex-wrap border-t border-gray-100">
       <div class="w-full md:w-1/2 border-r border-gray-100 p-4 md:px-8 ">
         <form action="" class="w-full max-w-full text-base"
@@ -31,8 +35,8 @@
             <button type="submit" class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-lg uppercase">Submit</button>
           </div>
 
-          <div class="flex justify-end" routerLink="/auth/change-password">
-            <button type="button" class="bg-blue-500 hover:bg-blue-500 text-white font-bold py-2 px-8 rounded-lg uppercase">Change Password</button>
+          <div class="flex justify-end" >
+            <button type="button" routerLink="/auth/change-password" class="bg-blue-500 hover:bg-blue-500 text-white font-bold py-2 px-8 rounded-lg uppercase">Change Password</button>
           </div>
        
        <!-- <div class="w-full md:w-1/2 p-4 md:p-8">
