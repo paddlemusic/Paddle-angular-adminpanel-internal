@@ -26,9 +26,9 @@ export class AuthGuard implements CanActivate , CanLoad{
 
   canLoad(route: any): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> |boolean {
     const url = `/${route.path}`;
-
+    console.log("canload called:", this.authService.isAuthenticated())
     if (!this.authService.isAuthenticated()) {
-      this.commonService.navigate('/login');
+      this.commonService.navigate('/auth/login');
       return false;
     }
     return this.authService.isLoggedIn         // {1}
@@ -42,7 +42,7 @@ export class AuthGuard implements CanActivate , CanLoad{
           fragment: 'anchor'
         };
           if (!isLoggedIn) {
-            this.commonService.navigate('/login');  // {4}
+            this.commonService.navigate('/auth/login');  // {4}
             return false;
           }
           return true;

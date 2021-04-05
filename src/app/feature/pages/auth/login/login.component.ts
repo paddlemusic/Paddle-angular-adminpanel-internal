@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
    else {
      isLogin=false;
      this.authService.loggedIn.next(isLogin);
+     this.authService.signOut();
    }
     this.buildForm()
   }

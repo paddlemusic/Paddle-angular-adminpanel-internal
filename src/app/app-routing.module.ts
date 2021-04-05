@@ -8,12 +8,12 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./feature/pages/auth/auth.module').then(mod => mod.AuthModule),
     // canActivate: [],
-    // canActivate: [AuthGuard],
+    // canLoad: [AuthGuard],
   },
   {
     path: 'auth',
     loadChildren: () => import('./feature/pages/auth/auth.module').then(mod => mod.AuthModule),
-    canActivate: [],
+    // canActivate: [],
   },
   {
     path: 'pages',

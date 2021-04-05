@@ -24,8 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
             Authorization: token
         }
     });
-    
-}
+ }
     return this.makeRequest(next , request)
   }
 
@@ -49,7 +48,7 @@ export class AuthInterceptor implements HttpInterceptor {
             let body = {
                 access_token : this.commonService.getLocalStorage('token', false)
             }
-                
+           this.authService.signOut()    
         }
 
         const error = err.error.error.message || err.statusText;

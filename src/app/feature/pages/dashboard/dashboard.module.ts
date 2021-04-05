@@ -18,6 +18,7 @@ import { AppSignupComponent } from './app-analytics/app-signup/app-signup.compon
 import { OpeningTwoOrMoreTimesPerDayComponent } from './app-analytics/opening-two-or-more-times-per-day/opening-two-or-more-times-per-day.component';
 import { OpeningAtleastOnceADayComponent } from './app-analytics/opening-atleast-once-a-day/opening-atleast-once-a-day.component';
 import { OpeningAtleastOnceAWeekComponent } from './app-analytics/opening-atleast-once-a-week/opening-atleast-once-a-week.component';
+import { AuthGuard } from '@app/core/interceptors/guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -26,6 +27,7 @@ const routes: Routes = [
             {
                 path: '',
                 component: DashboardComponent,
+                canActivate : [AuthGuard]
             },
             {
               path: 'streams',

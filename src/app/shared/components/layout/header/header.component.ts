@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  this.getAdminProfile();
+  // this.getAdminProfile();
   }
 
      /**
@@ -68,27 +68,8 @@ export class HeaderComponent implements OnInit {
     this.status = !this.status;
   }
 
-  /**
-   * Signs out
-   */
-  signOut() {
-  this.authService.logout().subscribe((res:any)=>{
-    if(res.status_code == 200){
-      this.authService.loggedIn.next(false);
-      this.commonService.clearLocalStorage();
-      this.commonService.clearSessionStorage();
-      this.commonService.navigate('../auth');
-    }
-  },(err)=>{
-    console.log("Error is:", err);
-      this.modalService.showAlert({
-        title: 'Error!',
-        text: err,
-        icon: 'error',
-        confirmButtonText: 'Ok',
-        allowOutsideClick: false
-      })
-    });
+  signOut(){
+    this.authService.signOut();
   }
 
   routeToReset() {

@@ -25,18 +25,28 @@ export class AuthService {
     // true or false
     if (token) {
       this.loggedIn.next(true);
-      return token
+      return true
     } else {
-      return false
+        return false
     };
   }
 
   login(user: any) {
     return this.requestService.post(environment.baseUrl + apiUrls.login,user);    
   }
+    /**
+   * Signs out
+   */
+     signOut() {
+       console.log("IN signout")
+      this.loggedIn.next(false);
+      this.commonService.clearLocalStorage();
+      this.commonService.clearSessionStorage();
+      this.commonService.navigate('/auth/login');
+    }
 
 
-  logout() {
-    return this.requestService.post(environment.baseUrl + apiUrls.logout , {} )
-  }
+  // logout() {
+  //   return this.requestService.post(environment.baseUrl + apiUrls.logout , {} )
+  // }
 }
