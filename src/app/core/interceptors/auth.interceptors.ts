@@ -5,11 +5,13 @@ import { catchError, tap , map} from 'rxjs/operators';
 import { CommonService } from "@app/shared/services/common.service";
 import { AuthService } from "@app/shared/services/auth.service";
 import { LoaderService } from "@app/shared/components/layout/loader/loader.service";
+import { ModalService } from "@app/shared/services/modal.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService : AuthService,
     private loaderService : LoaderService,
+    private modalService : ModalService,
     private commonService : CommonService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -47,7 +49,7 @@ export class AuthInterceptor implements HttpInterceptor {
             let body = {
                 access_token : this.commonService.getLocalStorage('token', false)
             }
-            // this.authService.logout(body);
+                
         }
 
         const error = err.error.error.message || err.statusText;
