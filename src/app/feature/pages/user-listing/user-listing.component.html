@@ -68,8 +68,8 @@
          <div class="w-full md:w-1/4 px-3">
                                 <div class="w-full flex items-center justify-center"> 
                                 <button 
-                                    [ngClass]="{'bg-red-600':(selection.selected.length)}"
-                                    class="shadow bg-red-400  focus:shadow-outline focus:outline-none text-white  py-2 px-1 rounded "
+                                    [ngClass]="{'bg-pink-600':(selection.selected.length)}"
+                                    class="shadow bg-pink-400  focus:shadow-outline focus:outline-none text-white  py-2 px-1 rounded "
                                     type="button"
                                     [disabled]="(!selection.selected.length)" 
                                     (click)="changeUserStatus('block')">
@@ -100,7 +100,7 @@
                     <tr>
                         <th
                          class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                        <mat-checkbox (change)="$event ? masterToggle() : null" 
                         [checked]="selection.hasValue() && isAllSelected()" 
                         [indeterminate]="selection.hasValue() && !isAllSelected()" 
                         [aria-label]="checkboxLabel()">
