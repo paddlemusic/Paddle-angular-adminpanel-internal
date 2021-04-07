@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { CommonService } from '@app/shared/services/common.service';
@@ -14,7 +14,7 @@ import { environment } from '@env/environment';
 })
 export class EditUniversityComponent implements OnInit {
 
-  
+  // domainArr:string[] =[];
   editUniversityForm : FormGroup;
   universityId:string;
   constructor(private fb : FormBuilder,
@@ -41,9 +41,40 @@ export class EditUniversityComponent implements OnInit {
     let url:string = environment.baseUrl + apiUrls.getUniversity + '/' + this.universityId;
     this.requestService.get(url).subscribe((res:any)=>{
       if(res.status_code == 200){
+        
         this.editUniversityForm.patchValue(res.data);
+        this.setFormValues(res.data)
       }
     })
+  }
+
+  setFormValues(resData:any){
+
+    if (resData.domain && resData.domain.length > 0) {
+    resData.domain.forEach((item:any)=>{
+      const form = this.newDomain();
+        form.patchValue(item);
+      this.domain.push(form);
+    })
+  } else {
+      const form = this.newDomain();
+      this.domain.push(form);
+    }
+    // let domainArr:string[] =[];
+
+    //      domainArr = resData.domain;
+    // console.log('Set values are:', domainArr);
+    // if (domainArr && domainArr.length > 0) {
+    //   for (let i = 0; i < domainArr.length; i++) {
+    //     console.log('TTTTTTTTTTTTTTTTT:', domainArr[i]);
+    //     const form = this.newDomain();
+    //     form.patchValue(domainArr[i]);
+    //     this.domain.push(form);
+    //   }
+    // } else {
+    //   const form = this.newDomain();
+    //   this.domain.push(form);
+    // }
   }
 
 
@@ -55,9 +86,30 @@ export class EditUniversityComponent implements OnInit {
   buildForm(){
     this.editUniversityForm = this.fb.group({
       name : ['', [Validators.required, this.noWhitespaceValidator]],
-      city : ['',[Validators.required,this.noWhitespaceValidator]]
+      city : ['',[Validators.required,this.noWhitespaceValidator]],
+      domain : this.fb.array([])
     })
   }
+  newDomain(): FormControl {
+    return new FormControl('', [Validators.required, this.noWhitespaceValidator])
+    // this.fb.group({
+    //   domain: [''],
+    // })
+  }
+   // Getting form as an array
+   get domain():FormArray {
+    return this.editUniversityForm.get('domain') as FormArray;
+  }
+
+  addDomain() {
+    this.domain.push(this.newDomain());
+  }
+
+    // Deleting description Form
+    deleteDomain(index: number) {
+      this.domain.removeAt(index);
+    }
+
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;

@@ -18,6 +18,25 @@
         <app-show-error [control]="f.city"></app-show-error>
 
       </div>
+      <div class="flex flex-col mb-6"  >
+        <label for="addDomain" class="block tracking-wide mb-2">Enter domain:</label>
+        <div formArrayName="domain">
+          <div *ngFor="let item of domain.controls; index as i"> 
+            <input class="rounded-lg resize-none bg-gray-100 border text-lg text-gray-300 border-gray-100 focus:border-gray-300 focus:outline-none p-4"
+            [formControlName]="i" placeholder="Domain name" />
+            <button (click)="deleteDomain(i)" *ngIf="i>0"
+            class="bg-red-500  text-white  py-2 px-8 rounded-full uppercase">Remove</button>
+            
+            <span *ngIf="(item?.touched || item?.dirty) && item?.invalid" class="errorMsg">
+              <i class="fa fa-exclamation-triangle"></i> This field is required
+            </span>
+            <span *ngIf="(item?.touched || item?.dirty) && item?.invalid && (item?.errors?.whitespace)" class="errorMsg">
+              <i class="fa fa-exclamation-triangle"></i> Please enter valid data
+            </span>
+          </div>
+
+    </div>
+  </div>
       <div class="flex justify-end">
         <button type="submit" [disabled]="editUniversityForm?.invalid"
           [class.bg-green-700]='editUniversityForm?.valid' 
