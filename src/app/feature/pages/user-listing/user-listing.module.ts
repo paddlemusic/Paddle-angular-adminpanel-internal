@@ -6,25 +6,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '../../../shared/components/layout/layout.module';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const routes: Routes = [
   {
-      path: '',
-      children: [
-          {
-              path: '',
-              component: UserListingComponent
-          },
-          {
-            path: 'edit-user',
-            component: EditUserComponent
-          },
-          {
-            path: 'user-details',
-            component: UserDetailsComponent
-          }
-      ]
+    path: '',
+    children: [
+      {
+        path: '',
+        component: UserListingComponent
+      },
+      {
+        path: 'edit-user',
+        component: EditUserComponent
+      },
+      {
+        path: 'user-details',
+        component: UserDetailsComponent
+      }
+    ]
   }
 ];
 
@@ -35,7 +35,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    LayoutModule
+    LayoutModule,
+    MatCheckboxModule
   ]
 })
 export class UserListingModule { }
