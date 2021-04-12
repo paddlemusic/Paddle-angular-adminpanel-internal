@@ -1,16 +1,13 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { apiUrls } from '@app/shared/constants/apiUrls';
-import { MEDIATYPES, MEDIA_TYPES, MONTH, MONTHS, YEARS } from '@app/shared/constants/common';
 import { RequestService } from '@app/shared/services/request.service';
 import { environment } from '@env/environment';
-import { LikeShareModel } from '../models/likeshare.model';
 
 @Component({
   selector: 'app-like-shares',
   templateUrl: './like-shares.component.html',
+  /* <app-most-liked-album [universityListData] = 'universityListData'></app-most-liked-album>
+<app-most-liked-artist [universityListData] = 'universityListData'></app-most-liked-artist> */
   styleUrls: ['./like-shares.component.scss']
 })
 export class LikeSharesComponent implements OnInit {
