@@ -30,15 +30,17 @@ export class ResetPasswordComponent implements OnInit {
     .subscribe(params => {
       this.mailToken = params.token;
       console.log("mailToken", this.mailToken);
-
-    
+     if(this.mailToken){
+       this.buildForm();
+     }else {
+       this.commonService.navigate('../auth')
+     }
   })
-    this.buildForm();
   }
 
   buildForm(){
     this.resetPwdForm = this.fb.group({
-      email : ['', Validators.required],
+      email : ['', [Validators.required, Validators.email]],
       new_password :['', [Validators.required]], 
     })
   }

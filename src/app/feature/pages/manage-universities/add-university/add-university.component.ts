@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { CommonService } from '@app/shared/services/common.service';
 import { ModalService } from '@app/shared/services/modal.service';
@@ -21,20 +21,7 @@ export class AddUniversityComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    // this.addUniversityForm.valueChanges.pipe(
-    // map((value:any) => {
-    //     // Here you can manipulate your value
-    //     value.name = value.name.trim();
-    //     value.city = value.city.trim();
-
-    //     return value;
-    // }),
-    // filter((value:any) => this.addUniversityForm.valid)
-    // )
-    // .subscribe((value:any) => {
-    //    console.log("Model Driven Form valid value: vm = ",JSON.stringify(value));
-    // });
-
+   
   }
 
     // convenience getter for easy access to form fields
@@ -42,12 +29,36 @@ export class AddUniversityComponent implements OnInit {
       return this.addUniversityForm.controls;
     }
 
+    
+
   buildForm(){
     this.addUniversityForm = this.fb.group({
       name : ['', [Validators.required, this.noWhitespaceValidator]],
-      city : ['',[Validators.required,this.noWhitespaceValidator]]
-    })
+      city : ['',[Validators.required,this.noWhitespaceValidator]],
+      domain : this.fb.array([this.newDomain()])
+    });
   }
+
+
+  newDomain(): FormControl {
+    return new FormControl('', [Validators.required, this.noWhitespaceValidator])
+    // this.fb.group({
+    //   domain: [''],
+    // })
+  }
+   // Getting form as an array
+   get domain():FormArray {
+    return this.addUniversityForm.get('domain') as FormArray;
+  }
+
+  addDomain() {
+    this.domain.push(this.newDomain());
+  }
+
+    // Deleting description Form
+    deleteDomain(index: number) {
+      this.domain.removeAt(index);
+    }
 
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;

@@ -29,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
    */
   buildForm(){
     this.fpForm = this.fb.group({
-      email : ['', [Validators.required]]
+      email : ['', [Validators.required, Validators.email]]
     })
   }
 
@@ -69,8 +69,23 @@ export class ForgotPasswordComponent implements OnInit {
         icon: 'success',
         confirmButtonText: 'Ok',
         allowOutsideClick: false
+       }).then((res:any)=>{
+         if(res.isConfirmed){
+          this.commonService.navigate('../auth')
+         }
        })
     }
+
+
+   },(error)=>{
+     console.log("Error is:", error)
+     this.modalService.showAlert({
+      title: 'Error!',
+      text: error,
+      icon: 'error',
+      confirmButtonText: 'Ok',
+      allowOutsideClick: false
+    })
    })
 
    
