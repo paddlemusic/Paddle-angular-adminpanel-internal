@@ -44,12 +44,12 @@
     </div>
     <!-- Table -->
     <div class="flex justify-between items-baseline px-5 ">
-        <h3 class="text-2xl text-gray-400 font-bold mb-6">All University</h3>
+        <h3 class="text-xl text-gray-400 font-bold mb-6">All University</h3>
 
         <div class="w-full md:w-1/4 px-3">
             <div class="w-full flex items-center justify-center">
                 <button
-                    class="shadow bg-blue-500 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white  py-2 px-1 rounded "
+                    class="shadow bg-blue-500 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded "
                     type="button" routerLink="add-university">
                     Add New University
                 </button>
@@ -85,7 +85,7 @@
                             Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0; else norecord">
+                <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0">
                     <!--  -->
                     <tr *ngFor="let row of dataSource?.data;let i = index">
 
@@ -122,17 +122,16 @@
                             <div class="flex items-center cursor-pointer">
                                 <div class="text-sm">
                                     <!-- class="text-gray-300 leading-none"  -->
-                                    <p [ngClass]="{'text-green-400':(row.is_active),'text-red-400':(!row.is_active)}">{{row?.is_active == true? 'Active' : 'InActive'}}</p>
+                                    <p [ngClass]="{'text-green-400':(row.is_active),'text-red-400':(!row.is_active)}">
+                                        {{row?.is_active == true? 'Active' : 'InActive'}}</p>
                                 </div>
                             </div>
                         </td>
 
                         <td class="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-500 text-sm leading-5">
-                            <button
-                                class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white mr-3
-                                  py-2 px-2 rounded "
-                                type="button" (click)="navigate(row?.id)">
-                                Edit University 
+                            <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white mr-3
+                                  py-2 px-2 rounded " type="button" (click)="navigate(row?.id)">
+                                Edit University
                             </button>
                             <button *ngIf="!row?.is_active" [ngClass]="{'bg-green-500':(!row.is_active)}"
                                 class="shadow  hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
@@ -172,23 +171,27 @@
                     </tr>
 
                 </tbody>
-                <ng-template #norecord>
+                <!-- <ng-template #norecord>
                     <div>
-                        <span  class="errorMsg">
-                          <i class="fa fa-exclamation-triangle"></i> *No Record Found 
+                        <span class="errorMsg">
+                            <i class="fa fa-exclamation-triangle"></i> *No Record Found
                         </span>
-                      </div>
-                  </ng-template>
+                    </div>
+                </ng-template> -->
             </table>
         </div>
-        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
-            <div>
-
+        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-center mt-4 work-sans" #norecord>
+            <div *ngIf="!(dataSource?.data?.length > 0)">
+                <span class="No-Record-found">
+                    <i class="fa fa-exclamation-triangle"></i> No Record Found
+                </span>
             </div>
+        </div>
+        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-end mt-4 work-sans">
             <div>
                 <!--   -->
-                <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0" (page)='pageChange($event)'
-                    [length]="totalCount" [pageSizeOptions]="[10]" showFirstLastButtons>
+                <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"
+                    (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[10]" showFirstLastButtons>
                 </mat-paginator>
 
             </div>
