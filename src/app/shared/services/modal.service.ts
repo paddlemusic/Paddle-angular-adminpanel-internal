@@ -26,7 +26,11 @@ closePopup(id: string) {
  * @returns  
  */
 showAlert(obj:any){
-  Swal.fire(obj)
+  return Swal.fire(obj)
+
+ 
+
 }
+
 
 }
