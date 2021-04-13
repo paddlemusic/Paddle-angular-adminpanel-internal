@@ -6,9 +6,8 @@
           <img src="assets/paddle.jpg" alt="" class="company-logo">
         </a>
         <!-- Login module -->
-
         <div class="login-module">
-          <h1 class="font-bold text-center text-3xl lg:text-4xl xl:text-5xl">Welcome Back</h1>
+          <h2 class="font-bold text-center text-3xl lg:text-4xl xl:text-5xl">Welcome Back</h2>
           <p class=" text-center text-base">Login to your account</p>
           <form class="flex flex-col pt-3 md:pt-8" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="flex flex-col pt-4">
@@ -22,7 +21,7 @@
                 </div>
                 <input type="email" id="email" placeholder="your@email.com" formControlName="email"
                   class="bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3 text-base pl-12  leading-tight focus:outline-none focus:shadow-outline h-12">
-                  <app-show-error [control]="f.email"></app-show-error>
+                <app-show-error [control]="f.email"></app-show-error>
               </div>
             </div>
 
@@ -38,17 +37,15 @@
                 </div>
                 <input type="password" id="password" placeholder="******" formControlName="password"
                   class="bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3  text-base pl-12 mt-1 leading-tight focus:outline-none focus:shadow-outline h-12">
-                  <app-show-error [control]="f.password"></app-show-error>
+                <app-show-error [control]="f.password"></app-show-error>
 
               </div>
             </div>
             <!--  (loginForm.dirty || loginForm.touched) -->
-            <button type="submit"  [disabled]="loginForm?.invalid" [class.bg-red-700]='loginForm?.valid'
-            [class.bg-red-400]='loginForm?.invalid '
-            
-            class="text-white font-semibold text-lg  p-2 mt-8 h-12 rounded-full"
-            id="login-btn" >Login</button>
-          
+            <button type="submit" [disabled]="loginForm?.invalid" [class.bg-red-700]='loginForm?.valid'
+              [class.bg-red-400]='loginForm?.invalid '
+              class="text-white font-semibold text-lg  p-2 mt-8 h-12 rounded-full" id="login-btn">Login</button>
+           
           </form>
           <div class="text-center pt-8 pb-12">
             <a href="#" id="forgotPassword" class="underline " routerLink="/auth/forgot-password">Forgot password</a>
@@ -56,7 +53,7 @@
 
         
         </div>
-      
+
       </div>
     </div>
     <div class="w-1/2 min-h-screen bg-gray-100 justify-center items-center hidden md:flex">

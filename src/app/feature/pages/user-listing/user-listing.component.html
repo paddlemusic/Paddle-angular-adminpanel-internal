@@ -1,8 +1,8 @@
 <div
     class="mt-6 lg:mt-0 rounded shadow overflow-hidden bg-white shadow-dashboard pt-3 rounded-bl-lg rounded-br-lg pb-5">
-    <div class='flex flex-row p-4'>
+    <div class='flex flex-row p-3'>
         <form class="w-full max-w-full">
-            <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="flex flex-wrap -mx-3 mb-6 ml-1">
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block text-gray-200 font-bold mb-2" for="name">
                         Name
@@ -10,7 +10,7 @@
                     <input
                         class="appearance-none block w-full bg-gray-100 text-gray-200 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="name" type="text" placeholder="Search by name" #searchInput>
-                        
+
                 </div>
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block text-gray-200 font-bold mb-2" for="universityName">
@@ -22,37 +22,33 @@
                 </div>
                
             </div>
-          
+
         </form>
     </div>
     <!-- Table -->
     <div class="flex justify-between items-baseline px-5 ">
-        <h3 class="text-2xl text-gray-400 font-bold mb-6">All User</h3>
-        <div class="w-full md:w-1/4 px-3" >
-            <div class="w-full flex items-center justify-center"> 
+        <h3 class="text-xl w-1/2 text-gray-400 font-bold mb-6 ml-2">All User</h3>
+        <div class="w-full md:w-1/4 px-3">
+            <div class="w-full flex items-center justify-center">
                 
-                <button  type="button"
-                [ngClass]="{'opacity-50' :(!selection.selected.length), 'cursor-not-allowed' :(!selection.selected.length)}"
-                class="bg-blue-500  text-white py-2 px-2 rounded  "
-                [disabled]="(!selection.selected.length)" 
+                <button type="button"
+                    [ngClass]="{'opacity-50' :(!selection.selected.length), 'cursor-not-allowed' :(!selection.selected.length)}"
+                    class="bg-blue-500  text-white py-2 px-2 rounded  " [disabled]="(!selection.selected.length)"
                     (click)="changeUserStatus('unblock')">
-                Activate Selected Users
-                  </button>
-             </div>
-        </div> 
-        <!-- hover:bg-red-400 -->
-         <div class="w-full md:w-1/4 px-3">
-                                <div class="w-full flex items-center justify-center"> 
-                                <button 
-                                    [ngClass]="{'bg-pink-600':(selection.selected.length)}"
-                                    class="shadow bg-pink-400  focus:shadow-outline focus:outline-none text-white  py-2 px-1 rounded "
-                                    type="button"
-                                    [disabled]="(!selection.selected.length)" 
-                                    (click)="changeUserStatus('block')">
-                                        Deactivate Selected Users
-                                    </button>
-                                 </div>
-                            </div> 
+                    Activate Selected Users
+                </button>
+            </div>
+        </div>
+        
+        <div class="w-full md:w-1/4 px-3">
+            <div class="w-full flex items-center justify-center">
+                <button [ngClass]="{'bg-pink-600':(selection.selected.length)}"
+                    class="shadow bg-pink-400  focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded "
+                    type="button" [disabled]="(!selection.selected.length)" (click)="changeUserStatus('block')">
+                    Deactivate Selected Users
+                </button>
+            </div>
+        </div>
        
     </div>
     <div class="align-middle inline-block min-w-full md:overflow-hidden bg-white px-5 pt-3">
@@ -61,46 +57,45 @@
                 <thead>
                     <tr>
                         <th id="select"
-                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        <mat-checkbox (change)="$event ? masterToggle() : null" 
-                        [checked]="selection.hasValue() && isAllSelected()" 
-                        [indeterminate]="selection.hasValue() && !isAllSelected()" 
-                        [aria-label]="checkboxLabel()">
-                        </mat-checkbox>    
-                    </th>
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                [aria-label]="checkboxLabel()">
+                            </mat-checkbox>
+                        </th>
                         <th id="userId"
-                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        User Id</th>
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            User Id</th>
                         <th id="university"
-                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        University Name</th>
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            University Name</th>
                         <th id="name"
-                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        Name</th>
-                       
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Name</th>
+
                         <th id="email"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Email</th>
                         <th id="phone"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Phone</th>
                         <th id="status"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Status</th>
-                        <th id="action"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-200 tracking-wider">
+                        <th id="actions"
+                            class="px-3 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-200 tracking-wider">
                             Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0; else norecord">
+                <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0">
                     <tr *ngFor="let row of dataSource?.data;let i = index">
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <mat-checkbox 
-                            (change)="$event ? selection.toggle(row) : null" 
-                            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
-                            </mat-checkbox> 
+                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                            </mat-checkbox>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                                
                                 <div class="text-sm">
@@ -108,23 +103,23 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer" >
+                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
                                 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.University?.name}}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer" >
-                               
+                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.name}}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                                 
                                 <div class="text-sm">
@@ -133,46 +128,42 @@
                             </div>
                         </td>
                         <td
-                            class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
+                            class="px-3 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
                             {{row?.phone_number}}</td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5"
-                            
-                            [ngClass]="{'text-green-400':(row.is_active),'text-red-400':(!row.is_active)}" 
-                            >
+                        <td class="px-3 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5"
+                            [ngClass]="{'text-green-400':(row.is_active),'text-red-400':(!row.is_active)}">
                             {{row?.is_active == true? 'Active' : 'InActive'}}</td>
 
-                        <td class="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-500 text-sm leading-5">
+                        <td class="px-3 py-4 whitespace-no-wrap text-center border-b border-gray-500 text-sm leading-5">
                             
-                                    <button 
-                                        class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
-                                        type="button" (click)="navigate(row?.id)" >
-                                        View Profile
-                                    </button>
-                              
+                            <button
+                                class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
+                                type="button" (click)="navigate(row?.id)">
+                                View Profile
+                            </button>
+                           
                         </td>
                     </tr>
-                   
+
                 </tbody>
-                <ng-template #norecord>
-                    <div>
-                        <span  class="errorMsg">
-                          <em class="fa fa-exclamation-triangle"></em> *No Record Found 
-                        </span>
-                      </div>
-                  </ng-template>
+               
+                       
             </table>
         </div>
-        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
+        <div *ngIf="(dataSource?.data?.length == 0)"
+            class="sm:flex-1 sm:flex sm:items-center sm:justify-center mt-4 work-sans" #norecord>
             <div>
-              
+                <span class="No-Record-found">
+                    <em class="fa fa-exclamation-triangle"></em> No Record Found
+                </span>
             </div>
+        </div>
+        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-end mt-4 work-sans">
             <div>
-                
-                <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"  
-                (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[10]"  showFirstLastButtons >
+                <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"
+                    (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[10]" showFirstLastButtons>
                 </mat-paginator>
-               
+
             </div>
         </div>
     </div>

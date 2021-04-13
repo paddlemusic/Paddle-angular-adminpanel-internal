@@ -3,142 +3,179 @@
 
     <!-- Table -->
     <div class="flex justify-between items-baseline px-5 ">
-      <h3 class="text-2xl text-gray-400 font-bold mb-6">Most Streamed Songs</h3>
-      <div class="">
-        <div class="pt-2 relative mx-auto text-gray-600">
-            <div class='flex flex-row p-4'>
-                <form class="w-full max-w-full">
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                      <div class="relative inline-flex">
-                        <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                        <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                        (change)="selectType($event)">
-                          <option value="1">Monthly</option>
-                          <option value="2" selected>Last One Year</option>
-        
-                        </select>
-                      </div>
-        
-                        <div class="relative inline-flex" >
-                            <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                            <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                            (change)="selectUniversity($event)">
-                              <option selected value="0" >All</option>
-                              <option *ngFor="let university of universityListData"   [value]="university?.id">{{university?.name}}</option>
-                            </select>
-                          </div>
-                        
-                       
-        
-                          <ng-container *ngIf="typeId == 1">
-                          <div class="relative inline-flex ">
-                            <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                            <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                            (change)="selectMonth($event)">
-                              <option *ngFor="let month of MONTHS ; let i = index"  [value]="month?.id" [selected]="i == getDate().month">{{month?.name}}</option>
-                              
-                            </select>
-                          </div>
-                          <div class="relative inline-flex ">
-                            <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                            <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                            (change)="selectYear($event)">
-                              <option *ngFor="let year of YEARS ; ; let i = index"  [value]="year?.value" [selected]="year?.value == getDate().year">{{year?.value}}</option>
-                              
-                            </select>
-                          </div>
-                        </ng-container> 
-                        <div class="w-full md:w-1/4 px-4">
-                            <div class="w-full flex items-center justify-center">
-                                <button
-                                    class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                                    type="button" (click)="getFilterData()">
-                                    Filter
-                                </button>
-                            </div>
-                        </div> 
-                       
-                    </div>        
-                </form>
-            </div>
-          
-        </div>
-    </div>
-  </div>
+        <h3 class="text-xl text-gray-400 font-bold mb-6">Most Streamed Songs</h3>
+        <div class="">
+            <div class="pt-2 relative mx-auto text-gray-600">
+                <div class='flex flex-row p-4'>
+                    <form class="w-full max-w-full">
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="relative inline-flex">
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 mr-4">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"
+                                        class="text-gray-200 chevron-down w-6 h-6">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <select
+                                    class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                                    (change)="selectType($event)">
+                                    <option value="1">Monthly</option>
+                                    <option value="2" selected>Last One Year</option>
 
-  <div class="align-middle inline-block min-w-full md:overflow-hidden bg-white px-5 pt-3">
-    <div class="">
-        <table class="md:min-w-full" aria-describedby="songData">
-            <thead>
-                <tr>
-                   
-                    <th id="sno"
-                    class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                    </th>
-                    <th id="track"
-                    class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                    Track Name</th>
-                    
-                   
-                    <th id="count"
-                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                        Count</th>
-                    
-                </tr>
-            </thead>
-            <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0; else norecord">
-              <!--  -->
-                <tr *ngFor="let row of dataSource?.data;let i = index">
-                   
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                        <div class="flex items-center cursor-pointer">
-                            <img class="w-10 h-10 rounded-full mr-4" [src]="(row?.media_metadata?.image)?(row.media_metadata?.image):('assets/photo.png')"
-                                alt="avatar">
-                            
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                        <div class="flex items-center cursor-pointer" >
+                                </select>
+                            </div>
+
+                            <div class="relative inline-flex">
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 mr-4">
+                                    <svg viewBox="0 0 20 20" fill="currentColor"
+                                        class="text-gray-200 chevron-down w-6 h-6">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <select
+                                    class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                                    (change)="selectUniversity($event)">
+                                    <option selected value="0">All</option>
+                                    <option *ngFor="let university of universityListData" [value]="university?.id">
+                                        {{university?.name}}</option>
+                                </select>
+                            </div>
+
                            
-                            <div class="text-sm">
-                                <p class="text-gray-300 leading-none">{{row?.media_metadata?.name}}</p>
+
+                            <ng-container *ngIf="typeId == 1">
+                                <div class="relative inline-flex ">
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 mr-4">
+                                        <svg viewBox="0 0 20 20" fill="currentColor"
+                                            class="text-gray-200 chevron-down w-6 h-6">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <select
+                                        class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                                        (change)="selectMonth($event)">
+                                        <option *ngFor="let month of MONTHS ; let i = index" [value]="month?.id"
+                                            [selected]="i == getDate().month">{{month?.name}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="relative inline-flex ">
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 mr-4">
+                                        <svg viewBox="0 0 20 20" fill="currentColor"
+                                            class="text-gray-200 chevron-down w-6 h-6">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <select
+                                        class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                                        (change)="selectYear($event)">
+                                        <option *ngFor="let year of YEARS ; ; let i = index" [value]="year?.value"
+                                            [selected]="year?.value == getDate().year">{{year?.value}}</option>
+
+                                    </select>
+                                </div>
+                            </ng-container>
+                            <div class="">
+                                <div class="w-full flex items-center justify-center">
+                                    <button
+                                        class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                        type="button" (click)="getFilterData()">
+                                        Filter
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
-                    </td>
-                 
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                        <div class="flex items-center cursor-pointer">
-                         
-                            <div class="text-sm">
-                                <p class="text-gray-300 leading-none">{{row?.streamCount}}</p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="align-middle inline-block min-w-full md:overflow-hidden bg-white px-5 pt-3">
+        <div class="">
+            <table class="md:min-w-full" aria-describedby="songData">
+                <thead>
+                    <tr>
+
+                        <th id="sno"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                        </th>
+                        <th id="track"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Track Name</th>
+                       
+
+                        <th id="count"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Count</th>
+
+                    </tr>
+                </thead>
+                <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0">
+                    <!--  -->
+                    <tr *ngFor="let row of dataSource?.data;let i = index">
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                <img class="w-10 h-10 rounded-full mr-4"
+                                    [src]="(row?.media_metadata?.image)?(row.media_metadata?.image):('assets/photo.png')"
+                                    alt="avatar">
+                               
                             </div>
-                        </div>
-                    </td>
-                  
-                </tr>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.media_metadata?.name}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                               
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.streamCount}}</p>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
                
-            </tbody>
-            <ng-template #norecord>
-                <div>
-                    <span  class="errorMsg">
-                      <em class="fa fa-exclamation-triangle"></em> *No Record Found 
-                    </span>
-                  </div>
-              </ng-template>
-        </table>
-    </div>
-    <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
-        <div>
-          
+            </table>
         </div>
-        <div>
-            
-            <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"  
-            (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[5]"  showFirstLastButtons >
-            </mat-paginator>
-           
+        <div *ngIf="(dataSource?.data?.length == 0)"
+            class="sm:flex-1 sm:flex sm:items-center sm:justify-center mt-4 work-sans" #norecord>
+            <div>
+                <span class="No-Record-found">
+                    <em class="fa fa-exclamation-triangle"></em> No Record Found
+                </span>
+            </div>
+        </div>
+        <div class="sm:flex-1 sm:flex sm:items-end sm:justify-end mt-4 work-sans">
+            <div>
+                <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"
+                    (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[5]" showFirstLastButtons>
+                </mat-paginator>
+
+            </div>
         </div>
     </div>
-</div>
-   
+
 </div>

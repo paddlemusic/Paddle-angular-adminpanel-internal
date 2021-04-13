@@ -1,88 +1,106 @@
 <div class="p-4 md:p-8 md:mt-6 mt-0 rounded shadow bg-white">
-    
-   
-    <div class="lg:flex lg:flex-row lg:justify-between md:block">
-        <h3 class="text-2xl text-gray-400 font-bold ">App Sign up Details</h3>
-        <div class="flex flex-row justify-between ">
-              <div class="pt-2 relative mx-auto text-gray-600">
-                  <div class='flex flex-row p-4'>
-                      <form class="w-full max-w-full">
-                          <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="relative inline-flex">
-                              <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                              <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                              (change)="selectType($event)">
-                                <!-- <option selected disabled>Choose a type</option> -->
-                                <option value="1">Monthly</option>
-                                <option value="2" selected>Last One Year</option>
-              
-                                <!-- <option *ngFor="let university of universityListData"  [value]="university?.id">{{university?.name}}</option> -->
-                              </select>
-                            </div>
-              
-                              <div class="relative inline-flex" >
-                                  <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                                  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                                  (change)="selectUniversity($event)">
-                                    <option selected value="0" >All</option>
-                                    <option *ngFor="let university of universityListData"   [value]="university?.id">{{university?.name}}</option>
-                                  </select>
-                                </div>
-                              
-                              <!-- <div class="relative inline-flex ">
-                                  <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                                  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                                  (change)="selectMediaType($event)">
-                                    <option *ngFor="let media of MEDIA_TYPES;let i = index"  [value]="media?.id" [selected]="i+1==1">{{media?.type}}</option>
-                                    
-                                  </select>
-                                </div> -->
-              
-                                <ng-container *ngIf="typeId == 1">
-                                <div class="relative inline-flex ">
-                                  <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                                  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                                  (change)="selectMonth($event)">
-                                    <!-- <option selected disabled>Choose a month</option> -->
-                                    <option *ngFor="let month of MONTHS ; let i = index"  [value]="month?.id" [selected]="i == getDate().month">{{month?.name}}</option>
-                                    
-                                  </select>
-                                </div>
-                                <div class="relative inline-flex ">
-                                  <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"  viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
-                                  <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-                                  (change)="selectYear($event)">
-                                    <!-- <option selected disabled>Choose a year</option> -->
-                                    <option *ngFor="let year of YEARS ; ; let i = index"  [value]="year?.value" [selected]="year?.value == getDate().year">{{year?.value}}</option>
-                                    
-                                  </select>
-                                </div>
-                              </ng-container> 
-                              <div class="w-full md:w-1/4 px-4">
-                                  <div class="w-full flex items-center justify-center">
-                                      <button
-                                          class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                                          type="button" (click)="getFilterData()">
-                                          Filter
-                                      </button>
-                                  </div>
-                              </div> 
-                             
-                          </div>        
-                      </form>
-                  </div>
-                
+
+
+  <div class="lg:flex lg:flex-row lg:justify-between items-baseline md:block">
+    <h3 class="text-xl text-gray-400 font-bold ">App Sign up Details</h3>
+    <div class="flex flex-row justify-between ">
+      <div class="pt-2 relative mx-auto text-gray-600">
+        <div class='flex flex-row p-4'>
+          <form class="w-full max-w-full">
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="relative inline-flex">
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 mr-4">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="text-gray-200 chevron-down w-6 h-6">
+                    <path fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <select
+                  class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                  (change)="selectType($event)">
+                  <option value="1">Monthly</option>
+                  <option value="2" selected>Last One Year</option>
+
+                </select>
               </div>
-         
+
+              <div class="relative inline-flex">
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 mr-4">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="text-gray-200 chevron-down w-6 h-6">
+                    <path fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <select
+                  class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                  (change)="selectUniversity($event)">
+                  <option selected value="0">All</option>
+                  <option *ngFor="let university of universityListData" [value]="university?.id">{{university?.name}}
+                  </option>
+                </select>
+              </div>
+
+             
+
+              <ng-container *ngIf="typeId == 1">
+                <div class="relative inline-flex ">
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 mr-4">
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="text-gray-200 chevron-down w-6 h-6">
+                      <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                  <select
+                    class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                    (change)="selectMonth($event)">
+                    <option *ngFor="let month of MONTHS ; let i = index" [value]="month?.id"
+                      [selected]="i == getDate().month">{{month?.name}}</option>
+
+                  </select>
+                </div>
+                <div class="relative inline-flex ">
+                  <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" viewBox="0 0 412 232">
+                    <path
+                      d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z"
+                      fill="#648299" fill-rule="nonzero" />
+                  </svg>
+                  <select
+                    class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+                    (change)="selectYear($event)">
+                    <option *ngFor="let year of YEARS ; ; let i = index" [value]="year?.value"
+                      [selected]="year?.value == getDate().year">{{year?.value}}</option>
+
+                  </select>
+                </div>
+              </ng-container>
+              <div class="">
+                <div class="w-full flex items-center justify-center">
+                  <button
+                    class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    type="button" (click)="getFilterData()">
+                    Filter
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </form>
         </div>
+
       </div>
 
-    <dl>
-      <div class="mb-1 text-md grid lg:grid-cols-4 md:grid-cols-2">
-        <dt class="text-gray-300 font-bold">App Sign ups count</dt>
-        <dd class="text-gray-200">{{appData?.signupCount}}</dd>
-      </div>
-      
-    </dl>
-    
+    </div>
   </div>
+
+  <dl>
+    <div class="mb-1 text-md grid lg:grid-cols-4 md:grid-cols-2">
+      <dt class="text-gray-300 font-bold">App Sign ups count</dt>
+      <dd class="text-gray-200">{{appData?.signupCount}}</dd>
+    </div>
+
+  </dl>
+
+</div>
