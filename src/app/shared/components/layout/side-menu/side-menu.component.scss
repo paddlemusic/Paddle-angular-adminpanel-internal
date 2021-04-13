@@ -1,0 +1,20 @@
+li a{
+    border-bottom: 1px solid #949090;
+    color:#929191 !important;
+}
+
+li a.active {
+    border-color: #ffffff !important;
+    color:  #ffffff !important;
+}
+
+.side-menu{
+background: #474545;
+box-shadow: 2px 2px 5px #d1cdcd;
+}
+.nav-text.active{
+  background-color: #444444 !important;  
+}
+.nav-text:hover{
+  background-color: #474545 !important;    
+}

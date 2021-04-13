@@ -1,64 +1,45 @@
-<div class="mt-6 lg:mt-0 rounded shadow bg-white">
-    <!-- <h3 class="text-2xl font-bold p-4 md:p-6">My Profile</h3> -->
-    <div class="header flex items-baseline justify-start">
-      <img class="w-4 h-4 mr-4 cursor-pointer" src="assets/back.png" routerLink="../../pages/dashboard">
-      <h3 class="text-2xl font-bold mb-6">My Profile</h3>
+<div
+  class="mt-6 lg:mt-0 rounded shadow overflow-hidden bg-white shadow-dashboard pt-3 rounded-bl-lg rounded-br-lg pb-5">
+  <div class="flex justify-between items-baseline px-5 ">
+    <h3 class="text-xl text-gray-400 font-bold mb-6">My Profile</h3>
+    <div class="w-full md:w-1/4 px-2">
+      <div class="w-full flex items-center justify-center">
+        <button type="button" routerLink="/auth/change-password"
+          class="bg-blue-500 hover:bg-blue-500 text-white py-2 px-8 rounded-lg">Change
+          Password</button>
+      </div>
     </div>
-    <div class="flex flex-wrap border-t border-gray-100">
-      <div class="w-full md:w-1/2 border-r border-gray-100 p-4 md:px-8 ">
-        <form action="" class="w-full max-w-full text-base"
-        [formGroup]="adminProfileForm" (ngSubmit)="onSubmit()">
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <label class="block tracking-wide mb-2" for="tc">
-              Enter your name
-            </label>
-            <input class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white resize-none focus:border-gray-200" id="tc" 
-            formControlName="name" placeholder="name" />
-            <app-show-error [control]="f.name"></app-show-error>
+  </div>
 
-          </div>
-          <div class="flex flex-col flex-start justify-center h-full -mx-3">
-            <label class="block tracking-wide mb-2">
-              Upload Profile
-            </label>
-            <div class="relative m-auto">
-              <button class="btn py-20 px-16 border-2 border-gray-500 rounded-lg bg-gray-100 border-dashed flex items-center flex-col">
-                <img  [src]="imageFile">
-
-                <span>{{imageFile == 'assets/upload.png' ? 'Upload Profile' : 'Edit Profile'}}</span>
-              </button>
-              <input type='file' #imageInput (change)="onFileSelect($event)"
-               class="absolute opacity-0 inset-0 m-auto" accept="image/*" formControlName="profile_picture">
-            </div>
-          </div>
-          <div class="flex justify-end">
-            <button type="submit" class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-lg uppercase">Submit</button>
-          </div>
-
-          <div class="flex justify-end" >
-            <button type="button" routerLink="/auth/change-password" class="bg-blue-500 hover:bg-blue-500 text-white font-bold py-2 px-8 rounded-lg uppercase">Change Password</button>
-          </div>
-       
-       <!-- <div class="w-full md:w-1/2 p-4 md:p-8">
-        <form action="" class="w-full max-w-full h-full text-base">
-          <div class="flex flex-col flex-start justify-center h-full -mx-3 ">
-            <label class="block tracking-wide mb-2">
-              Upload Profile
-            </label>
-            <div class="relative m-auto">
-              <button class="btn py-20 px-16 border-2 border-gray-500 rounded-lg bg-gray-100 border-dashed flex items-center flex-col">
-                <img *ngIf="!imageFile" src="assets/upload.png">
-                
-
-                <span>Upload profile</span>
-              </button>
-              <input type='file' #imageInput (change)="onFileSelect($event)"
-               class="absolute opacity-0 inset-0 m-auto" accept="image/*" formControlName="profile_picture">
-            </div>
-          </div>
-        </form>
-      </div>  -->
+  <div class="w-full p-4 md:px-32">
+    <form action="" class="w-full max-w-full text-base" [formGroup]="adminProfileForm" (ngSubmit)="onSubmit()">
+      <div class="flex flex-col flex-wrap -mx-3 mb-6">
+        <label class="block tracking-wide mb-2" for="tc">
+          Enter your name
+        </label>
+        <input
+          class="appearance-none block w-full bg-gray-100 border border-gray-100 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white resize-none focus:border-gray-200"
+          id="tc" formControlName="name" placeholder="name" />
+        <app-show-error [control]="f.name"></app-show-error>
+      </div>
+      <div class="flex flex-col flex-start justify-center align-middle h-full -mx-3">
+        <label class="block tracking-wide mb-2">
+          Upload Profile
+        </label>
+        <div class="relative">
+          <button
+            class="btn  py-4 px-4 border-2 border-gray-500 rounded-lg bg-gray-100 border-dashed flex items-center flex-col">
+            <img [src]="imageFile" alt="profile" class="profile-image cursor-pointer">
+            <span>{{imageFile == 'assets/upload.png' ? 'Upload Profile' : 'Edit Profile'}}</span>
+          </button>
+          <input type='file' #imageInput (change)="onFileSelect($event)" class="absolute opacity-0 inset-0 w-160"
+            accept="image/*" formControlName="profile_picture">
+        </div>
+      </div>
+      <div class="flex justify-center mt-4">
+        <button type="submit"
+          class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-lg uppercase">Submit</button>
+      </div>
     </form>
   </div>
-    </div>
-  </div>
+</div>
