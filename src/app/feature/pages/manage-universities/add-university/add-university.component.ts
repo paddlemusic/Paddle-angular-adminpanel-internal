@@ -5,7 +5,6 @@ import { CommonService } from '@app/shared/services/common.service';
 import { ModalService } from '@app/shared/services/modal.service';
 import { RequestService } from '@app/shared/services/request.service';
 import { environment } from '@env/environment';
-import { map ,filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-university',
@@ -61,7 +60,8 @@ export class AddUniversityComponent implements OnInit {
     }
 
   public noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value || '').trim().length === 0;
+    const isWhitespace = (control.value as string).indexOf(' ') >= 0
+    // const isWhitespace = (control.value ).trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true };
 }

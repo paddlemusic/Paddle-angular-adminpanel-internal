@@ -68,11 +68,14 @@ export class ForgotPasswordComponent implements OnInit {
         text: 'Please check your email',
         icon: 'success',
         confirmButtonText: 'Ok',
-        allowOutsideClick: false
-       }).then((res:any)=>{
-         if(res.isConfirmed){
+        allowOutsideClick: false,
+        // allowEscapeKey :
+        timer: 1500,
+       }).then((resp:any)=>{
           this.commonService.navigate('../auth')
-         }
+        //  if(resp.isConfirmed){
+        //   this.commonService.navigate('../auth')
+        //  }
        })
     }
 
@@ -89,9 +92,7 @@ export class ForgotPasswordComponent implements OnInit {
    })
 
    
-    let bodyData = this.fpForm.valid;
-    // this.sendLink();
-      // this.commonService.navigate('../pages/dashboard')
+   
 
   }
 
