@@ -1,9 +1,12 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { apiUrls } from '@app/shared/constants/apiUrls';
 import { CommonService } from '@app/shared/services/common.service';
 import { ModalService } from '@app/shared/services/modal.service';
 import { RequestService } from '@app/shared/services/request.service';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-reset-password',
@@ -56,12 +59,24 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetPwdForm.invalid) {
       return;
     }
-    
+    let url: string = environment.baseUrl + apiUrls.resetPassword;
+    // mailToken : this.mailToken
+
+    // const httpOptions = {
+    // let headers =  new HttpHeaders({
+    //   'MailToken': this.mailToken
+    // })
+    // };
     let body = {
       email: this.resetPwdForm.get('email')?.value,
       password: this.resetPwdForm.get('new_password')?.value,
     }
-   
+    // this.requestService.post(url,body, {},headers).subscribe((res:any)=>{
+    //   console.log("Response is:", res);
+    //   if(res.status_code == 200){
+    //    this.status = true;
+    //    this.commonService.navigate('../auth')
+    //   }
     console.log("body is:", body)
     this.requestService.sendMail(body, this.mailToken).subscribe((res: any) => {
       console.log("Response is:", res);
