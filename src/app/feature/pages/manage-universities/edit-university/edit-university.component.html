@@ -30,10 +30,10 @@
             class="bg-red-500  text-white  py-2 px-8 rounded-full uppercase">Remove</button>
             
             <span *ngIf="(item?.touched || item?.dirty) && item?.invalid && (!item?.errors?.whitespace)" class="errorMsg">
-              <em class="fa fa-exclamation-triangle"></em> This field is required
+              <em class="fa fa-exclamation-triangle"> This field is required </em>
             </span>
             <span *ngIf="(item?.touched || item?.dirty) && item?.invalid && (item?.errors?.whitespace)" class="errorMsg">
-              <em class="fa fa-exclamation-triangle"></em> Please enter valid data
+              <em class="fa fa-exclamation-triangle"> Please enter valid data</em>
             </span>
           </ng-container>
           </div>

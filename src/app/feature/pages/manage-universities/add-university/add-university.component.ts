@@ -65,7 +65,9 @@ export class AddUniversityComponent implements OnInit {
     }
 
   public noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value as string).indexOf(' ') >= 0
+    // const isWhitespace = (control.value as string).indexOf(' ') >= 0
+    const isWhitespace = (control.value as string).charAt(0) === ' '
+
     // const isWhitespace = (control.value ).trim().length === 0;
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true };
