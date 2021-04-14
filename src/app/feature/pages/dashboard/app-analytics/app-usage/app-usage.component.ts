@@ -1,7 +1,5 @@
 
-import { SelectionModel } from '@angular/cdk/collections';
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { MEDIATYPES, MEDIA_TYPES, MONTH, MONTHS, YEARS } from '@app/shared/constants/common';
