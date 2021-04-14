@@ -119,9 +119,9 @@ export class AppUsageComponent implements OnInit {
   }
 
 
-  getDatainSec(time:number){
-      time = Math.round(time / 1000)
-      return time;
+  getDatainSec(timeinSec:number){
+      timeinSec = Math.round(timeinSec / 1000)
+      return timeinSec;
   }
 
 /*

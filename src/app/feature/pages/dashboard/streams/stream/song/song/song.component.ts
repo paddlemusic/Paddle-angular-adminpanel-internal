@@ -248,5 +248,4 @@ pageChange(page:any) {
 
 
 
-
 }

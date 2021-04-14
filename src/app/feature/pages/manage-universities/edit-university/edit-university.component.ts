@@ -110,12 +110,12 @@ export class EditUniversityComponent implements OnInit {
       this.domain.removeAt(index);
     }
 
-  public noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value || '').trim().length === 0;
-    const isValid = !isWhitespace;
-    return isValid ? null : { 'whitespace': true };
-}
-
+    public noWhitespaceValidator(control: FormControl) {
+      const isWhitespace = (control.value as string).indexOf(' ') >= 0
+      // const isWhitespace = (control.value ).trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { 'whitespace': true };
+  }
   onSubmit(){
     console.log("Form Values:", this.editUniversityForm.value)
     if (this.editUniversityForm.invalid) {

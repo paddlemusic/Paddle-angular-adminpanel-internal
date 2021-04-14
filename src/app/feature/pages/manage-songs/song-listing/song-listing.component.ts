@@ -36,6 +36,16 @@ export class SongListingComponent implements OnInit {
   }
 
   /**
+   * Gets spaced row
+   * @param artist 
+   * @returns  
+   */
+  getSpacedRow(artist:string){
+    let  artistName :string = artist.replace(/,/g, ", ");
+    return artistName;
+}
+
+  /**
    * Gets univerity list
    */
    getUniverityList(): void {
