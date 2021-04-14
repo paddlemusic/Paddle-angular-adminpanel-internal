@@ -67,6 +67,14 @@ export class ResetPasswordComponent implements OnInit {
       console.log("Response is:", res);
       if (res.status_code == 200) {
         this.status = true;
+        this.modalService.showAlert({
+          title: 'Success!',
+          text: 'Your password has been reset successfully.',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          allowOutsideClick: false,
+          timer : 1500
+        })
         this.commonService.navigate('../auth')
       }
     }, (err) => {
