@@ -34,11 +34,11 @@
           <button (click)="deleteDomain(i)" *ngIf="i>0"
             class="bg-red-500  text-white  py-2 px-8 rounded-full ml-8">Remove</button>
 
-          <span *ngIf="(item?.touched || item?.dirty) && item?.invalid && !item?.errors?.whitespace" class="errorMsg">
-            <em class="fa fa-exclamation-triangle"></em> This field is required
+          <span *ngIf="(item?.touched || item?.dirty) && item?.invalid && !item?.errors?.whitespace" class="error-msg">
+            <em class=" fa fa-exclamation-triangle "></em> This field is required
           </span>
-          <span *ngIf="(item?.errors?.whitespace)" class="errorMsg">
-            <em class="fa fa-exclamation-triangle"></em> Please enter valid data
+          <span *ngIf="(item?.errors?.whitespace)" class="error-msg">
+            <em class="error-msg fa fa-exclamation-triangle"></em> Please enter valid data
           </span>
         </ng-container>
         </div>
