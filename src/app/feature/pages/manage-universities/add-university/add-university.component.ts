@@ -13,6 +13,7 @@ import { environment } from '@env/environment';
 })
 export class AddUniversityComponent implements OnInit {
   addUniversityForm : FormGroup;
+  maximumLimit : boolean = false;
   constructor(private fb : FormBuilder,
     private requestService : RequestService,
     private commonService : CommonService,
@@ -51,11 +52,15 @@ export class AddUniversityComponent implements OnInit {
   }
 
   addDomain() {
-    this.domain.push(this.newDomain());
+    this.maximumLimit = false;
+   
+      this.domain.push(this.newDomain());
   }
 
     // Deleting description Form
     deleteDomain(index: number) {
+      console.log("INdex is:", index)
+   
       this.domain.removeAt(index);
     }
 
