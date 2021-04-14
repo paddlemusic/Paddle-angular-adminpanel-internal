@@ -37,8 +37,9 @@
         </div>
       </div>
       <div class="flex justify-center mt-4">
-        <button type="submit"
-          class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-8 rounded-lg uppercase">Submit</button>
+        <button type="submit" [disabled]="adminProfileForm.invalid"
+        [ngClass]="{'opacity-50' :(adminProfileForm?.invalid), 'cursor-not-allowed' :(adminProfileForm?.invalid)}"
+          class="bg-green-700  text-white font-bold py-2 px-8 rounded-lg uppercase">Submit</button>
       </div>
     </form>
   </div>

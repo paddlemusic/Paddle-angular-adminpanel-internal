@@ -132,7 +132,15 @@ export class EditProfileComponent implements OnInit {
     this.requestService.put(url , body).subscribe((res:any)=>{
       if(res.status_code == 200){
         console.log("updated is:", res);
-        this.commonService.navigate('../pages/dashboard')
+        this.modalService.showAlert({
+          title: 'Success!',
+          text: 'Your Profile has been updated',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          allowOutsideClick: false,
+          timer : 1500
+        })
+        // this.commonService.navigate('../pages/dashboard')
       }
     },(err)=>{
       console.log("Error is:", err);
