@@ -14,34 +14,34 @@ import { environment } from '@env/environment';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-   resetPwdForm : FormGroup;
-   mailToken : string ;
+  resetPwdForm: FormGroup;
+  mailToken: string;
   status: boolean = true;
 
 
-  constructor(private fb : FormBuilder,
-    private route : ActivatedRoute,
-    private requestService : RequestService,
-    private modalService : ModalService,
-    private commonService : CommonService) { }
+  constructor(private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private requestService: RequestService,
+    private modalService: ModalService,
+    private commonService: CommonService) { }
 
   ngOnInit(): void {
-      this.route.queryParams
-    .subscribe(params => {
-      this.mailToken = params.token;
-      console.log("mailToken", this.mailToken);
-     if(this.mailToken){
-       this.buildForm();
-     }else {
-       this.commonService.navigate('../auth')
-     }
-  })
+    this.route.queryParams
+      .subscribe(params => {
+        this.mailToken = params.token;
+        console.log("mailToken", this.mailToken);
+        if (this.mailToken) {
+          this.buildForm();
+        } else {
+          this.commonService.navigate('../auth')
+        }
+      })
   }
 
-  buildForm(){
+  buildForm() {
     this.resetPwdForm = this.fb.group({
-      email : ['', [Validators.required, Validators.email]],
-      new_password :['', [Validators.required]], 
+      email: ['', [Validators.required, Validators.email]],
+      new_password: ['', [Validators.required]],
     })
   }
   reset() {
@@ -50,27 +50,27 @@ export class ResetPasswordComponent implements OnInit {
 
 
 
-    // convenience getter for easy access to form fields
-    get f() {
-      return this.resetPwdForm.controls;
-    }
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.resetPwdForm.controls;
+  }
 
-  onSubmit(){
-    if(this.resetPwdForm.invalid){
+  onSubmit() {
+    if (this.resetPwdForm.invalid) {
       return;
     }
     let url: string = environment.baseUrl + apiUrls.resetPassword;
     // mailToken : this.mailToken
-   
+
     // const httpOptions = {
-      // let headers =  new HttpHeaders({
-      //   'MailToken': this.mailToken
-      // })
+    // let headers =  new HttpHeaders({
+    //   'MailToken': this.mailToken
+    // })
     // };
-     let body = {
-       email : this.resetPwdForm.get('email')?.value,
-       password : this.resetPwdForm.get('new_password')?.value,
-     }
+    let body = {
+      email: this.resetPwdForm.get('email')?.value,
+      password: this.resetPwdForm.get('new_password')?.value,
+    }
     // this.requestService.post(url,body, {},headers).subscribe((res:any)=>{
     //   console.log("Response is:", res);
     //   if(res.status_code == 200){
@@ -78,13 +78,13 @@ export class ResetPasswordComponent implements OnInit {
     //    this.commonService.navigate('../auth')
     //   }
     console.log("body is:", body)
-    this.requestService.sendMail(body, this.mailToken).subscribe((res:any)=>{
-        console.log("Response is:", res);
-      if(res.status_code == 200){
-       this.status = true;
-       this.commonService.navigate('../auth')
+    this.requestService.sendMail(body, this.mailToken).subscribe((res: any) => {
+      console.log("Response is:", res);
+      if (res.status_code == 200) {
+        this.status = true;
+        this.commonService.navigate('../auth')
       }
-    },(err)=>{
+    }, (err) => {
       this.modalService.showAlert({
         title: 'Error!',
         text: err,
