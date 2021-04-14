@@ -76,6 +76,7 @@ export class AppUsageComponent implements OnInit {
       if (res.status_code == 200) {
         // this.totalCount = res.data.count;
         this.appData = res.data;
+        console.log("App data is:", this.appData)
         // let appUsageTime = this.getDatainSec(this.appData.appUsageTime)
         // console.log("REsponseeee is:", appUsageTime)
         // this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
@@ -108,6 +109,8 @@ export class AppUsageComponent implements OnInit {
         console.log("REspons is:", res)
         // this.totalCount = res.data.count;
         this.appData = res.data;
+        console.log("App data is:", this.appData)
+
         // this.paginator = new MatPaginator(this.paginator._intl, this._cdr)
         // this.setDataSource(this.totalStreaData, resiterpagination);
 
@@ -180,9 +183,9 @@ export class AppUsageComponent implements OnInit {
     console.log("params are:", params)
     this.requestService.get(url, params).subscribe((res: any) => {
       if (res.status_code == 200) {
-        console.log("REspons is:", res)
+        // console.log("REspons is:", res)
         this.universityListData = res.data.rows;
-        console.log("Data source:", this.universityListData);
+        // console.log("Data source:", this.universityListData);
       }
     }, (err) => {
       console.log("ERror is:", err)

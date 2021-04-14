@@ -72,7 +72,7 @@ export class ResetPasswordComponent implements OnInit {
     }, (err) => {
       this.modalService.showAlert({
         title: 'Error!',
-        text: 'Your session has been timed out.',
+        text: err,
         icon: 'error',
         confirmButtonText: 'Ok',
         allowOutsideClick: false
