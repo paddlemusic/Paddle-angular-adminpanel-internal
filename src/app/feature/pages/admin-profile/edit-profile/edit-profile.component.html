@@ -24,13 +24,13 @@
       </div>
       <div class="flex flex-col flex-start justify-center align-middle h-full -mx-3">
         <label class="block tracking-wide mb-2">
-          Upload Profile
+          Upload Profile Image
         </label>
         <div class="relative">
           <button
             class="btn  py-4 px-4 border-2 border-gray-500 rounded-lg bg-gray-100 border-dashed flex items-center flex-col">
             <img [src]="imageFile" alt="profile" class="profile-image cursor-pointer">
-            <span>{{imageFile == 'assets/upload.png' ? 'Upload Profile' : 'Edit Profile'}}</span>
+            <span>{{imageFile == 'assets/upload.png' ? 'Add Image' : 'Edit Image'}}</span>
           </button>
           <input type='file' #imageInput (change)="onFileSelect($event)" class="absolute opacity-0 inset-0 w-160"
             accept="image/*" formControlName="profile_picture">
