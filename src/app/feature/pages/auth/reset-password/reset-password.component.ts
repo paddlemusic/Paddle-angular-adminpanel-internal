@@ -26,16 +26,16 @@ export class ResetPasswordComponent implements OnInit {
     private commonService: CommonService) { }
 
   ngOnInit(): void {
-    // this.route.queryParams
-    //   .subscribe(params => {
-    //     this.mailToken = params.token;
-    //     console.log("mailToken", this.mailToken);
-    //     if (this.mailToken) {
-    //       this.buildForm();
-    //     } else {
-    //       this.commonService.navigate('../auth')
-    //     }
-    //   })
+    this.route.queryParams
+      .subscribe(params => {
+        this.mailToken = params.token;
+        console.log("mailToken", this.mailToken);
+        if (this.mailToken) {
+          this.buildForm();
+        } else {
+          this.commonService.navigate('../auth')
+        }
+      })
   }
 
   buildForm() {
