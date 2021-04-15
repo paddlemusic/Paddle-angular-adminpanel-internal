@@ -47,12 +47,12 @@
       </div>
     </div>
     <div class="flex">
-      <div class="w-1/2 flex justify-end">
+      <div class="w-1/2 flex">
         <button type="button" *ngIf="domain.length <5" (click)="addDomain()"
           class="bg-blue-500  text-white  py-2 px-8 rounded-full mr-8 ">Add
           Domain</button>
       </div>
-      <div class="w-1/2 flex justify-center">
+      <div class="w-2/3 flex ml-12">
         <button type="submit" [disabled]="addUniversityForm?.invalid" [class.bg-green-700]='addUniversityForm?.valid'
           class="bg-green-300  text-white  py-2 px-8 rounded-full">Save</button>
       </div>
