@@ -29,9 +29,21 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  this.getAdminProfile();
+  // this.getAdminProfile();
+  this.customObservable();
   }
 
+  customObservable(){
+    this.helperService.getBehaviourObservable().subscribe((res:any)=>{
+      console.log("custom observable called",res)
+      // if(res){
+          this.getAdminProfile();
+      // }
+      // else if(res.type == 'profile'){
+      //   this.adminProfileData = res.data;
+      // }
+    })
+  }
      /**
    * Gets user profile
    */
@@ -43,11 +55,11 @@ export class HeaderComponent implements OnInit {
           console.log('REposne is:', res);
          this.adminProfileData = res.data;
 
-         //set Observable for profile
-         this.helperService.setBehaviourObservable({
-           type: 'profile',
-           data : this.adminProfileData
-         })
+        //  //set Observable for profile
+        //  this.helperService.setBehaviourObservable({
+        //    type: 'profile',
+        //    data : this.adminProfileData
+        //  })
         } 
   
       }, (err) => {
@@ -65,7 +77,11 @@ export class HeaderComponent implements OnInit {
 
 
   toggleDropdownMenu() {
+    console.log("status is:", this.status)
+    
+      
     this.status = !this.status;
+   
   }
 
   signOut(){

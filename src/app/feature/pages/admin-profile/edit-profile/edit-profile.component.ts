@@ -29,23 +29,10 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    this.customObservable()
+    this.getAdminProfile()
   }
 
-  customObservable(){
-    this.helperService.getBehaviourObservable().subscribe((res:any)=>{
-      if(!res){
-          this.getAdminProfile();
-      }
-      else if(res.type == 'profile'){
-         console.log("Res dat:", res.data)
-         this.imageFile = res.data.profile_picture
-         this.imageFilePath = res.data.profile_picture
-        //  this.adminProfileForm.patchValue(res.data)
-        this.adminProfileForm.get('name')?.setValue(res.data.name)
-      }
-    })
-  }
+ 
 
     /**
    * Gets user profile
@@ -131,6 +118,10 @@ export class EditProfileComponent implements OnInit {
     console.log("value is:", body)
     this.requestService.put(url , body).subscribe((res:any)=>{
       if(res.status_code == 200){
+        this.helperService.setBehaviourObservable({
+          type: 'profile',
+          data : res
+        })
         console.log("updated is:", res);
         this.modalService.showAlert({
           title: 'Success!',
@@ -140,6 +131,7 @@ export class EditProfileComponent implements OnInit {
           allowOutsideClick: false,
           timer : 1500
         })
+        
         // this.commonService.navigate('../pages/dashboard')
       }
     },(err)=>{

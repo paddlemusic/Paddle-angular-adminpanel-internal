@@ -21,7 +21,7 @@
                 <form method="POST" action="#">
                   <div class="bg-blue-500">
                     <div class="px-2 py-2 block text-white font-semibold break-words" role="menuitem" type="button">
-                      {{adminProfileData?.name}}</div>
+                      {{(adminProfileData?.name) ? (adminProfileData?.name) : 'Admin' }}</div>
                   </div>
                   <hr>
                   <div (click)="signOut()">

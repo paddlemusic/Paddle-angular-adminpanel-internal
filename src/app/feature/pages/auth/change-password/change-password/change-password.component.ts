@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { apiUrls } from '@app/shared/constants/apiUrls';
+import { AuthService } from '@app/shared/services/auth.service';
 import { CommonService } from '@app/shared/services/common.service';
 import { ModalService } from '@app/shared/services/modal.service';
 import { RequestService } from '@app/shared/services/request.service';
@@ -20,6 +21,7 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private fb : FormBuilder,
     private requestService : RequestService,
     private modalService : ModalService,
+    private authService : AuthService,
     private commonService : CommonService) { }
 
   ngOnInit(): void {
@@ -70,7 +72,16 @@ export class ChangePasswordComponent implements OnInit {
       console.log("Response is:", res);
       if(res.status_code == 200){
        this.status = true;
-       this.commonService.navigate('../auth')
+       this.modalService.showAlert({
+        title: 'Success!',
+        text: 'Password changed successfully.',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        allowOutsideClick: false,
+        timer : 1500
+      })
+      this.authService.signOut()
+      //  this.commonService.navigate('../auth')
       }
     },(err)=>{
       this.modalService.showAlert({
