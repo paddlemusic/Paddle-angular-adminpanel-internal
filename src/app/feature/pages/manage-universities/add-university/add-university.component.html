@@ -23,33 +23,39 @@
 
 
 
-    <div class="flex flex-col mb-6" >
+    <div class="flex flex-col mb-6">
       <label for="addDomain" class="block tracking-wide mb-2">Enter domain:</label>
       <div formArrayName="domain">
         <div *ngFor="let item of domain.controls; index as i">
           <ng-container *ngIf="i<5">
-          <input
-            class="rounded-lg resize-none bg-gray-100 border text-lg text-gray-300 border-gray-100 focus:border-gray-300 focus:outline-none p-4 mb-3"
-            [formControlName]="i" placeholder="Domain name" />
-          <button (click)="deleteDomain(i)" *ngIf="i>0"
-            class="bg-red-500  text-white  py-2 px-8 rounded-full ml-8">Remove</button>
+            <input
+              class="rounded-lg resize-none bg-gray-100 border text-lg text-gray-300 border-gray-100 focus:border-gray-300 focus:outline-none p-4 mb-3"
+              [formControlName]="i" placeholder="Domain name" />
+            <button (click)="deleteDomain(i)" *ngIf="i>0"
+              class="bg-red-500  text-white  py-2 px-8 rounded-full ml-8">Remove</button>
 
-          <span *ngIf="(item?.touched || item?.dirty) && item?.invalid && !item?.errors?.whitespace" class="error-msg">
-            <em class=" fa fa-exclamation-triangle "></em> This field is required
-          </span>
-          <span *ngIf="(item?.errors?.whitespace)" class="error-msg">
-            <em class="error-msg fa fa-exclamation-triangle"></em> Please enter valid data
-          </span>
-        </ng-container>
+            <span *ngIf="(item?.touched || item?.dirty) && item?.invalid && !item?.errors?.whitespace"
+              class="error-msg">
+              <em class=" fa fa-exclamation-triangle "></em> This field is required
+            </span>
+            <span *ngIf="(item?.errors?.whitespace)" class="error-msg">
+              <em class="error-msg fa fa-exclamation-triangle"></em> Please enter valid data
+            </span>
+          </ng-container>
         </div>
 
       </div>
     </div>
-    <div class="flex justify-end">
-      <button type="button" *ngIf="domain.length <5" (click)="addDomain()" class="bg-blue-500  text-white  py-2 px-8 rounded-full mr-8">Enter
-        domain</button>
-      <button type="submit" [disabled]="addUniversityForm?.invalid" [class.bg-green-700]='addUniversityForm?.valid'
-        class="bg-green-300  text-white  py-2 px-8 rounded-full">Save</button>
+    <div class="flex">
+      <div class="w-1/2 flex justify-end">
+        <button type="button" *ngIf="domain.length <5" (click)="addDomain()"
+          class="bg-blue-500  text-white  py-2 px-8 rounded-full mr-8 ">Enter
+          Domain</button>
+      </div>
+      <div class="w-1/2 flex justify-center">
+        <button type="submit" [disabled]="addUniversityForm?.invalid" [class.bg-green-700]='addUniversityForm?.valid'
+          class="bg-green-300  text-white  py-2 px-8 rounded-full">Save</button>
+      </div>
     </div>
 
   </form>
