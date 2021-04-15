@@ -3,7 +3,7 @@ import { SelectionModel } from "@angular/cdk/collections";
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table'
 import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, finalize, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { RequestService } from '@app/shared/services/request.service';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { environment } from '@env/environment';

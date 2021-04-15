@@ -3,7 +3,6 @@ import { RequestService } from '@app/shared/services/request.service';
 import { environment } from '@env/environment';
 import { BehaviorSubject } from 'rxjs';
 import { apiUrls } from '@app/shared/constants/apiUrls'
-import { map } from 'rxjs/operators';
 import { CommonService } from '../../shared/services/common.service';
 
 @Injectable({
@@ -28,7 +27,7 @@ export class AuthService {
       return true
     } else {
         return false
-    };
+    }
   }
 
   login(user: any) {
