@@ -27,6 +27,7 @@ export class UserDetailsComponent implements OnInit {
   })
 }
 
+
     /**
    * Gets user profile
    */

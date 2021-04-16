@@ -98,7 +98,8 @@ this.requestService.get(url , params).subscribe((res:any)=>{
     let params : any = {
       page : this.pageIndex,
       pageSize : this.pageSize,
-      name : this.searchKey
+      name : this.searchKey,
+      universityId : this.universityId
     }
     console.log("params are:", params)
 this.requestService.get(url , params).subscribe((res:any)=>{
@@ -151,11 +152,12 @@ console.log("ERror is:", err)
    console.log("Event is:", event.target.value)
    if(event.target.value){
    this.universityId = event.target.value;
-   if(this.universityId == 0){
+  //  if(this.universityId == 0){
     this.getSongList(false)
-   }else{
-     this.getDataViaUniversity(false)
-   }
+    // this.searchFilter()
+  //  }else{
+  //    this.getDataViaUniversity(false)
+  //  }
    
    }
 }
