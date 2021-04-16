@@ -8,7 +8,7 @@
       <label for="addUNiversity" class=" block tracking-wide mb-2">Enter your University name:</label>
       <input
         class="rounded-lg resize-none bg-gray-100 border text-lg text-gray-300 border-gray-100 focus:border-gray-300 focus:outline-none p-4"
-        formControlName="name" placeholder="University name" />
+        formControlName="name" placeholder="University name" maxlength="30"/>
       <app-show-error [control]="f.name"></app-show-error>
     </div>
     <div class="flex flex-col mb-6">

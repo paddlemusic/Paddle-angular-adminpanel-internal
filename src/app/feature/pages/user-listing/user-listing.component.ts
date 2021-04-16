@@ -3,7 +3,7 @@ import { SelectionModel } from "@angular/cdk/collections";
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table'
 import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, finalize, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { RequestService } from '@app/shared/services/request.service';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { environment } from '@env/environment';
@@ -25,7 +25,9 @@ export class UserListingComponent implements OnInit {
   searchKey:string = '';
   searchUniKey :string = '';
   userList : any;
+  universityId : any = 0;
   userListData : any;
+  universityListData : string[] =[];
 
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 	@ViewChild('searchInput', { static: true }) searchInput: ElementRef;
@@ -41,9 +43,49 @@ export class UserListingComponent implements OnInit {
    
     this.getUserList(true)
     this.searchFilterByName();
-    this.searchFilterByUniversityName();
+    this.getUniverityList();
+    // this.searchFilterByUniversityName();
   }
 
+    /**
+   * Gets univerity list
+   */
+     getUniverityList(): void {
+
+      let url: string = environment.baseUrl + apiUrls.getUniversities;
+      let params: any = {
+        name: this.searchKey
+      }
+      console.log("params are:", params)
+      this.requestService.get(url, params).subscribe((res: any) => {
+        if (res.status_code == 200) {
+          console.log("REspons is:", res)
+          this.universityListData = res.data.rows;
+          console.log("Data source:", this.universityListData);
+        }
+      }, (err) => {
+        console.log("ERror is:", err)
+      })
+    }
+
+
+  /**
+   * Selects university
+   */
+ selectUniversity(event:any){
+  // this.universityId = undefined;
+   console.log("Event is:", event.target.value)
+   if(event.target.value){
+   this.universityId = event.target.value;
+   this.getUserList(false);
+  //  if(this.universityId == 0){
+  //   this.getSongList(false)
+  //  }else{
+  //    this.getDataViaUniversity(false)
+  //  }
+   
+   }
+}
  
 
   getUserList(resiterpagination:boolean): void {
@@ -53,7 +95,7 @@ export class UserListingComponent implements OnInit {
       page : this.pageIndex,
       pageSize : this.pageSize,
       name : this.searchKey,
-      universityName : this.searchUniKey
+      universityId : this.universityId
     }
     console.log("params are:", params)
 this.requestService.get(url , params).subscribe((res:any)=>{
@@ -110,28 +152,28 @@ console.log("ERror is:", err)
 			this.getUserList(true)
 		});
   }
-  searchFilterByUniversityName(){
-    fromEvent(this.searchInputUni.nativeElement, 'keyup').pipe(
-			map((event: any) => {
-				if (this.searchInputUni.nativeElement.value.trim() === '') {
-					this.searchUniKey = '';
-					this.selection.clear();
-					this.getUserList(true);
-				} else {
-					return event.target.value;
-				}
-			}),
-			filter(res => {
-       console.log("filter res is:", res);
-        return res?.length > 0 && res.trim() !== ''
-      }),
-			debounceTime(300)
-			, distinctUntilChanged()
-		).subscribe((text: string) => {
-			this.searchUniKey = text.trim();
-			this.getUserList(true)
-		});
-  }
+  // searchFilterByUniversityName(){
+  //   fromEvent(this.searchInputUni.nativeElement, 'keyup').pipe(
+	// 		map((event: any) => {
+	// 			if (this.searchInputUni.nativeElement.value.trim() === '') {
+	// 				this.searchUniKey = '';
+	// 				this.selection.clear();
+	// 				this.getUserList(true);
+	// 			} else {
+	// 				return event.target.value;
+	// 			}
+	// 		}),
+	// 		filter(res => {
+  //      console.log("filter res is:", res);
+  //       return res?.length > 0 && res.trim() !== ''
+  //     }),
+	// 		debounceTime(300)
+	// 		, distinctUntilChanged()
+	// 	).subscribe((text: string) => {
+	// 		this.searchUniKey = text.trim();
+	// 		this.getUserList(true)
+	// 	});
+  // }
 
 
  
