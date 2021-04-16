@@ -18,7 +18,7 @@
   .nav-text{
     @apply flex flex-col items-center py-1 align-middle text-white no-underline px-2;
   }
-  
+
   .nav-text.active{
     @apply border-white bg-white bg-opacity-25;
   }
@@ -48,6 +48,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
     .select-inpt {
     width: 160px;
+}
+.py-130 {
+padding-top :1.30rem;
+padding-bottom: 1.30rem;
+}
+.select-inpt-uni {
+  width: 300px;
+  height : 2.75rem
 }
 select:required:invalid {
   color: rgb(153, 143, 143);
