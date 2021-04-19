@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
-import { catchError, tap , map} from 'rxjs/operators';
+import { catchError,  map} from 'rxjs/operators';
 import { CommonService } from "@app/shared/services/common.service";
 import { AuthService } from "@app/shared/services/auth.service";
 import { LoaderService } from "@app/shared/components/layout/loader/loader.service";
@@ -45,9 +45,9 @@ export class AuthInterceptor implements HttpInterceptor {
           this.onEnd();
           if (err.status === 401) {
             // auto logout if 401 response returned from api
-            let body = {
-                access_token : this.commonService.getLocalStorage('token', false)
-            }
+            // let body = {
+            //     access_token : this.commonService.getLocalStorage('token', false)
+            // }
            this.authService.signOut()    
         }
 

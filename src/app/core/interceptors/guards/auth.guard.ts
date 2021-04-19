@@ -1,6 +1,5 @@
-import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanLoad, Router, NavigationExtras } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanLoad, Router } from '@angular/router';
 import { AuthService } from '@app/shared/services/auth.service';
 import { CommonService } from '@app/shared/services/common.service';
 import { Observable } from 'rxjs';
@@ -25,8 +24,8 @@ export class AuthGuard implements CanActivate , CanLoad{
   
 
   canLoad(route: any): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> |boolean {
-    const url = `/${route.path}`;
-    console.log("canload called:", this.authService.isAuthenticated())
+    // const url = `/${route.path}`;
+    // console.log("canload called:", this.authService.isAuthenticated())
     if (!this.authService.isAuthenticated()) {
       this.commonService.navigate('/auth/login');
       return false;
@@ -36,11 +35,7 @@ export class AuthGuard implements CanActivate , CanLoad{
       take(1),                              // {2} 
         map((isLoggedIn: boolean) => {         // {3}
         console.log("isLoggedIn", isLoggedIn)
-        const sessionId = 123456789;
-        const navigationExtras: NavigationExtras = {
-          queryParams: { session_id: sessionId },
-          fragment: 'anchor'
-        };
+       
           if (!isLoggedIn) {
             this.commonService.navigate('/auth/login');  // {4}
             return false;
@@ -62,11 +57,7 @@ export class AuthGuard implements CanActivate , CanLoad{
       take(1),                              // {2} 
         map((isLoggedIn: boolean) => {         // {3}
         console.log("isLoggedIn", isLoggedIn)
-        const sessionId = 123456789;
-        const navigationExtras: NavigationExtras = {
-          queryParams: { session_id: sessionId },
-          fragment: 'anchor'
-        };
+       
           if (!isLoggedIn) {
             this.commonService.navigate('');  // {4}
             return false;
