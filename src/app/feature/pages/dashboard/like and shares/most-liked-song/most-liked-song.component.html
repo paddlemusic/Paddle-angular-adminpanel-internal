@@ -116,6 +116,12 @@
                         <th id="song"
                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Song Name</th>
+                        <th id="song"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Artist Name</th>
+                        <th id="album"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Album Name</th>
                         <th id="caption"
                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Caption</th>
@@ -135,22 +141,38 @@
                     <tr *ngFor="let row of dataSource?.data;let i = index">
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
+                            <div class="flex items-center ">
                                 <img class="w-10 h-10 rounded-full mr-4"
                                     [src]="(row?.media_image)?(row.media_image):('assets/photo.png')" alt='avatar'>
                              
                             </div>
                         </td>
+                        
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
-                                
+                            <div class="flex items-center">
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.media_name}}</p>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
+                            <div class="flex items-center">
+                                
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.meta_data}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center">
+                                
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.album_name}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center ">
 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.caption}}</p>
@@ -158,7 +180,7 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
+                            <div class="flex items-center ">
                                 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.likeCount}}</p>
@@ -166,7 +188,7 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
+                            <div class="flex items-center ">
 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.shareCount}}</p>

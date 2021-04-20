@@ -1,15 +1,15 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { apiUrls } from '@app/shared/constants/apiUrls';
 import { MEDIATYPES, MEDIA_TYPES, MONTH, MONTHS, YEARS } from '@app/shared/constants/common';
 import { RequestService } from '@app/shared/services/request.service';
 import { environment } from '@env/environment';
 
 @Component({
-  selector: 'app-app-signup',
-  templateUrl: './app-signup.component.html',
-  styleUrls: ['./app-signup.component.scss']
+  selector: 'app-post-analytics',
+  templateUrl: './post-analytics.component.html',
+  styleUrls: ['./post-analytics.component.scss']
 })
-export class AppSignupComponent implements OnInit {
+export class PostAnalyticsComponent implements OnInit {
 
   @Input('universityListData') universityListData:any;
 
@@ -29,7 +29,8 @@ export class AppSignupComponent implements OnInit {
   appData:any
  
 
-  constructor(private requestService: RequestService) { }
+  constructor(private requestService: RequestService,
+    ) { }
 
     ngOnChanges(){
       // this.universityListData = this.universityListData;
@@ -51,7 +52,6 @@ export class AppSignupComponent implements OnInit {
   */
  getMonthlyAppData(resiterpagination:boolean){
   let params = {
-    
     university_id : this.universityId,
     month : this.monthId,
     year : this.year,
@@ -78,7 +78,10 @@ export class AppSignupComponent implements OnInit {
     */
    getTotalAppData(resiterpagination:boolean){
     let params = {
+      // page : this.pageIndex,
+      // pageSize : this.pageSize,
       university_id : this.universityId,
+      // media_type : 1,//this.mediaTypeId,
     time_span : 1, 
 
     }
@@ -86,6 +89,7 @@ export class AppSignupComponent implements OnInit {
       this.requestService.get(url , params).subscribe((res:any)=>{
         if(res.status_code == 200 ){
           console.log("REspons is:", res)
+          // this.totalCount = res.data.count;
           this.appData = res.data;
          
         }
@@ -94,6 +98,27 @@ export class AppSignupComponent implements OnInit {
       })
   }
 
+  getWeelyAppData(resiterpagination:boolean){
+    let params = {
+      university_id : this.universityId,
+      month : this.monthId,
+      year : this.year,
+      time_span : 3, 
+  
+    }
+      let url:string = environment.baseUrl + apiUrls.getpostAnalytics
+    this.requestService.get(url , params).subscribe((res:any)=>{
+      if(res.status_code == 200 ){
+        console.log("REspons is:", res)
+        this.appData = res.data;
+       
+      }
+    },(err)=>{
+      console.log("Error is:", err);
+    })
+    
+    }
+  
 
  
 
@@ -133,6 +158,9 @@ export class AppSignupComponent implements OnInit {
     else if(this.typeId == 2){
       this.getTotalAppData(true)
     }
+    else if(this.typeId == 3){
+      this.getWeelyAppData(true)
+    }
   }
 
   /**
@@ -140,6 +168,7 @@ export class AppSignupComponent implements OnInit {
    * @param event 
    */
   selectMediaType(event:any){
+    // this.mediaTypeId = undefined;
     console.log("Event is:", event.target.value)
     if(event.target.value){
     this.mediaTypeId = event.target.value
@@ -151,14 +180,16 @@ export class AppSignupComponent implements OnInit {
   * @param event 
   */
  selectYear(event:any){
-  // console.log("Event is:", event.target.value)
+  //  this.year = undefined;
+  console.log("Event is:", event.target.value)
   if(event.target.value){
   this.year = event.target.value
   }
 }
 
 selectMonth(event:any){
-//  console.log("Event is:", event.target.value)
+  // this.monthId = undefined;
+ console.log("Event is:", event.target.value)
  if(event.target.value){
  this.monthId = event.target.value
  }
@@ -181,10 +212,4 @@ getDate(){
    year : year
  }
 }
-
-
-
-
-
-
 }
