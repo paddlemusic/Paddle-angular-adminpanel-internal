@@ -3,10 +3,9 @@
     <!-- Table -->
     <div class="flex justify-between items-baseline px-5 ">
         <div class="header flex items-baseline justify-start">
-            <img class="w-4 h-4 mr-4 cursor-pointer" src="assets/back.png"
-            alt="back" routerLink="/pages/dashboard">
+            <img class="w-4 h-4 mr-4 cursor-pointer" src="assets/back.png" alt="back" routerLink="/pages/dashboard">
             <h3 class="text-xl text-gray-400 font-bold mb-6">Most Liked/Shared Songs</h3>
-          </div>
+        </div>
         <div class="">
             <div class="pt-2 relative mx-auto text-gray-600">
                 <div class='flex flex-row p-4'>
@@ -50,7 +49,7 @@
                                 </select>
                             </div>
 
-                            
+
                             <ng-container *ngIf="typeId == 1">
                                 <div class="relative inline-flex ">
                                     <div
@@ -111,22 +110,28 @@
                 <thead>
                     <tr>
                         <th id="sno"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            class="px-2 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                         </th>
                         <th id="song"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            class="px-2 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Song Name</th>
-                        <th id="caption"
+                        <th id="song"
+                            class="px-2 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Artist Name</th>
+                        <th id="album"
+                            class="px-2 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Album Name</th>
+                        <!-- <th id="caption"
                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                            Caption</th>
+                            Caption</th> -->
 
                         <th id="likeCount"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            class="px-2 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Like Count</th>
                         <th id="shareCount"
-                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            class="px-2 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Share Count</th>
-                       
+
 
                     </tr>
                 </thead>
@@ -134,51 +139,68 @@
                     <!--  -->
                     <tr *ngFor="let row of dataSource?.data;let i = index">
 
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center ">
                                 <img class="w-10 h-10 rounded-full mr-4"
                                     [src]="(row?.media_image)?(row.media_image):('assets/photo.png')" alt='avatar'>
-                             
+
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
-                                
+
+                        <td class="px-2 py-4  border-b border-gray-500">
+                            <div class="flex items-center">
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.media_name}}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
+                        <td class="px-2 py-4  border-b border-gray-500">
+                            <div class="flex items-center">
+
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.meta_data}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-2 py-4  border-b border-gray-500">
+                            <div class="flex items-center">
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.album_name}}</p>
+                                    <!-- <p class="text-gray-300 leading-none">dgdf rgdb rrb retret ertert ertewt ewrwet
+                                    </p> -->
+                                </div>
+                            </div>
+                        </td>
+                        <!-- <td class="px-6 py-4  border-b border-gray-500">
+                            <div class="flex items-center ">
 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.caption}}</p>
                                 </div>
                             </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
-                                
+                        </td> -->
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center ">
+
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.likeCount}}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center ">
 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.shareCount}}</p>
                                 </div>
                             </div>
                         </td>
-                       
+
 
                     </tr>
 
                 </tbody>
-               
+
             </table>
         </div>
         <div *ngIf="(dataSource?.data?.length == 0)"

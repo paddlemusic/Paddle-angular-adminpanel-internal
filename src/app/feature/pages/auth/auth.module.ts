@@ -10,38 +10,38 @@ import { ChangePasswordComponent } from './change-password/change-password/chang
 
 const routes: Routes = [
   {
-      path: '',
-      redirectTo: 'login',
-      pathMatch: 'full'
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-      path: 'login',
-      component: LoginComponent,
+    path: 'login',
+    component: LoginComponent,
   },
   {
-      path: 'change-password',
-      component: ChangePasswordComponent,
+    path: 'change-password',
+    component: ChangePasswordComponent,
   },
   {
     path: 'reset-password',
     component: ResetPasswordComponent,
-    canActivate : []
-},
+    canActivate: []
+  },
   {
-      path: 'forgot-password',
-      component: ForgotPasswordComponent,
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
   },
 
 ];
 
 @NgModule({
-  declarations: [LoginComponent, ForgotPasswordComponent,ResetPasswordComponent, ChangePasswordComponent],
+  declarations: [LoginComponent, ForgotPasswordComponent, ResetPasswordComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        RouterModule.forChild(routes)
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class AuthModule { }
