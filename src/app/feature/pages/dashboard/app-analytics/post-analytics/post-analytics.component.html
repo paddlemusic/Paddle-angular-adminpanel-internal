@@ -97,11 +97,11 @@
     <dl>
       <div class="mb-1 text-md grid lg:grid-cols-2 md:grid-cols-2" *ngIf="typeId != 3">
         <dt class="text-gray-300 font-bold">Total amount of posts</dt>
-        <dd class="text-gray-200">776767</dd>
+        <dd class="text-gray-200">{{appData?.count}}</dd>
       </div>
       <div class="mb-1 text-md grid lg:grid-cols-2 md:grid-cols-2" *ngIf="typeId != 2">
         <dt class="text-gray-300 font-bold">Amount of users creating 2 or more posts</dt>
-        <dd class="text-gray-200">67676</dd>
+        <dd class="text-gray-200">{{appData?.countMoreThanTwoPost}}</dd>
       </div>
     </dl>
   

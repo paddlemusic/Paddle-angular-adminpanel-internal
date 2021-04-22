@@ -26,7 +26,8 @@ export class PostAnalyticsComponent implements OnInit {
   YEARS = YEARS;
 
  
-  appData:any
+  appData:any;
+  // appDataYear : any;
  
 
   constructor(private requestService: RequestService,
@@ -52,13 +53,15 @@ export class PostAnalyticsComponent implements OnInit {
   */
  getMonthlyAppData(resiterpagination:boolean){
   let params = {
+   
     university_id : this.universityId,
     month : this.monthId,
+    media_type : 1,//this.mediaTypeId,
     year : this.year,
-    time_span : 2, 
+    time_span : 2
 
   }
-    let url:string = environment.baseUrl + apiUrls.getSignupAnalytics
+    let url:string = environment.baseUrl + apiUrls.getpostAnalytics
   this.requestService.get(url , params).subscribe((res:any)=>{
     if(res.status_code == 200 ){
       console.log("REspons is:", res)
@@ -78,14 +81,14 @@ export class PostAnalyticsComponent implements OnInit {
     */
    getTotalAppData(resiterpagination:boolean){
     let params = {
-      // page : this.pageIndex,
-      // pageSize : this.pageSize,
       university_id : this.universityId,
-      // media_type : 1,//this.mediaTypeId,
-    time_span : 1, 
+      // month : this.monthId,
+      media_type : 1,//this.mediaTypeId,
+      year : this.year,
+      time_span : 1
 
     }
-      let url:string = environment.baseUrl + apiUrls.getSignupAnalytics
+      let url:string = environment.baseUrl + apiUrls.getpostAnalytics
       this.requestService.get(url , params).subscribe((res:any)=>{
         if(res.status_code == 200 ){
           console.log("REspons is:", res)
@@ -102,8 +105,9 @@ export class PostAnalyticsComponent implements OnInit {
     let params = {
       university_id : this.universityId,
       month : this.monthId,
+      media_type : 1,//this.mediaTypeId,
       year : this.year,
-      time_span : 3, 
+      time_span : 3
   
     }
       let url:string = environment.baseUrl + apiUrls.getpostAnalytics
@@ -152,6 +156,7 @@ export class PostAnalyticsComponent implements OnInit {
   }
 
   getFilterData(){
+    this.appData = {}
     if(this.typeId == 1){
       this.getMonthlyAppData(true);
     }
@@ -167,13 +172,13 @@ export class PostAnalyticsComponent implements OnInit {
    * Selects media type
    * @param event 
    */
-  selectMediaType(event:any){
-    // this.mediaTypeId = undefined;
-    console.log("Event is:", event.target.value)
-    if(event.target.value){
-    this.mediaTypeId = event.target.value
-    }
- }
+//   selectMediaType(event:any){
+//     // this.mediaTypeId = undefined;
+//     console.log("Event is:", event.target.value)
+//     if(event.target.value){
+//     this.mediaTypeId = event.target.value
+//     }
+//  }
 
  /**
   * Selects year

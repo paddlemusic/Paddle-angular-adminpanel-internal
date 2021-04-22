@@ -32,7 +32,7 @@ export const apiUrls = {
 
     getSignupAnalytics : adminUrl + '/analytics/getSignups',
     getAppUsageAnalytics : adminUrl + '/analytics/getAppUsageTime',
-    getpostAnalytics : '',
+    getpostAnalytics : adminUrl + '/analytics/userPostDataAnalytics',
      manageSongs : adminUrl + '/songs/songsViaUniversity',
      getAppOpenData : adminUrl + '/analytics/getAppOpenData',
      getWeeklyAppOpenData : adminUrl + '/analytics/getWeeklyAppOpenData'
