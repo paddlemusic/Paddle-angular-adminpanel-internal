@@ -34,26 +34,6 @@ const routes: Routes = [
       {
         path : 'songs',
         component : SongListingComponent
-      },
-      {
-        path: 'notifications',
-        loadChildren: () => import('../../../pages/notifications/notifications.module').then(m => m.NotificationsModule),
-      },
-      {
-        path: 'terms-conditions',
-        loadChildren: () => import('./../../terms-and-conditions/terms-and-conditions.module').then(m => m.TermsAndConditionsModule)
-      },
-      {
-        path: 'support-request',
-        loadChildren: () => import('./../../support-request/support-request.module').then(m => m.SupportRequestModule)
-      },
-      {
-        path: 'order-details',
-        loadChildren: () => import('./../../details/details.module').then(m => m.DetailsModule)
-      },
-      {
-        path: 'FAQ',
-        loadChildren: () => import('./../../faq/faq.module').then(m => m.FAQModule)
       }
     ]
   },

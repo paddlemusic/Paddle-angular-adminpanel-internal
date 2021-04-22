@@ -6,7 +6,6 @@ import { EditUniversityComponent } from './edit-university/edit-university.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUniversityComponent } from './add-university/add-university.component';
 import { SharedModule } from '@app/shared/shared.module';
-import { DetailUniversityComponent } from './detail-university/detail-university.component';
 import { LayoutModule } from '@app/shared/components/layout/layout.module';
 
 const routes: Routes = [
@@ -30,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UniversityListingComponent, EditUniversityComponent, AddUniversityComponent, DetailUniversityComponent],
+  declarations: [UniversityListingComponent, EditUniversityComponent, AddUniversityComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
