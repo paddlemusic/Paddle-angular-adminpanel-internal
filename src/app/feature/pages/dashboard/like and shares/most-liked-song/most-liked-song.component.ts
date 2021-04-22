@@ -249,6 +249,6 @@ export class MostLikedSongComponent implements OnInit, OnChanges {
   pageChange(page: any) {
     this.pageIndex = page.pageIndex;
     this.getTotalLikeShareData(false);
-    this.getMonthlyLikeData(false);
+    // this.getMonthlyLikeData(false);
   }
 }
