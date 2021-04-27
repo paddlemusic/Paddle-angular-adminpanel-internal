@@ -101,7 +101,7 @@ export class PostAnalyticsComponent implements OnInit {
       })
   }
 
-  getWeelyAppData(resiterpagination:boolean){
+  getWeelkyAppData(resiterpagination:boolean){
     let params = {
       university_id : this.universityId,
       month : this.monthId,
@@ -113,8 +113,8 @@ export class PostAnalyticsComponent implements OnInit {
       let url:string = environment.baseUrl + apiUrls.getpostAnalytics
     this.requestService.get(url , params).subscribe((res:any)=>{
       if(res.status_code == 200 ){
-        console.log("REspons is:", res)
         this.appData = res.data;
+        console.log("REspons is:", this.appData)
        
       }
     },(err)=>{
@@ -145,6 +145,7 @@ export class PostAnalyticsComponent implements OnInit {
    * @param event 
    */
   selectType(event:any){
+    this.appData = {}
     // this.typeId = undefined;
     if(event.target.value){
       // this.year = '';
@@ -164,7 +165,7 @@ export class PostAnalyticsComponent implements OnInit {
       this.getTotalAppData(true)
     }
     else if(this.typeId == 3){
-      this.getWeelyAppData(true)
+      this.getWeelkyAppData(true)
     }
   }
 
