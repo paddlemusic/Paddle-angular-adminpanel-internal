@@ -41,6 +41,7 @@
                                     class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                                     (change)="selectUniversity($event)">
                                     <option selected value="0">All</option>
+                                    <option  value="-1">None</option>
                                     <option *ngFor="let university of universityListData" [value]="university?.id">
                                         {{university?.name}}</option>
                                 </select>

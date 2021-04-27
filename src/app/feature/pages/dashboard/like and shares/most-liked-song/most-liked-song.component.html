@@ -44,6 +44,7 @@
                                     class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                                     (change)="selectUniversity($event)">
                                     <option selected value="0">All</option>
+                                    <option  value="-1">None</option>
                                     <option *ngFor="let university of universityListData" [value]="university?.id">
                                         {{university?.name}}</option>
                                 </select>
@@ -183,7 +184,7 @@
                             <div class="flex items-center ">
 
                                 <div class="text-sm">
-                                    <p class="text-gray-300 leading-none">{{row?.likeCount}}</p>
+                                    <p class="text-gray-300 leading-none">{{row?.likecount}}</p>
                                 </div>
                             </div>
                         </td>
@@ -191,7 +192,7 @@
                             <div class="flex items-center ">
 
                                 <div class="text-sm">
-                                    <p class="text-gray-300 leading-none">{{row?.shareCount}}</p>
+                                    <p class="text-gray-300 leading-none">{{row?.sharecount}}</p>
                                 </div>
                             </div>
                         </td>
