@@ -117,11 +117,17 @@
                     <tr>
 
                         <th id="sno"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">#
+                        </th>
+                        <th id="image"
                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                         </th>
                         <th id="track"
                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Track Name</th>
+                        <th id="artist"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Artist Name</th>
                        
 
                         <th id="count"
@@ -133,6 +139,14 @@
                 <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0">
                     <!--  -->
                     <tr *ngFor="let row of dataSource?.data;let i = index">
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{i+1}}</p>
+                                </div>
+                            </div>
+                        </td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                                 <img class="w-10 h-10 rounded-full mr-4"
@@ -150,6 +164,14 @@
                             </div>
                         </td>
                         
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.media_metadata?.artist_name}}</p>
+                                </div>
+                            </div>
+                        </td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                                

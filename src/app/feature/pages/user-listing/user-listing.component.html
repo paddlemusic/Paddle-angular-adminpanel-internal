@@ -73,6 +73,9 @@
             <table class="md:min-w-full" aria-describedby="userListing">
                 <thead>
                     <tr>
+                        <th id="sno"
+                        class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                        #</th>
                         <th id="select"
                             class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             <mat-checkbox (change)="$event ? masterToggle() : null"
@@ -81,15 +84,17 @@
                                 [aria-label]="checkboxLabel()">
                             </mat-checkbox>
                         </th>
-                        <th id="userId"
+                       
+                        <!-- <th id="userId"
                             class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                            User Id</th>
+                            User Id</th> -->
+                            <th id="name"
+                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Name</th>
                         <th id="university"
                             class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             University Name</th>
-                        <th id="name"
-                            class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
-                            Name</th>
+                      
 
                         <th id="email"
                             class="px-3 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
@@ -108,15 +113,33 @@
                 <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0">
                     <tr *ngFor="let row of dataSource?.data;let i = index">
                         <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{i+1}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
                             <mat-checkbox (change)="$event ? selection.toggle(row) : null"
                                 [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
                             </mat-checkbox>
                         </td>
-                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
+              
+                        <!-- <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.id}}</p>
+                                </div>
+                            </div>
+                        </td> -->
+                        
+                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.name}}</p>
                                 </div>
                             </div>
                         </td>
@@ -125,14 +148,6 @@
 
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{row?.University?.name}}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-500">
-                            <div class="flex items-center cursor-pointer">
-
-                                <div class="text-sm">
-                                    <p class="text-gray-300 leading-none">{{row?.name}}</p>
                                 </div>
                             </div>
                         </td>

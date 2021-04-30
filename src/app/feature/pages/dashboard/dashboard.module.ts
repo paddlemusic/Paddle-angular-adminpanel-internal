@@ -20,6 +20,7 @@ import { OpeningTwoOrMoreTimesPerDayComponent } from './app-analytics/opening-tw
 // import { OpeningAtleastOnceAWeekComponent } from './app-analytics/opening-atleast-once-a-week/opening-atleast-once-a-week.component';
 import { AuthGuard } from '@app/core/interceptors/guards/auth.guard';
 import { PostAnalyticsComponent } from './app-analytics/post-analytics/post-analytics.component';
+import { MostSharedSongComponent } from './like and shares/most-shared-song/most-shared-song.component';
 
 const routes: Routes = [
     {
@@ -47,7 +48,7 @@ const routes: Routes = [
     
 ];
 @NgModule({
-    declarations: [DashboardComponent, StreamComponent, LikeSharesComponent, SongComponent, ArtistComponent, AlbumComponent, MostLikedSongComponent, MostLikedArtistComponent, MostLikedAlbumComponent, AppAnalyticsComponent, AppUsageComponent, AppSignupComponent, OpeningTwoOrMoreTimesPerDayComponent, PostAnalyticsComponent],
+    declarations: [DashboardComponent, StreamComponent, LikeSharesComponent, SongComponent, ArtistComponent, AlbumComponent, MostLikedSongComponent, MostLikedArtistComponent, MostLikedAlbumComponent, AppAnalyticsComponent, AppUsageComponent, AppSignupComponent, OpeningTwoOrMoreTimesPerDayComponent, PostAnalyticsComponent, MostSharedSongComponent],
     imports: [
         LayoutModule,
         SharedModule,

@@ -88,6 +88,8 @@ export class UserListingComponent implements OnInit {
 }
  
 
+ 
+
   getUserList(resiterpagination:boolean): void {
     
     let url : string = environment.baseUrl + apiUrls.userProfile;
