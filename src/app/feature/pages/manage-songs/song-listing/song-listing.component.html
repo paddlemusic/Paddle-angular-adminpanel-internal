@@ -17,7 +17,6 @@
                     class="select-inpt-uni border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-5 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                     (change)="selectUniversity($event)">
                     <option selected value="0">All</option>
-                    <!-- <option  value="-1">None</option> -->
                     <option *ngFor="let university of universityListData" [value]="university?.id">
                         {{university?.name}}</option>
                 </select>
@@ -58,6 +57,9 @@
                         <th id="album"
                             class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
                             Album Name</th>
+                        <th id="stream count"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Stream Count</th>    
                     </tr>
                 </thead>
                 <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0">
@@ -70,7 +72,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                                 <img class="w-10 h-10 rounded-full mr-4"
                                     [attr.src]="(row?.media_metadata?.image)? row?.media_metadata?.image : 'assets/photo.png'"
@@ -78,7 +80,7 @@
                                 
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                                 
                                 <div class="text-sm">
@@ -86,7 +88,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                               
                                 <div class="text-sm">
@@ -94,11 +96,19 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
                             <div class="flex items-center cursor-pointer">
                               
                                 <div class="text-sm">
                                     <p class="text-gray-300 leading-none">{{getSpacedRow(row?.media_metadata?.album_name) }}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-2 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                              
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.count}}</p>
                                 </div>
                             </div>
                         </td>

@@ -30,6 +30,9 @@ export const apiUrls = {
     getMonthlyLikeShareData : adminUrl + '/analytics/getShareLike',
     getTotalLikeShareData : adminUrl + '/analytics/getShareLike',
 
+    getMonthlyShareData : adminUrl + '/analytics/getShareAnalytics',
+    getTotalShareData : adminUrl + '/analytics/getShareAnalytics',
+    
     getSignupAnalytics : adminUrl + '/analytics/getSignups',
     getAppUsageAnalytics : adminUrl + '/analytics/getAppUsageTime',
     getpostAnalytics : adminUrl + '/analytics/userPostDataAnalytics',

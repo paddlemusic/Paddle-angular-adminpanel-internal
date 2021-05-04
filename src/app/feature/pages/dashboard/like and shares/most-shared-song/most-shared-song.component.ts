@@ -71,7 +71,7 @@ export class MostSharedSongComponent implements OnInit,OnChanges {
       time_span: 2
 
     }
-    let url: string = environment.baseUrl + apiUrls.getMonthlyLikeShareData
+    let url: string = environment.baseUrl + apiUrls.getMonthlyShareData
     this.requestService.get(url, params).subscribe((res: any) => {
       if (res.status_code == 200) {
         console.log("REspons is:", res)
@@ -103,7 +103,7 @@ export class MostSharedSongComponent implements OnInit,OnChanges {
       time_span: 1
 
     }
-    let url: string = environment.baseUrl + apiUrls.getTotalLikeShareData
+    let url: string = environment.baseUrl + apiUrls.getTotalShareData
     this.requestService.get(url, params).subscribe((res: any) => {
       if (res.status_code == 200) {
         console.log("REspons is:", res)

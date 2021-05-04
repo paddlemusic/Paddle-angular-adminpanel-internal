@@ -5,6 +5,8 @@ import { PagesComponent } from './../../pages.component';
 import { LayoutModule } from '@app/shared/components/layout/layout.module';
 import { EditProfileComponent } from '../../admin-profile/edit-profile/edit-profile.component';
 import { SongListingComponent } from '../../manage-songs/song-listing/song-listing.component';
+import { TermsAndConditionsComponent } from '../../terms-and-conditions/terms-and-conditions.component';
+import { PrivacyPolicyComponent } from '../../privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,14 @@ const routes: Routes = [
       {
         path : 'songs',
         component : SongListingComponent
+      },
+      {
+        path : 'terms-and-conditions',
+        component : TermsAndConditionsComponent
+      },
+      {
+        path : 'privacy-policy',
+        component : PrivacyPolicyComponent
       }
     ]
   },
