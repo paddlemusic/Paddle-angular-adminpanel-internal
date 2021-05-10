@@ -38,7 +38,7 @@ const routes: Routes = [
         component : SongListingComponent
       },
       {
-        path : 'terms-and-conditions',
+        path : 'terms-of-usage',
         component : TermsAndConditionsComponent
       },
       {
