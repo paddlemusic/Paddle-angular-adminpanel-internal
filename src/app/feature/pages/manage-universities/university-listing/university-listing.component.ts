@@ -179,7 +179,7 @@ console.log("ERror is:", err)
   fillUser(userList:any) {
 		if (userList.length > 0) {
 		  userList.forEach((data:any, index:number) => {
-			data.position = index + 1;
+			data.position = this.pageSize * (this.pageIndex ) + index + 1;
 			// data.phone_number = data.phone_number == null ? 'NA' : data.phone_number
 				});
 		}
