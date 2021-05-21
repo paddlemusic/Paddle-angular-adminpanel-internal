@@ -41,8 +41,9 @@
                   class="select-inpt border border-gray-300 rounded-lg mr-3 text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                   (change)="selectMonth($event)">
                   <option *ngFor="let month of MONTHS ; let i = index" [value]="month?.id"
-                    [selected]="i == getDate().month">{{month?.name}}</option>
-
+                    [selected]="i == getDate().month - 1 "
+                    [disabled]="i>getDate().month - 1 ">{{month?.name}}</option>
+                    
                 </select>
               </div>
               <div class="relative inline-flex ">
