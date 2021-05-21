@@ -42,7 +42,7 @@
                   (change)="selectMonth($event)">
                   <option *ngFor="let month of MONTHS ; let i = index" [value]="month?.id"
                     [selected]="i == getDate().month - 1 "
-                    [disabled]="i>getDate().month - 1 ">{{month?.name}}</option>
+                    >{{month?.name}}</option>
                     
                 </select>
               </div>
