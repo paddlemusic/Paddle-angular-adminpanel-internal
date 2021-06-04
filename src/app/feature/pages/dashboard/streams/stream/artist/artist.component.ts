@@ -257,8 +257,9 @@ getDate(){
  */
 pageChange(page:any) {
   this.pageIndex = page.pageIndex;
-  this.getTotalStreamData(false);
-  this.getMonthlyStreamData(false);
+  this.getFilterData()
+  // this.getTotalStreamData(false);
+  // this.getMonthlyStreamData(false);
 }
 
 
