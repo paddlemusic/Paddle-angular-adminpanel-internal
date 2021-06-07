@@ -36,15 +36,8 @@ const routes: Routes = [
       {
         path : 'songs',
         component : SongListingComponent
-      },
-      {
-        path : 'terms-of-usage',
-        component : TermsAndConditionsComponent
-      },
-      {
-        path : 'privacy-policy',
-        component : PrivacyPolicyComponent
       }
+      
     ]
   },
  
