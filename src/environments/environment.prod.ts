@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl : 'https://api.paddlemusic.com/'
+  baseUrl : 'https://api.paddlemusic.com'
 };
