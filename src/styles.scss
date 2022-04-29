@@ -1,0 +1,99 @@
+
+@import './assets/styles/custom.scss';
+
+/* You can add global styles to this file, and also import other style files */
+
+// @import "~material-design-icons/iconfont/material-icons.css";
+// @import "~highlight.js/styles/googlecode.css";
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+.nav-link{
+    @apply inline-block w-full;
+  }
+  
+  .nav-text{
+    @apply flex flex-col items-center py-1 align-middle text-white no-underline px-2;
+  }
+
+  .nav-text.active{
+    @apply border-white bg-white bg-opacity-25;
+  }
+  
+  .nav-text:hover{
+    @apply text-white bg-white bg-opacity-25;
+  }
+
+*:focus {
+  outline: 0 !important;
+}
+  
+    typography h1 {
+    font-style: none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// UI Fixes css
+
+
+.swal2-popup {
+    width: 25em !important;
+     padding: 0.8em !important;
+    font-size: .80rem !important;
+    }
+
+    .select-inpt {
+    width: 160px;
+}
+.py-130 {
+padding-top :1.30rem;
+padding-bottom: 1.30rem;
+}
+.select-inpt-uni {
+  width: 300px;
+  height : 2.75rem
+}
+select:required:invalid {
+  color: rgb(153, 143, 143);
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+.no-record{
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+.No-Record-found{
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 20px 0px;
+}
+ .main-content {
+   padding-left: 270px;
+ }
+ .back-img{
+   position: absolute;
+   top: 50px;
+   left: 70px;
+   width: 1.5rem;
+   height: auto;
+ }
+ .w-300px{
+    width: 300px;
+}
+
+    .error-msg{
+    color: red;
+    font-size: 14px;
+    }

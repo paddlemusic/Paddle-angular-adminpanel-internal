@@ -1,0 +1,64 @@
+<div class="bg-white h-screen text-base font-body">
+  <div class="w-full flex flex-wrap">
+    <div class="w-full md:w-1/2 flex items-center justify-center">
+      <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-16 lg:px-32">
+        <a href="/" class="flex justify-center">
+          <img src="assets/paddle1.jpg" alt="" class="company-logo">
+        </a>
+        <!-- Login module -->
+        <div class="login-module">
+          <h2 class="font-bold text-center text-3xl lg:text-4xl xl:text-5xl">Welcome Back</h2>
+          <p class=" text-center text-base">Login to your account</p>
+          <form class="flex justify-center items-center flex-col pt-3 md:pt-8" [formGroup]="loginForm"
+            (ngSubmit)="onSubmit()">
+            <div class="flex flex-col pt-4">
+              <label for="email" class="text-base ">Email Address</label>
+              <div class=" relative w-full mt-1">
+                <div class=" absolute inset-y-0 left-0 flex items-center pl-3">
+                  <svg viewBox="0 0 20 20" class="mail w-6 h-6 fill-current ">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                  </svg>
+                </div>
+                <input type="email" id="email" placeholder="Enter your email" formControlName="email"
+                  class="w-300px bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3 text-base pl-12  leading-tight focus:outline-none focus:shadow-outline h-12">
+                <app-show-error [control]="f.email"></app-show-error>
+              </div>
+            </div>
+
+            <div class="flex flex-col pt-4">
+              <label for="password" class="text-base ">Password</label>
+              <div class="relative mt-1">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                  <svg viewBox="0 0 20 20" class="lock-closed w-6 h-6 fill-current ">
+                    <path fill-rule="evenodd"
+                      d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <input type="password" id="password" placeholder="******" formControlName="password"
+                  class="w-300px bg-blue-100 appearance-none border-0 rounded-full w-full py-2 px-3  text-base pl-12 mt-1 leading-tight focus:outline-none focus:shadow-outline h-12">
+                <app-show-error [control]="f.password"></app-show-error>
+
+              </div>
+            </div>
+            <!--  (loginForm.dirty || loginForm.touched) -->
+            <button type="submit" [disabled]="loginForm?.invalid" [class.bg-red-700]='loginForm?.valid'
+              [class.bg-red-400]='loginForm?.invalid '
+              class="text-white font-semibold text-lg  p-2 mt-8 h-12 rounded-full w-300px" id="login-btn">Login</button>
+
+          </form>
+          <div class="text-center pt-8 pb-12">
+            <a href="#" id="forgotPassword" class="underline " routerLink="/auth/forgot-password">Forgot Password</a>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+    <div class="w-1/2 min-h-screen bg-gray-100 justify-center items-center hidden md:flex">
+      <img src="assets/work-time-amico.png" alt="" class="">
+    </div>
+  </div>
+</div>

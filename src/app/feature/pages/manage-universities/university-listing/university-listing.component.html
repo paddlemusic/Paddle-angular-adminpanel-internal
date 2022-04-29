@@ -1,0 +1,145 @@
+<div
+    class="mt-6 lg:mt-0 rounded shadow overflow-hidden bg-white shadow-dashboard pt-3 rounded-bl-lg rounded-br-lg pb-5">
+    <div class='flex flex-row p-4'>
+        <form class="w-full max-w-full">
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label class="block text-gray-200 font-bold mb-2" for="name">
+                        University Name
+                    </label>
+                    <input
+                        class="appearance-none block w-full bg-gray-100 text-gray-200 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="name" type="text" placeholder="Search by University Name" #searchInput>
+                       
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+    <!-- Table -->
+    <div class="flex justify-between items-baseline px-5 ">
+        <h3 class="text-xl text-gray-400 font-bold mb-6">All University</h3>
+
+        <div class="w-full md:w-1/4 px-3">
+            <div class="w-full flex items-center justify-end">
+                <button
+                    class="shadow bg-blue-500 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded mr-3 "
+                    type="button" routerLink="add-university">
+                    Add New University
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="align-middle inline-block min-w-full md:overflow-hidden bg-white px-5 pt-3">
+        <div class="">
+            <table class="md:min-w-full" aria-describedby="universityLIsting">
+                <thead>
+                    <tr>
+
+                        <th id="sno"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            #</th>
+                        <th id="university"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            University Name</th>
+                        <th id="city"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            City</th>
+
+                        <th id="date"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Date</th>
+                        <th id="status"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-200 tracking-wider">
+                            Status</th>
+
+                        <th id="action"
+                            class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-200 tracking-wider">
+                            Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white" *ngIf="dataSource?.data?.length > 0">
+                    <!--  -->
+                    <tr *ngFor="let row of dataSource?.data;let i = index">
+
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.position}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.name}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.city}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                <div class="text-sm">
+                                    <p class="text-gray-300 leading-none">{{row?.created_at | date :'mediumDate'}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center cursor-pointer">
+                                <div class="text-sm">
+                                    <p [ngClass]="{'text-green-400':(row.is_active),'text-red-400':(!row.is_active)}">
+                                        {{row?.is_active == true? 'Active' : 'InActive'}}</p>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td class="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-500 text-sm leading-5">
+                            <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white mr-3
+                                  py-2 px-2 rounded " type="button" (click)="navigate(row?.id)">
+                                Edit University
+                            </button>
+                            <button *ngIf="!row?.is_active" [ngClass]="{'bg-green-500':(!row.is_active)}"
+                                class="shadow  hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
+                                type="button" (click)="activateDeactivateUniversity(row?.id)">
+                                Activate
+                            </button>
+                            <button *ngIf="row?.is_active" [ngClass]="{'bg-pink-500':(row.is_active)}"
+                                class="shadow hover:bg-pink-400 focus:shadow-outline focus:outline-none text-white  py-2 px-2 rounded"
+                                type="button" (click)="activateDeactivateUniversity(row?.id)">
+                                Deactivate
+                            </button>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-center mt-4 work-sans" #norecord>
+            <div *ngIf="!(dataSource?.data?.length > 0)">
+                <span class="No-Record-found">
+                    <em class="fa fa-exclamation-triangle"></em> No Record Found
+                </span>
+            </div>
+        </div>
+        <div class="sm:flex-1 sm:flex sm:items-center sm:justify-end mt-4 work-sans">
+            <div>
+                <!--   -->
+                <mat-paginator #paginator [class.invisible]="dataSource?.filteredData?.length === 0"
+                    (page)='pageChange($event)' [length]="totalCount" [pageSizeOptions]="[10]" showFirstLastButtons>
+                </mat-paginator>
+
+            </div>
+        </div>
+    </div>
+</div>
